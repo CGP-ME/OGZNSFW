@@ -91,6 +91,30 @@ restarts, no package installs, no elevation, no writes outside
 `orchestration/runs/` and `orchestration/receipts/`. Any git action on the
 results is a separate, explicitly approved step by Trey.
 
+## dispatch.ps1 (OpenClaw-side trigger)
+
+Thin trigger the OpenClaw agent (or Trey) calls with a mission ID or file.
+It resolves the mission under `missions/`, re-checks required fields and the
+approval line (defense in depth; claudito.ps1 re-checks everything), enforces
+a one-dispatch-per-mission guard (`-AllowRerun` to override) and a recursion
+guard (`CLAUDITO_DISPATCH_ACTIVE`), then invokes claudito.ps1 with only the
+approved mission file. Evidence: `runs/<mission-id>/dispatch-<stamp>.json`
+(trigger ID, who dispatched, command, timestamps, exit codes, artifact paths)
+plus the adapter's console output, and a `RESULT_JSON:` line for machine
+parsing.
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File orchestration\adapters\dispatch.ps1 -Mission M-20260817-001 -DispatchedBy openclaw-agent
+```
+
+Dispatcher exit codes: adapter codes 0-8 pass through; 10 mission not found;
+11 malformed/misconfigured; 12 approval missing or ambiguous; 13 duplicate
+dispatch; 14 recursion guard. The dispatcher contains no git invocations of
+any kind.
+
+The OpenClaw agent's usage rules live in `skills/claudito-dispatch/SKILL.md`
+(workspace) and the short pointer in the workspace `TOOLS.md`.
+
 ### Known limitations
 
 - Refused missions (exit 2-6) do not get automatic receipts; the refusal is

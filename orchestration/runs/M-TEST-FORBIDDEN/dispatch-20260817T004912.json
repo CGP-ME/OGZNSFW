@@ -1,0 +1,23 @@
+﻿{
+    "triggerId":  "T-20260817T004912",
+    "dispatcherVersion":  "0.1.0",
+    "missionId":  "M-TEST-FORBIDDEN",
+    "missionFile":  "C:\\Users\\og_za\\AppData\\Local\\Temp\\claude\\Q--\\ccb70edf-ae3c-4498-87e2-64d2995e62ca\\scratchpad\\test-forbidden.md",
+    "requester":  "Trey",
+    "dispatchedBy":  "openclaw-agent",
+    "approvalLine":  "granted 2026-08-16T18:46:00-05:00",
+    "command":  "powershell -NoProfile -ExecutionPolicy Bypass -File \"Q:\\OpenClaw\\workspace\\orchestration\\adapters\\claudito.ps1\" -MissionFile \"C:\\Users\\og_za\\AppData\\Local\\Temp\\claude\\Q--\\ccb70edf-ae3c-4498-87e2-64d2995e62ca\\scratchpad\\test-forbidden.md\"",
+    "workingDirectory":  "Q:\\OpenClaw\\workspace",
+    "startTime":  "2026-08-17T00:49:12.1136307-07:00",
+    "endTime":  "2026-08-17T00:49:12.5663269-07:00",
+    "adapterExitCode":  5,
+    "adapterConsoleFile":  "Q:\\OpenClaw\\workspace\\orchestration\\runs\\M-TEST-FORBIDDEN\\dispatch-20260817T004912-adapter-console.txt",
+    "runDir":  null,
+    "receiptPath":  null,
+    "duplicateGuard":  {
+                           "priorDispatches":  0,
+                           "allowRerun":  false
+                       },
+    "gitActions":  "none - git is never invoked by the dispatcher or adapter",
+    "failures":  "adapter exit 5; see adapter console and run artifacts"
+}

@@ -1,0 +1,23 @@
+﻿{
+    "triggerId":  "T-20260817T004928",
+    "dispatcherVersion":  "0.1.0",
+    "missionId":  "M-20260817-001",
+    "missionFile":  "Q:\\OpenClaw\\workspace\\orchestration\\missions\\trigger-test-mission.md",
+    "requester":  "Trey",
+    "dispatchedBy":  "trey-via-fable",
+    "approvalLine":  "granted 2026-08-17T00:46:00-07:00",
+    "command":  "powershell -NoProfile -ExecutionPolicy Bypass -File \"Q:\\OpenClaw\\workspace\\orchestration\\adapters\\claudito.ps1\" -MissionFile \"Q:\\OpenClaw\\workspace\\orchestration\\missions\\trigger-test-mission.md\"",
+    "workingDirectory":  "Q:\\OpenClaw\\workspace",
+    "startTime":  "2026-08-17T00:49:28.9106501-07:00",
+    "endTime":  "2026-08-17T00:50:16.2462951-07:00",
+    "adapterExitCode":  0,
+    "adapterConsoleFile":  "Q:\\OpenClaw\\workspace\\orchestration\\runs\\M-20260817-001\\dispatch-20260817T004928-adapter-console.txt",
+    "runDir":  "Q:\\OpenClaw\\workspace\\orchestration\\runs\\M-20260817-001\\run-20260817T004929",
+    "receiptPath":  "Q:\\OpenClaw\\workspace\\orchestration\\receipts\\M-20260817-001-RECEIPT.md",
+    "duplicateGuard":  {
+                           "priorDispatches":  0,
+                           "allowRerun":  false
+                       },
+    "gitActions":  "none - git is never invoked by the dispatcher or adapter",
+    "failures":  "none"
+}

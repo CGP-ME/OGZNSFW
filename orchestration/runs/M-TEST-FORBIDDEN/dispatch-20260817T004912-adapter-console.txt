@@ -1,0 +1,3 @@
+﻿
+REFUSED (exit 5): Mission text requests forbidden action(s) with no explicit 'Forbidden-action approval: granted' line. Tripwire hits: git\s+push, \bcommit\b, \bpush\b, \bdelete\b
+
