@@ -1,0 +1,25 @@
+﻿{
+    "missionId":  "M-20260816-003",
+    "missionFile":  "Q:\\OpenClaw\\workspace\\orchestration\\missions\\example-mission.md",
+    "adapterVersion":  "0.1.0",
+    "command":  "C:\\Users\\og_za\\AppData\\Roaming\\npm\\claude.cmd",
+    "argumentList":  [
+                         "-p",
+                         "--output-format",
+                         "json",
+                         "--tools",
+                         "Read,Glob,Grep",
+                         "--strict-mcp-config"
+                     ],
+    "commandLine":  "\"C:\\Users\\og_za\\AppData\\Roaming\\npm\\claude.cmd\" -p --output-format json --tools Read,Glob,Grep --strict-mcp-config",
+    "workingDirectory":  "Q:\\OpenClaw\\workspace",
+    "startTime":  "2026-08-17T00:09:40.7546459-07:00",
+    "endTime":  "2026-08-17T00:11:41.5506829-07:00",
+    "exitCode":  0,
+    "toolsAllowed":  "Read,Glob,Grep",
+    "mcpEnabled":  false,
+    "modelOverride":  null,
+    "stdoutFile":  "Q:\\OpenClaw\\workspace\\orchestration\\runs\\M-20260816-003\\run-20260817T000940\\stdout.json",
+    "stderrFile":  "Q:\\OpenClaw\\workspace\\orchestration\\runs\\M-20260816-003\\run-20260817T000940\\stderr.txt",
+    "promptFile":  "Q:\\OpenClaw\\workspace\\orchestration\\runs\\M-20260816-003\\run-20260817T000940\\prompt.txt"
+}
