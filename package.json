@@ -1,0 +1,17 @@
+{
+  "name": "ogznsfw",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Private subscription-based companion platform for fictional consenting adults. MVP vertical slice.",
+  "scripts": {
+    "start": "node --env-file-if-exists=.env apps/api/server.js",
+    "test": "node --test \"tests/*.test.js\""
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

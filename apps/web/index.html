@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OGZNSFW</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="age-gate" class="age-gate">
+    <div class="age-gate-box">
+      <h1>OGZNSFW</h1>
+      <p>Private companion platform for fictional consenting adults.</p>
+      <p>You must be 18 or older to enter. All characters are fictional adults.</p>
+      <button id="age-confirm">I am 18 or older - Enter</button>
+      <a href="https://www.google.com" class="age-leave">Leave</a>
+    </div>
+  </div>
+
+  <div id="app" class="app hidden">
+    <header>
+      <span class="logo">OGZNSFW</span>
+      <span id="provider-status" class="provider-status">checking providers...</span>
+      <span id="user-badge" class="user-badge"></span>
+    </header>
+
+    <main>
+      <aside class="panel profile-panel">
+        <h2>Companion</h2>
+        <div id="profile">loading...</div>
+      </aside>
+
+      <section class="panel chat-panel">
+        <div id="chat-banner" class="banner hidden"></div>
+        <div id="chat-log" class="chat-log"></div>
+        <form id="chat-form" class="chat-form">
+          <input id="chat-input" type="text" placeholder="Say something..." autocomplete="off">
+          <button type="submit" id="chat-send">Send</button>
+        </form>
+      </section>
+
+      <aside class="side-column">
+        <div class="panel">
+          <h2>Memories</h2>
+          <div id="memories" class="memories">none yet</div>
+        </div>
+        <div class="panel">
+          <h2>Gallery</h2>
+          <div id="gallery-banner" class="banner hidden"></div>
+          <form id="image-form" class="image-form">
+            <input id="image-prompt" type="text" placeholder="Describe an image..." autocomplete="off">
+            <button type="submit" id="image-send">Generate</button>
+          </form>
+          <div id="gallery" class="gallery">no assets yet</div>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
