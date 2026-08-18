@@ -8,6 +8,9 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { JsonStore } from '../../db/store.js';
 import { CharacterService, compilePrompt, characterRecordTemplate } from '../../packages/character-core/index.js';
+import { ReferencePackService } from '../../packages/character-core/reference-pack.js';
+import { SceneService } from '../../packages/character-core/scene.js';
+import { compileImageRequest } from '../../packages/providers/image/image-request.js';
 import { MemoryStore, HeuristicMemoryExtractor } from '../../packages/memory/index.js';
 import { createChatProvider, createImageProvider, registryInfo } from '../../packages/providers/registry.js';
 import { checkText } from '../../packages/safety/index.js';
@@ -16,13 +19,17 @@ import { seedDemo } from './seed.js';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..', '..');
 
-export function createApp({ store, chat, image } = {}) {
+export function createApp({ store, chat, image, imageValidator = null } = {}) {
   store = store ?? new JsonStore(path.join(ROOT, 'db', 'data'));
   chat = chat ?? createChatProvider();
   image = image ?? createImageProvider();
+  // imageValidator: no runtime implementation exists yet (real CV validation
+  // is a later milestone); when null, validation endpoints return an honest 503.
   const characters = new CharacterService(store);
   const memories = new MemoryStore(store);
   const extractor = new HeuristicMemoryExtractor();
+  const referencePacks = new ReferencePackService(store);
+  const scenes = new SceneService(store, characters, referencePacks);
 
   const app = express();
   app.use(express.json({ limit: '1mb' }));
@@ -182,6 +189,119 @@ export function createApp({ store, chat, image } = {}) {
     if (!characterId) return res.status(400).json({ error: 'characterId required' });
     const assets = await store.find('assets', (a) => a.tenantId === tenantId && a.characterId === characterId);
     res.json(assets.map((a) => ({ id: a.id, uri: a.uri, prompt: a.prompt, provider: a.provider, model: a.model, createdAt: a.createdAt })));
+  });
+
+  // --- character reference packs (scoped tenant + character + exact version)
+  app.post('/api/characters/:id/references', async (req, res) => {
+    const tenantId = requireTenant(req, res); if (!tenantId) return;
+    const { version, assets } = req.body ?? {};
+    if (!Number.isInteger(version) || !Array.isArray(assets)) return res.status(400).json({ error: 'integer version and assets array required' });
+    const loaded = await characters.loadRecord(tenantId, req.params.id, version);
+    if (!loaded) return res.status(404).json({ error: 'character version not found for this tenant' });
+    try {
+      const pack = await referencePacks.register(tenantId, req.params.id, version, assets);
+      res.status(201).json({ characterId: req.params.id, version, assets: pack.assets });
+    } catch (err) {
+      res.status(400).json({ error: err.message });
+    }
+  });
+
+  app.get('/api/characters/:id/references', async (req, res) => {
+    const tenantId = requireTenant(req, res); if (!tenantId) return;
+    const version = Number(req.query.version);
+    if (!Number.isInteger(version)) return res.status(400).json({ error: 'integer version query param required' });
+    const pack = await referencePacks.get(tenantId, req.params.id, version);
+    res.json(pack ? pack.assets : []);
+  });
+
+  // --- scenes: create -> compile -> generate -> validate -> publish.
+  // Every step is scoped by tenant and every refusal is explicit.
+  app.post('/api/scenes', async (req, res) => {
+    const tenantId = requireTenant(req, res); if (!tenantId) return;
+    const result = await scenes.create(tenantId, req.body ?? {});
+    if (!result.ok) return res.status(422).json({ error: 'scene rejected', details: result.errors });
+    res.status(201).json(result.scene);
+  });
+
+  app.get('/api/scenes', async (req, res) => {
+    const tenantId = requireTenant(req, res); if (!tenantId) return;
+    res.json(await scenes.list(tenantId));
+  });
+
+  app.get('/api/scenes/:id', async (req, res) => {
+    const tenantId = requireTenant(req, res); if (!tenantId) return;
+    const scene = await scenes.get(tenantId, req.params.id);
+    if (!scene) return res.status(404).json({ error: 'scene not found for this tenant' });
+    res.json(scene);
+  });
+
+  async function compileForScene(tenantId, scene) {
+    const records = {};
+    for (const c of scene.characters) {
+      records[c.characterId] = await characters.loadRecord(tenantId, c.characterId, c.characterVersion);
+      if (!records[c.characterId]) throw new Error(`character ${c.characterId} v${c.characterVersion} no longer resolves for this tenant`);
+    }
+    return compileImageRequest(scene, records);
+  }
+
+  app.post('/api/scenes/:id/compile', async (req, res) => {
+    const tenantId = requireTenant(req, res); if (!tenantId) return;
+    const scene = await scenes.get(tenantId, req.params.id);
+    if (!scene) return res.status(404).json({ error: 'scene not found for this tenant' });
+    try {
+      res.json(await compileForScene(tenantId, scene));
+    } catch (err) {
+      res.status(422).json({ error: err.message });
+    }
+  });
+
+  app.post('/api/scenes/:id/generate', async (req, res) => {
+    const tenantId = requireTenant(req, res); if (!tenantId) return;
+    if (!image.provider) return res.status(503).json({ error: 'no image provider configured', how: image.status.reason });
+    if (!image.provider.supportsSceneRequests) {
+      return res.status(501).json({ error: `image provider "${image.provider.name}" does not support structured multi-character scene requests`, note: 'scenes are never flattened into a single prompt' });
+    }
+    const scene = await scenes.get(tenantId, req.params.id);
+    if (!scene) return res.status(404).json({ error: 'scene not found for this tenant' });
+    try {
+      const request = await compileForScene(tenantId, scene);
+      const output = await image.provider.generateFromScene(request);
+      await scenes.recordGeneration(tenantId, scene.id, { uri: output.uri, provider: output.provider, model: output.model, generatedAt: new Date().toISOString() });
+      res.json({ status: 'generated', output: { provider: output.provider, model: output.model }, validationStatus: 'pending' });
+    } catch (err) {
+      console.log(`[${new Date().toISOString()}] scene generate failed tenant=${tenantId} scene=${scene.id}: ${err.message}`);
+      res.status(502).json({ error: 'scene generation failed', detail: err.message });
+    }
+  });
+
+  app.post('/api/scenes/:id/validate', async (req, res) => {
+    const tenantId = requireTenant(req, res); if (!tenantId) return;
+    if (!imageValidator) {
+      return res.status(503).json({ error: 'no image validator configured', note: 'real computer-vision validation does not exist yet; deterministic validators can be injected for testing' });
+    }
+    const scene = await scenes.get(tenantId, req.params.id);
+    if (!scene) return res.status(404).json({ error: 'scene not found for this tenant' });
+    if (!scene.generation?.lastOutput) return res.status(409).json({ error: 'nothing generated for this scene yet' });
+    try {
+      const request = await compileForScene(tenantId, scene);
+      const report = await imageValidator.validate({ request, asset: scene.generation.lastOutput });
+      const applied = await scenes.applyValidationReport(tenantId, scene.id, report);
+      const payload = { validationStatus: applied.validationStatus, verdict: applied.verdict, report };
+      if (applied.validationStatus === 'passed') return res.json(payload);
+      return res.status(422).json({ ...payload, error: 'validation failed', reasons: applied.verdict.reasons });
+    } catch (err) {
+      res.status(500).json({ error: 'validation errored', detail: err.message });
+    }
+  });
+
+  app.post('/api/scenes/:id/publish', async (req, res) => {
+    const tenantId = requireTenant(req, res); if (!tenantId) return;
+    const scene = await scenes.get(tenantId, req.params.id);
+    if (!scene) return res.status(404).json({ error: 'scene not found for this tenant' });
+    if (!scene.generation?.lastOutput) return res.status(409).json({ error: 'nothing generated for this scene yet' });
+    const result = await scenes.publishAsset(tenantId, scene.id, scene.generation.lastOutput);
+    if (!result.ok) return res.status(409).json({ error: 'publication refused', details: result.errors });
+    res.status(201).json({ published: true, asset: { id: result.asset.id, uri: result.asset.uri, provenance: result.asset.provenance } });
   });
 
   return app;

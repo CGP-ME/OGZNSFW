@@ -94,6 +94,26 @@ button:disabled { background: #3a3a44; color: #666; cursor: not-allowed; }
 .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; font-size: 12px; color: var(--dim); }
 .gallery img { width: 100%; border: 1px solid var(--border); border-radius: 4px; }
 
+/* Scenes */
+.app { overflow-y: auto; }
+.scenes-panel { margin: 0 10px 10px 10px; max-height: 44vh; overflow-y: auto; }
+.scene-builder { display: grid; grid-template-columns: 1fr 320px; gap: 12px; margin-bottom: 12px; }
+.scene-characters { display: flex; flex-direction: column; gap: 8px; font-size: 12px; }
+.scene-char-row { display: grid; grid-template-columns: auto 1.2fr 70px 1fr 1fr 1fr 1fr; gap: 6px; align-items: center; }
+.scene-char-row input[type="text"], .scene-char-row input[type="number"] { padding: 6px 8px; font-size: 11px; }
+.scene-char-row .char-name { color: var(--accent); }
+.scene-fields { display: flex; flex-direction: column; gap: 8px; }
+.scene-fields button { padding: 10px; background: var(--accent); color: #000; border: none; border-radius: 4px; font-family: inherit; font-weight: 700; cursor: pointer; }
+.scene-list { display: flex; flex-direction: column; gap: 8px; font-size: 12px; }
+.scene-card { border: 1px solid var(--border); border-radius: 6px; padding: 10px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.scene-card .status { padding: 2px 8px; border-radius: 3px; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; }
+.status.pending { border: 1px solid var(--dim); color: var(--dim); }
+.status.passed { border: 1px solid #57d98a; color: #57d98a; }
+.status.failed { border: 1px solid var(--danger); color: var(--danger); }
+.scene-card button { padding: 5px 10px; background: #1b1b26; color: var(--text); border: 1px solid var(--border); border-radius: 3px; font-family: inherit; font-size: 11px; cursor: pointer; }
+.scene-card .scene-msg { flex-basis: 100%; color: var(--dim); font-size: 11px; white-space: pre-wrap; }
+.scene-request { background: #0a0a0c; border: 1px solid var(--border); border-radius: 4px; padding: 10px; font-size: 10px; max-height: 240px; overflow: auto; margin-top: 10px; color: var(--text); }
+
 /* Profile */
 #profile { font-size: 12px; line-height: 1.7; }
 #profile .name { font-size: 16px; color: var(--accent); }

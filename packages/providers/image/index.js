@@ -4,10 +4,20 @@
 
 export class ImageProvider {
   get name() { throw new Error('name must be implemented'); }
+  // Structured multi-character scene support. Providers that can honor a
+  // multi-character-image-request (separate identity blocks, reference
+  // assets) override this to true and implement generateFromScene(). A
+  // provider that cannot MUST leave this false - the API refuses honestly
+  // instead of flattening a scene into one prompt.
+  get supportsSceneRequests() { return false; }
   // Returns { uri, provider, model } where uri is a data: URI or a served path.
   // eslint-disable-next-line no-unused-vars
   async generate({ prompt, characterRecord }) {
     throw new Error('generate() must be implemented');
+  }
+  // eslint-disable-next-line no-unused-vars
+  async generateFromScene(request) {
+    throw new Error(`provider "${this.name}" does not support structured scene requests`);
   }
   async probe() { throw new Error('probe() must be implemented'); }
 }

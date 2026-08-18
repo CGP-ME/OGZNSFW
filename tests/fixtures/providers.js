@@ -32,6 +32,21 @@ export class FixtureImageB extends ImageProvider {
   async probe() { return { reachable: true, detail: 'test fixture' }; }
 }
 
+// Scene-capable image fixture: accepts a structured multi-character request
+// and returns a deterministic output reference. It records the request it
+// received so tests can assert nothing was flattened.
+export class FixtureSceneImageProvider extends ImageProvider {
+  constructor() { super(); this.lastRequest = null; }
+  get name() { return 'fixture-scene-image'; }
+  get supportsSceneRequests() { return true; }
+  async generate() { return { uri: 'data:text/plain;base64,Uw==', provider: this.name, model: 'fixture' }; }
+  async generateFromScene(request) {
+    this.lastRequest = request;
+    return { uri: `about:fixture-scene-output/${request.sceneId}`, provider: this.name, model: 'fixture-scene' };
+  }
+  async probe() { return { reachable: true, detail: 'test fixture' }; }
+}
+
 export const configuredChat = (p) => ({ provider: p, status: { configured: true, selected: p.name, reason: null } });
 export const configuredImage = (p) => ({ provider: p, status: { configured: true, selected: p.name, reason: null } });
 export const unconfigured = (kind) => ({ provider: null, status: { configured: false, selected: null, reason: `no ${kind} provider selected (test)` } });

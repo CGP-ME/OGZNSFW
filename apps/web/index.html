@@ -55,6 +55,23 @@
         </div>
       </aside>
     </main>
+
+    <section class="panel scenes-panel">
+      <h2>Scenes (multi-character)</h2>
+      <div id="scene-banner" class="banner hidden"></div>
+      <div class="scene-builder">
+        <div id="scene-characters" class="scene-characters">loading characters...</div>
+        <div class="scene-fields">
+          <input id="scene-location" type="text" placeholder="Setting / location">
+          <input id="scene-camera" type="text" placeholder="Camera (e.g. medium two-shot, eye level)">
+          <input id="scene-lighting" type="text" placeholder="Lighting">
+          <input id="scene-spatial" type="text" placeholder="Spatial composition">
+          <button id="scene-create" type="button">Create Scene</button>
+        </div>
+      </div>
+      <div id="scene-list" class="scene-list">no scenes yet</div>
+      <pre id="scene-request-preview" class="scene-request hidden"></pre>
+    </section>
   </div>
 
   <script src="app.js"></script>
