@@ -41,8 +41,16 @@ export const comfyuiTuningDefaults = {
   // refinement stage. Raise only with benchmark evidence.
   characterTextStrength: 0,
   ipadapterPreset: 'PLUS (high strength)',
+  // Pipeline mode: 'single-pass' is the benchmarked baseline (regression-
+  // pinned). 'two-pass' composes the scene from text first (no identity
+  // conditioning -> background belongs to the setting), then refines each
+  // character's region independently with only that character's reference -
+  // the background-leakage/composition lane.
+  pipelineMode: 'single-pass',
+  refineDenoise: 0.6,
+  refineSteps: 22,
   pollIntervalMs: 2000,
-  timeoutMs: 180000,
+  timeoutMs: 240000,
 };
 
 // Default HTTP client (real network). Tests inject a fake with the same shape.
@@ -228,8 +236,96 @@ export class ComfyUIImageProvider extends ImageProvider {
   }
 
   async generateFromScene(request, overrides = {}) {
-    const { workflow, seed, referenceAssets, characterVersions } = this.buildSceneWorkflow(request, overrides);
+    const build = (this.tuning.pipelineMode === 'two-pass')
+      ? this.buildTwoPassWorkflow(request, overrides)
+      : this.buildSceneWorkflow(request, overrides);
+    const { workflow, seed, referenceAssets, characterVersions } = build;
     return this.executeWorkflow(workflow, { seed, characterVersions, referenceAssets, sceneId: request.sceneId });
+  }
+
+  // Two-pass compositor: pass 1 = base scene from text only (identity-free,
+  // so the setting owns the background and composition follows the subject
+  // phrase); pass 2..n+1 = per-character regional refinement, each with a
+  // latent noise mask over that character's region and ONLY that character's
+  // IPAdapter chain (no cross-character model chaining at all).
+  buildTwoPassWorkflow(request, overrides = {}) {
+    if (request?.kind !== 'multi-character-image-request' || !request.characters?.length) {
+      throw new Error('malformed scene request: expected multi-character-image-request with characters');
+    }
+    const t = this.tuning;
+    const n = request.characters.length;
+    const seed = overrides.seed ?? t.seed ?? seedFromSceneId(request.sceneId);
+    const wf = {
+      4: { class_type: 'CheckpointLoaderSimple', inputs: { ckpt_name: t.checkpoint } },
+      5: { class_type: 'EmptyLatentImage', inputs: { width: t.width, height: t.height, batch_size: 1 } },
+    };
+    // Shared text conditioning (same subject-noun rules as single-pass)
+    const s = request.scene ?? {};
+    const genders = request.characters.map((c) => c.identity?.gender ?? null);
+    const countWord = n === 2 ? 'two' : String(n);
+    let noun;
+    if (n === 1) noun = genders[0] === 'female' ? 'an adult woman' : genders[0] === 'male' ? 'an adult man' : 'an adult';
+    else if (genders.every((g) => g === 'female')) noun = `${countWord} adult women`;
+    else if (genders.every((g) => g === 'male')) noun = `${countWord} adult men`;
+    else noun = `${countWord} adults`;
+    const sceneText = [
+      n > 1 ? `photograph of ${noun} standing side by side` : `photograph of ${noun}`,
+      Object.values(s.setting ?? {}).filter((v) => typeof v === 'string').join(', '),
+      Object.values(s.composition ?? {}).filter((v) => typeof v === 'string').join(', '),
+      'all faces clearly visible, photorealistic',
+    ].filter(Boolean).join(', ');
+    wf[6] = { class_type: 'CLIPTextEncode', inputs: { clip: ['4', 1], text: sceneText } };
+    wf[7] = { class_type: 'CLIPTextEncode', inputs: { clip: ['4', 1], text: 'blurry, deformed, extra limbs, low quality, cartoon, child, teenager, merged faces, identical twins, same person twice' } };
+
+    // Pass 1: identity-free base scene
+    wf[30] = { class_type: 'KSampler', inputs: { model: ['4', 0], positive: ['6', 0], negative: ['7', 0], latent_image: ['5', 0], seed, steps: t.steps, cfg: t.cfg, sampler_name: 'euler', scheduler: 'normal', denoise: 1.0 } };
+    let latent = ['30', 0];
+
+    // Loader shared; each character pass builds its OWN model branch
+    wf[10] = { class_type: 'IPAdapterUnifiedLoader', inputs: { model: ['4', 0], preset: t.ipadapterPreset } };
+    const slice = Math.floor(t.width / n);
+    let nodeId = 100;
+    const referenceAssets = [];
+    const characterVersions = {};
+
+    request.characters.forEach((c, i) => {
+      characterVersions[c.characterId] = c.characterVersion;
+      const ref = (c.referenceAssets ?? [])[0];
+      if (!ref) throw new Error(`character ${c.characterId} has no reference asset; identity-locked generation requires one`);
+      const filename = this.resolveReference(ref);
+      if (!filename) throw new Error(`reference asset "${ref}" cannot be resolved to an input image`);
+      referenceAssets.push(ref);
+
+      const x = Math.max(0, i * slice - t.maskOverlap);
+      const w = Math.min(t.width - x, slice + 2 * t.maskOverlap);
+      const idBase = nodeId; nodeId += 10;
+      wf[idBase] = { class_type: 'SolidMask', inputs: { value: 0.0, width: t.width, height: t.height } };
+      wf[idBase + 1] = { class_type: 'SolidMask', inputs: { value: 1.0, width: w, height: t.height } };
+      wf[idBase + 2] = { class_type: 'MaskComposite', inputs: { destination: [String(idBase), 0], source: [String(idBase + 1), 0], x, y: 0, operation: 'add' } };
+      let maskOut = [String(idBase + 2), 0];
+      if (t.maskFeather > 0) {
+        wf[idBase + 3] = { class_type: 'FeatherMask', inputs: { mask: maskOut, left: t.maskFeather, top: 0, right: t.maskFeather, bottom: 0 } };
+        maskOut = [String(idBase + 3), 0];
+      }
+      wf[idBase + 4] = { class_type: 'LoadImage', inputs: { image: filename } };
+      // Independent model branch: only THIS character's reference
+      wf[idBase + 5] = { class_type: 'IPAdapterAdvanced', inputs: {
+        model: ['10', 0], ipadapter: ['10', 1], image: [String(idBase + 4), 0], attn_mask: maskOut,
+        weight: t.adapterWeight, weight_type: t.adapterWeightType, combine_embeds: 'concat',
+        start_at: 0.0, end_at: 1.0, embeds_scaling: 'V only',
+      } };
+      // Regional refinement: latent noise mask scopes the repaint to the region
+      wf[idBase + 6] = { class_type: 'SetLatentNoiseMask', inputs: { samples: latent, mask: maskOut } };
+      wf[idBase + 7] = { class_type: 'KSampler', inputs: {
+        model: [String(idBase + 5), 0], positive: ['6', 0], negative: ['7', 0], latent_image: [String(idBase + 6), 0],
+        seed: seed + 1000 + i, steps: t.refineSteps, cfg: t.cfg, sampler_name: 'euler', scheduler: 'normal', denoise: t.refineDenoise,
+      } };
+      latent = [String(idBase + 7), 0];
+    });
+
+    wf[8] = { class_type: 'VAEDecode', inputs: { samples: latent, vae: ['4', 2] } };
+    wf[9] = { class_type: 'SaveImage', inputs: { images: ['8', 0], filename_prefix: `ogznsfw_scene2p_${String(request.sceneId).slice(0, 8)}` } };
+    return { workflow: wf, seed, referenceAssets, characterVersions };
   }
 
   // Queue -> poll -> retrieve. Throws at every failure point; success only

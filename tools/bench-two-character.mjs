@@ -25,9 +25,11 @@ const SCENES = {
 
 const VARIANTS = {
   A: { maskFeather: 0, maskOverlap: 0, adapterWeight: 0.8 },   // proven baseline
-  B: { maskFeather: 48, maskOverlap: 0, adapterWeight: 0.8 },  // seam remedy alone
+  B: { maskFeather: 48, maskOverlap: 0, adapterWeight: 0.8 },  // seam remedy alone (current default)
   C: { maskFeather: 48, maskOverlap: 16, adapterWeight: 0.65 },// identity relaxed
   D: { maskFeather: 96, maskOverlap: 32, adapterWeight: 0.8 }, // aggressive blend
+  P2: { pipelineMode: 'two-pass' },                             // two-pass compositor (background/composition lane)
+  P2s: { pipelineMode: 'two-pass', refineDenoise: 0.5 },        // two-pass, gentler refinement
 };
 
 const SEEDS = [20260818, 777];
