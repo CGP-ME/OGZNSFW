@@ -1,0 +1,19 @@
+{
+  "note": "Regression fixture from the 2026-08-18 two-character tuning benchmark (COMFYUI-BENCHMARK-RECEIPT.md). The winning configuration and its canonical workflow hash are pinned here. If the workflow builder changes, this hash changes - update it DELIBERATELY with a receipt, never casually.",
+  "winner": {
+    "maskFeather": 48,
+    "maskOverlap": 0,
+    "adapterWeight": 0.8,
+    "adapterWeightType": "linear",
+    "characterTextStrength": 0
+  },
+  "canonicalRequest": {
+    "sceneId": "bench-park",
+    "seed": 20260818,
+    "workflowHash": "3fce14f89c77f5ac90a0379b0c9b09dc00af362325eec1be42637749bdf7c99a"
+  },
+  "evidence": {
+    "twoFigureSuccess": ["park/A/20260818", "park/B/20260818", "park/C/20260818 (identity degraded)", "editorial/B/20260818"],
+    "merged": ["park/D/20260818", "all variants at seed 777", "all round-0 runs with masked char-text"]
+  }
+}

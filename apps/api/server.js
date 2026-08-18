@@ -14,22 +14,24 @@ import { compileImageRequest } from '../../packages/providers/image/image-reques
 import { MemoryStore, HeuristicMemoryExtractor } from '../../packages/memory/index.js';
 import { createChatProvider, createImageProvider, registryInfo } from '../../packages/providers/registry.js';
 import { checkText } from '../../packages/safety/index.js';
+import { GenerationPipeline } from '../../packages/generation/pipeline.js';
 import { seedDemo } from './seed.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..', '..');
 
-export function createApp({ store, chat, image, imageValidator = null } = {}) {
+export function createApp({ store, chat, image, imageValidator = null, presentationAssessor = null, galleryPolicy = {} } = {}) {
   store = store ?? new JsonStore(path.join(ROOT, 'db', 'data'));
   chat = chat ?? createChatProvider();
   image = image ?? createImageProvider();
-  // imageValidator: no runtime implementation exists yet (real CV validation
-  // is a later milestone); when null, validation endpoints return an honest 503.
+  // imageValidator / presentationAssessor: no runtime implementations exist
+  // yet (real CV validation and visual-quality models are later milestones);
+  // when null, the endpoints return honest 503s.
   const characters = new CharacterService(store);
   const memories = new MemoryStore(store);
   const extractor = new HeuristicMemoryExtractor();
   const referencePacks = new ReferencePackService(store);
-  const scenes = new SceneService(store, characters, referencePacks);
+  const scenes = new SceneService(store, characters, referencePacks, galleryPolicy);
 
   const app = express();
   app.use(express.json({ limit: '1mb' }));
@@ -266,11 +268,55 @@ export function createApp({ store, chat, image, imageValidator = null } = {}) {
     try {
       const request = await compileForScene(tenantId, scene);
       const output = await image.provider.generateFromScene(request);
-      await scenes.recordGeneration(tenantId, scene.id, { uri: output.uri, provider: output.provider, model: output.model, generatedAt: new Date().toISOString() });
-      res.json({ status: 'generated', output: { provider: output.provider, model: output.model }, validationStatus: 'pending' });
+      await scenes.recordGeneration(tenantId, scene.id, { uri: output.uri, provider: output.provider, model: output.model, provenance: output.provenance ?? null, generatedAt: new Date().toISOString() });
+      res.json({ status: 'generated', output: { provider: output.provider, model: output.model, provenance: output.provenance ?? null }, validationStatus: 'pending' });
     } catch (err) {
       console.log(`[${new Date().toISOString()}] scene generate failed tenant=${tenantId} scene=${scene.id}: ${err.message}`);
       res.status(502).json({ error: 'scene generation failed', detail: err.message });
+    }
+  });
+
+  // Pipeline route: generate -> validate -> bounded deterministic seed retry.
+  // The provider never retries; the pipeline owns attempts and provenance.
+  app.post('/api/scenes/:id/generate-validated', async (req, res) => {
+    const tenantId = requireTenant(req, res); if (!tenantId) return;
+    if (!image.provider) return res.status(503).json({ error: 'no image provider configured', how: image.status.reason });
+    if (!image.provider.supportsSceneRequests) {
+      return res.status(501).json({ error: `image provider "${image.provider.name}" does not support structured scene requests` });
+    }
+    const scene = await scenes.get(tenantId, req.params.id);
+    if (!scene) return res.status(404).json({ error: 'scene not found for this tenant' });
+    try {
+      const request = await compileForScene(tenantId, scene);
+      const pipeline = new GenerationPipeline({ provider: image.provider, identityValidator: imageValidator });
+      const run = await pipeline.run(request);
+      const attemptLog = run.provenance?.attempts ?? [];
+      if (run.ok && run.selected) {
+        await scenes.recordGeneration(tenantId, scene.id, { ...run.selected.output, generatedAt: new Date().toISOString(), pipeline: run.provenance });
+        if (!run.pendingValidation) {
+          await scenes.applyValidationReport(tenantId, scene.id, run.selected.validation.report);
+        }
+        return res.json({
+          status: run.pendingValidation ? 'generated (needs human review - no validator configured)' : 'validated',
+          attemptsUsed: attemptLog.length,
+          maxAttempts: run.provenance.policy.maxAttempts,
+          attempts: attemptLog,
+          selectedAttempt: run.provenance.selectedAttempt,
+          finalVerdict: scenes.finalVerdict(await scenes.get(tenantId, scene.id)),
+        });
+      }
+      // Failure: retain attempts as unpublished evidence on the scene record
+      await scenes.recordFailedRun(tenantId, scene.id, run.provenance, run.reason);
+      return res.status(422).json({
+        error: 'generation rejected before publication',
+        reason: run.reason,
+        attemptsUsed: attemptLog.length,
+        maxAttempts: run.provenance?.policy?.maxAttempts ?? null,
+        attempts: attemptLog,
+      });
+    } catch (err) {
+      console.log(`[${new Date().toISOString()}] pipeline run failed tenant=${tenantId} scene=${scene.id}: ${err.message}`);
+      res.status(502).json({ error: 'pipeline errored', detail: err.message });
     }
   });
 
@@ -294,13 +340,56 @@ export function createApp({ store, chat, image, imageValidator = null } = {}) {
     }
   });
 
+  app.post('/api/scenes/:id/presentation', async (req, res) => {
+    const tenantId = requireTenant(req, res); if (!tenantId) return;
+    if (!presentationAssessor) {
+      return res.status(503).json({ error: 'no presentation-quality assessor configured', note: 'no real visual-quality model exists yet; human review is required' });
+    }
+    const scene = await scenes.get(tenantId, req.params.id);
+    if (!scene) return res.status(404).json({ error: 'scene not found for this tenant' });
+    if (!scene.generation?.lastOutput) return res.status(409).json({ error: 'nothing generated for this scene yet' });
+    try {
+      const request = await compileForScene(tenantId, scene);
+      const report = await presentationAssessor.assess({ request, asset: scene.generation.lastOutput, identityReport: scene.generation.validation?.report ?? null });
+      const applied = await scenes.applyPresentationReport(tenantId, scene.id, report);
+      res.json({ presentation: { verdict: applied.verdict, warnings: applied.warnings, reasons: applied.reasons }, finalVerdict: scenes.finalVerdict(await scenes.get(tenantId, scene.id)) });
+    } catch (err) {
+      res.status(500).json({ error: 'presentation assessment errored', detail: err.message });
+    }
+  });
+
+  app.post('/api/scenes/:id/approve', async (req, res) => {
+    const tenantId = requireTenant(req, res); if (!tenantId) return;
+    const scene = await scenes.get(tenantId, req.params.id);
+    if (!scene) return res.status(404).json({ error: 'scene not found for this tenant' });
+    const { approvedBy } = req.body ?? {};
+    const result = await scenes.approveForGallery(tenantId, req.params.id, approvedBy);
+    if (!result.ok) return res.status(400).json({ error: result.errors.join('; ') });
+    res.json({ approved: true, finalVerdict: scenes.finalVerdict(await scenes.get(tenantId, req.params.id)) });
+  });
+
+  app.get('/api/scenes/:id/verdict', async (req, res) => {
+    const tenantId = requireTenant(req, res); if (!tenantId) return;
+    const scene = await scenes.get(tenantId, req.params.id);
+    if (!scene) return res.status(404).json({ error: 'scene not found for this tenant' });
+    res.json({
+      finalVerdict: scenes.finalVerdict(scene),
+      axes: {
+        identity: scene.validationStatus,
+        technical: (!!scene.generation?.lastOutput && scene.generation.status !== 'failed') ? 'ok' : 'not ok',
+        presentation: scene.presentation ? scene.presentation.verdict : 'not assessed',
+        humanApproval: scene.humanApproval?.approved ? `approved by ${scene.humanApproval.approvedBy}` : 'not approved',
+      },
+    });
+  });
+
   app.post('/api/scenes/:id/publish', async (req, res) => {
     const tenantId = requireTenant(req, res); if (!tenantId) return;
     const scene = await scenes.get(tenantId, req.params.id);
     if (!scene) return res.status(404).json({ error: 'scene not found for this tenant' });
     if (!scene.generation?.lastOutput) return res.status(409).json({ error: 'nothing generated for this scene yet' });
     const result = await scenes.publishAsset(tenantId, scene.id, scene.generation.lastOutput);
-    if (!result.ok) return res.status(409).json({ error: 'publication refused', details: result.errors });
+    if (!result.ok) return res.status(409).json({ error: 'publication refused', verdict: result.verdict ?? null, details: result.errors });
     res.status(201).json({ published: true, asset: { id: result.asset.id, uri: result.asset.uri, provenance: result.asset.provenance } });
   });
 

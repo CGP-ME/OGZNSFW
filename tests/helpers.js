@@ -7,10 +7,10 @@ import path from 'node:path';
 import { JsonStore } from '../db/store.js';
 import { createApp } from '../apps/api/server.js';
 
-export async function bootApp({ chat, image, imageValidator } = {}) {
+export async function bootApp({ chat, image, imageValidator, presentationAssessor, galleryPolicy } = {}) {
   const dataDir = await mkdtemp(path.join(tmpdir(), 'ogznsfw-test-'));
   const store = new JsonStore(dataDir);
-  const app = createApp({ store, chat, image, imageValidator });
+  const app = createApp({ store, chat, image, imageValidator, presentationAssessor, galleryPolicy });
   const server = await new Promise((resolve) => {
     const s = app.listen(0, '127.0.0.1', () => resolve(s));
   });

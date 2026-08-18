@@ -227,9 +227,17 @@ async function sceneAction(sceneId, action, msgEl) {
     msgEl.textContent = `compiled: ${body.characters.length} character block(s), no flattened prompt`;
     return;
   }
-  const message = ok
-    ? JSON.stringify(body)
-    : `${status}: ${body.error ?? 'error'}${body.reasons ? ' - ' + body.reasons.join('; ') : ''}${body.details ? ' - ' + body.details.join('; ') : ''}${body.note ? ' (' + body.note + ')' : ''}${body.how ? ' (' + body.how + ')' : ''}`;
+  let message;
+  if (action === 'generate-validated' && (body.attempts ?? []).length) {
+    const per = body.attempts.map((a) => `attempt ${a.attempt}/${body.maxAttempts}: ${a.verdict}${a.categories?.length ? ' (' + a.categories.join(', ') + ')' : ''}${a.error ? ' [' + a.error + ']' : ''}`).join(' | ');
+    message = ok
+      ? `${body.status} in ${body.attemptsUsed} attempt(s) - ${per} - final: ${body.finalVerdict}`
+      : `all attempts rejected before publication - ${per} - ${body.reason ?? ''}`;
+  } else {
+    message = ok
+      ? JSON.stringify(body)
+      : `${status}: ${body.error ?? 'error'}${body.reasons ? ' - ' + body.reasons.join('; ') : ''}${body.details ? ' - ' + body.details.join('; ') : ''}${body.note ? ' (' + body.note + ')' : ''}${body.how ? ' (' + body.how + ')' : ''}`;
+  }
   // Re-render to reflect new status, then restore the message on the fresh card
   await loadScenes(false);
   const card = document.querySelector(`.scene-card[data-scene-id="${sceneId}"] .scene-msg`);
@@ -257,6 +265,7 @@ async function loadScenes(clearPreview = true) {
       <span style="color:var(--dim)">${esc(s.setting?.location ?? '')}</span>
       <button data-a="compile">Compile</button>
       <button data-a="generate">Generate</button>
+      <button data-a="generate-validated">Auto-Gen</button>
       <button data-a="validate">Validate</button>
       <button data-a="publish">Publish</button>
       <span class="scene-msg">gen: ${esc(s.generation.status)}${s.generation.lastOutput ? ' | output: ' + esc(s.generation.lastOutput.provider) : ''}</span>`;

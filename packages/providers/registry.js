@@ -7,6 +7,7 @@
 // fabricates output.
 import { OllamaChatProvider } from './chat/index.js';
 import { HuggingFaceImageProvider } from './image/index.js';
+import { ComfyUIImageProvider } from './image/comfyui.js';
 
 export const ProviderRegistry = {
   chat: {
@@ -30,11 +31,13 @@ export const ProviderRegistry = {
     },
     comfyui: {
       name: 'ComfyUI',
-      description: 'Local ComfyUI workflow-based generation (planned adapter)',
+      description: 'Local ComfyUI workflow-based generation with per-character reference conditioning (scene-capable)',
       requiredEnv: ['COMFYUI_URL'],
-      capabilities: ['local', 'workflows', 'character-reference'],
-      implemented: false,
-      create: null,
+      capabilities: ['local', 'workflows', 'character-reference', 'scene-requests'],
+      implemented: true,
+      create: (env) => new ComfyUIImageProvider(env.COMFYUI_URL, {
+        tuning: env.COMFYUI_CHECKPOINT ? { checkpoint: env.COMFYUI_CHECKPOINT } : {},
+      }),
     },
   },
 };

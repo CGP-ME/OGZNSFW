@@ -16,6 +16,7 @@ function identityInstructionsFor(sceneCharacter, record) {
   return {
     characterId: sceneCharacter.characterId,
     characterVersion: sceneCharacter.characterVersion,
+    gender: record?.identity?.gender ?? null,
     locked: merged,
     identifyingMarks: marks,
     distinctness: `${sceneCharacter.characterId} must remain a visually distinct individual; never merge features with any other character in this scene`,

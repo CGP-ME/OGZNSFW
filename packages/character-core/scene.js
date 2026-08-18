@@ -5,6 +5,7 @@
 // every scene from collapsing into the main character.
 import { checkText } from '../safety/index.js';
 import { evaluateValidationReport } from '../providers/image/image-validator.js';
+import { evaluatePresentationReport, computeFinalVerdict } from '../providers/image/presentation-quality.js';
 
 // Structural + safety validation of a scene input (pure, no store access).
 export function validateSceneShape(input) {
@@ -70,10 +71,14 @@ export function validateSceneShape(input) {
 }
 
 export class SceneService {
-  constructor(store, characterService, referencePacks) {
+  constructor(store, characterService, referencePacks, galleryPolicy = {}) {
     this.store = store;
     this.characters = characterService;
     this.refs = referencePacks;
+    // Gallery policy: human approval is "where configured" per policy; the
+    // presentation layer itself defaults to honest needs_human_review states
+    // whenever a report exists that demands it.
+    this.galleryPolicy = { requireHumanApproval: false, aestheticThreshold: 0.6, ...galleryPolicy };
   }
 
   async create(tenantId, input) {
@@ -157,13 +162,61 @@ export class SceneService {
     return { ok: true, validationStatus, verdict };
   }
 
-  // Gallery publication gate: only validation-passed scenes may store assets.
-  // Failed or pending outputs are refused - never charged, never published.
-  async publishAsset(tenantId, sceneId, { uri, provider, model }) {
+  // Record a fully-failed pipeline run: attempts retained as unpublished
+  // evidence, scene marked failed, nothing enters the gallery, nothing is
+  // presented as a completed asset.
+  async recordFailedRun(tenantId, sceneId, provenance, reason) {
     const scene = await this.get(tenantId, sceneId);
     if (!scene) return { ok: false, errors: ['scene not found for this tenant'] };
-    if (scene.validationStatus !== 'passed') {
-      return { ok: false, errors: [`refusing to publish: scene validation status is "${scene.validationStatus}" (must be "passed")`] };
+    await this.store.update('scenes', scene.id, {
+      validationStatus: 'failed',
+      generation: { ...scene.generation, status: 'failed', lastOutput: null, pipeline: provenance ?? null, failureReason: reason ?? 'unknown' },
+    });
+    return { ok: true };
+  }
+
+  // Apply a presentation-quality report (from an assessor or, for now, a
+  // deterministic double). Identity validator semantics are untouched.
+  async applyPresentationReport(tenantId, sceneId, report) {
+    const scene = await this.get(tenantId, sceneId);
+    if (!scene) return { ok: false, errors: ['scene not found for this tenant'] };
+    const evaluated = evaluatePresentationReport(report, { aestheticThreshold: this.galleryPolicy.aestheticThreshold });
+    await this.store.update('scenes', scene.id, { presentation: { report, ...evaluated } });
+    return { ok: true, ...evaluated };
+  }
+
+  // Explicit human approval, recorded with who and when.
+  async approveForGallery(tenantId, sceneId, approvedBy) {
+    const scene = await this.get(tenantId, sceneId);
+    if (!scene) return { ok: false, errors: ['scene not found for this tenant'] };
+    if (!approvedBy) return { ok: false, errors: ['approvedBy required for human approval'] };
+    await this.store.update('scenes', scene.id, { humanApproval: { approved: true, approvedBy, at: new Date().toISOString() } });
+    return { ok: true };
+  }
+
+  // Final verdict across all four axes: identity, technical, presentation,
+  // human approval.
+  finalVerdict(scene) {
+    return computeFinalVerdict({
+      identityStatus: scene.validationStatus,
+      technicalOk: !!scene.generation?.lastOutput && scene.generation.status !== 'failed',
+      presentation: scene.presentation ?? null,
+      humanApproval: scene.humanApproval ?? null,
+      requireHumanApproval: this.galleryPolicy.requireHumanApproval,
+    });
+  }
+
+  // Gallery publication gate: publication requires the combined verdict
+  // approved_for_gallery - identity passed AND technically valid AND
+  // presentation not rejected AND human approval where configured. Anything
+  // else is refused with the verdict named; failed outputs never enter the
+  // gallery and are never charged.
+  async publishAsset(tenantId, sceneId, { uri, provider, model, provenance }) {
+    const scene = await this.get(tenantId, sceneId);
+    if (!scene) return { ok: false, errors: ['scene not found for this tenant'] };
+    const verdict = this.finalVerdict(scene);
+    if (verdict !== 'approved_for_gallery') {
+      return { ok: false, verdict, errors: [`refusing to publish: final verdict is "${verdict}" (must be "approved_for_gallery")`] };
     }
     const asset = await this.store.insert('assets', {
       tenantId,
@@ -171,7 +224,13 @@ export class SceneService {
       characterId: scene.characters[0].characterId,
       characterIds: scene.generation.expectedCharacterIds,
       uri, provider, model,
-      provenance: { expectedCharacterIds: scene.generation.expectedCharacterIds, validation: 'passed' },
+      provenance: {
+        expectedCharacterIds: scene.generation.expectedCharacterIds,
+        validation: 'passed',
+        finalVerdict: verdict,
+        generation: provenance ?? scene.generation?.lastOutput?.provenance ?? null,
+        humanApproval: scene.humanApproval ?? null,
+      },
     });
     return { ok: true, asset };
   }

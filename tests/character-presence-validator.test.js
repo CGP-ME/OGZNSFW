@@ -89,7 +89,7 @@ test('failed validation blocks gallery publication; passed validation allows it'
   // Pending scenes cannot publish
   const pendingAttempt = await world.scenes.publishAsset(tenant, scene.id, { uri: 'about:test-output', provider: 'none', model: 'none' });
   assert.equal(pendingAttempt.ok, false);
-  assert.ok(pendingAttempt.errors[0].includes('"pending"'));
+  assert.ok(pendingAttempt.errors[0].includes('needs_human_review'), 'identity-pending scene is not publishable');
 
   // Failed validation: publication refused, nothing stored
   const failing = new ScriptedImageValidator({ detections: [{ characterId: nova.characterId, identityScore: 0.95 }] });
@@ -100,7 +100,9 @@ test('failed validation blocks gallery publication; passed validation allows it'
   assert.equal(failedAttempt.ok, false);
   assert.equal((await world.store.find('assets', () => true)).length, 0, 'no asset may be stored from a failed scene');
 
-  // Passed validation: publication allowed with provenance
+  // Passed validation: publication allowed with provenance. A real generation
+  // must exist first (technical validity is its own axis in the gallery gate).
+  await world.scenes.recordGeneration(tenant, scene.id, { uri: 'about:test-output', provider: 'none', model: 'none', generatedAt: new Date().toISOString() });
   const passing = new ScriptedImageValidator({ detections: [
     { characterId: nova.characterId, identityScore: 0.95 },
     { characterId: iris.characterId, identityScore: 0.9 },
