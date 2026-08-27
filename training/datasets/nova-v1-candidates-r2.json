@@ -1,0 +1,565 @@
+{
+  "characterId": "nova",
+  "characterVersion": 1,
+  "round": 2,
+  "specHash": "fe40502bbbca0bfb866f6fe9de9431d15de4e32f76fd1b2cc5c0afdaf7d2b384",
+  "specStatus": "approved-by-Trey",
+  "triggerToken": "novaident",
+  "agePresentationTarget": "late-20s adult woman, age-27 facial appearance",
+  "generatedAt": "2026-08-19T01:27:06.052Z",
+  "note": "CANDIDATES ONLY - nothing here is approved; Trey reviews and marks approved/rejected before any manifest entry becomes training data",
+  "candidates": [
+    {
+      "candidateId": "nova-r2c01",
+      "round": 2,
+      "seed": 600000,
+      "workflowHash": "ca3c4d44180fb415518e85f217498a06bc1f2dd28a9cb49875619985bcd1cbb6",
+      "prompt": "professional editorial photograph, head and shoulders portrait, frontal portrait, looking at camera, of one late-20s adult woman, age-27 facial appearance, adult woman in her late twenties, smooth skin with natural texture, firm jawline, contemporary adult styling, angular face, high cheekbones, strong jawline, defined brows, jet black, undercut on left side, longer sweep to the right hair, gray eyes, fair, cool undertone, athletic, small circuit-board tattoo on left forearm, wearing black techwear jacket, neutral studio backdrop, soft studio lighting, sharp focus, photorealistic, solo, exactly one person",
+      "negativePromptExtra": "gray or silver hair, deep facial wrinkles, crow's feet, nasolabial folds, sagging skin, middle-aged or elderly appearance, matronly or older-looking styling",
+      "variation": {
+        "angle": "frontal portrait, looking at camera",
+        "light": "soft studio lighting",
+        "wardrobe": "black techwear jacket",
+        "background": "neutral studio backdrop",
+        "framing": "head and shoulders portrait"
+      },
+      "outputPath": "Q:/AI/training/nova/v1/candidates-r2/nova-r2c01-s600000.png",
+      "sha256": "8324e229b5442d2fc835f54d51c362e4a4fe4e7a9de05ed2205a43d39ef283d2",
+      "approval": {
+        "status": "pending",
+        "approvedBy": null,
+        "at": null,
+        "rejectedReason": null
+      }
+    },
+    {
+      "candidateId": "nova-r2c02",
+      "round": 2,
+      "seed": 600001,
+      "workflowHash": "df539a3f23608d467411b7c16e424b98c5a9e1834bd53056cd38e5fab142db01",
+      "prompt": "professional editorial photograph, waist-up shot, three-quarter view from her left, of one late-20s adult woman, age-27 facial appearance, adult woman in her late twenties, smooth skin with natural texture, firm jawline, contemporary adult styling, angular face, high cheekbones, strong jawline, defined brows, jet black, undercut on left side, longer sweep to the right hair, gray eyes, fair, cool undertone, athletic, small circuit-board tattoo on left forearm, wearing charcoal fitted turtleneck, blurred city street, soft studio lighting, sharp focus, photorealistic, solo, exactly one person",
+      "negativePromptExtra": "gray or silver hair, deep facial wrinkles, crow's feet, nasolabial folds, sagging skin, middle-aged or elderly appearance, matronly or older-looking styling",
+      "variation": {
+        "angle": "three-quarter view from her left",
+        "light": "soft studio lighting",
+        "wardrobe": "charcoal fitted turtleneck",
+        "background": "blurred city street",
+        "framing": "waist-up shot"
+      },
+      "outputPath": "Q:/AI/training/nova/v1/candidates-r2/nova-r2c02-s600001.png",
+      "sha256": "f0544526d309706cdda296e317a478fd9876f08e2d45d5d874c50451fe43bb3f",
+      "approval": {
+        "status": "pending",
+        "approvedBy": null,
+        "at": null,
+        "rejectedReason": null
+      }
+    },
+    {
+      "candidateId": "nova-r2c03",
+      "round": 2,
+      "seed": 600002,
+      "workflowHash": "2e24610013adda0e62cf97088e01e2f46fef5e312f0fc1ffbada57515d50c0b2",
+      "prompt": "professional editorial photograph, head and shoulders portrait, three-quarter view from her right, of one late-20s adult woman, age-27 facial appearance, adult woman in her late twenties, smooth skin with natural texture, firm jawline, contemporary adult styling, angular face, high cheekbones, strong jawline, defined brows, jet black, undercut on left side, longer sweep to the right hair, gray eyes, fair, cool undertone, athletic, small circuit-board tattoo on left forearm, wearing dark utility vest over black tee, soft interior, warm tones, soft studio lighting, sharp focus, photorealistic, solo, exactly one person",
+      "negativePromptExtra": "gray or silver hair, deep facial wrinkles, crow's feet, nasolabial folds, sagging skin, middle-aged or elderly appearance, matronly or older-looking styling",
+      "variation": {
+        "angle": "three-quarter view from her right",
+        "light": "soft studio lighting",
+        "wardrobe": "dark utility vest over black tee",
+        "background": "soft interior, warm tones",
+        "framing": "head and shoulders portrait"
+      },
+      "outputPath": "Q:/AI/training/nova/v1/candidates-r2/nova-r2c03-s600002.png",
+      "sha256": "94659ac5d24c0b54355d28a987b572eda7d4f8ab5f45b72df20aba27be8eec35",
+      "approval": {
+        "status": "pending",
+        "approvedBy": null,
+        "at": null,
+        "rejectedReason": null
+      }
+    },
+    {
+      "candidateId": "nova-r2c04",
+      "round": 2,
+      "seed": 600003,
+      "workflowHash": "62598c0e4858122ea660022d04d8088248d8dcd2b9ae1da501a2c23e8f8984db",
+      "prompt": "professional editorial photograph, full body shot, profile view, of one late-20s adult woman, age-27 facial appearance, adult woman in her late twenties, smooth skin with natural texture, firm jawline, contemporary adult styling, angular face, high cheekbones, strong jawline, defined brows, jet black, undercut on left side, longer sweep to the right hair, gray eyes, fair, cool undertone, athletic, small circuit-board tattoo on left forearm, wearing black techwear jacket, leafy outdoor background, soft studio lighting, sharp focus, photorealistic, solo, exactly one person",
+      "negativePromptExtra": "gray or silver hair, deep facial wrinkles, crow's feet, nasolabial folds, sagging skin, middle-aged or elderly appearance, matronly or older-looking styling",
+      "variation": {
+        "angle": "profile view",
+        "light": "soft studio lighting",
+        "wardrobe": "black techwear jacket",
+        "background": "leafy outdoor background",
+        "framing": "full body shot"
+      },
+      "outputPath": "Q:/AI/training/nova/v1/candidates-r2/nova-r2c04-s600003.png",
+      "sha256": "480281a616d69f64623f54862f2148acd01efe0c1f7606e0fa119a6606c6c9b3",
+      "approval": {
+        "status": "pending",
+        "approvedBy": null,
+        "at": null,
+        "rejectedReason": null
+      }
+    },
+    {
+      "candidateId": "nova-r2c05",
+      "round": 2,
+      "seed": 600004,
+      "workflowHash": "82300eea72bbba28aaf653c319f4e329b582da3c8f9185227b5c0bd902a8ba1a",
+      "prompt": "professional editorial photograph, head and shoulders portrait, frontal portrait, looking at camera, of one late-20s adult woman, age-27 facial appearance, adult woman in her late twenties, smooth skin with natural texture, firm jawline, contemporary adult styling, angular face, high cheekbones, strong jawline, defined brows, jet black, undercut on left side, longer sweep to the right hair, gray eyes, fair, cool undertone, athletic, small circuit-board tattoo on left forearm, wearing charcoal fitted turtleneck, neutral studio backdrop, golden hour window light, sharp focus, photorealistic, solo, exactly one person",
+      "negativePromptExtra": "gray or silver hair, deep facial wrinkles, crow's feet, nasolabial folds, sagging skin, middle-aged or elderly appearance, matronly or older-looking styling",
+      "variation": {
+        "angle": "frontal portrait, looking at camera",
+        "light": "golden hour window light",
+        "wardrobe": "charcoal fitted turtleneck",
+        "background": "neutral studio backdrop",
+        "framing": "head and shoulders portrait"
+      },
+      "outputPath": "Q:/AI/training/nova/v1/candidates-r2/nova-r2c05-s600004.png",
+      "sha256": "98fc1c6c427e7e4ed09032a387ec05e512e182fe163094297cf39b3813cb3114",
+      "approval": {
+        "status": "pending",
+        "approvedBy": null,
+        "at": null,
+        "rejectedReason": null
+      }
+    },
+    {
+      "candidateId": "nova-r2c06",
+      "round": 2,
+      "seed": 600005,
+      "workflowHash": "d2a0c1711451beaab4cc5ee3b8384c434c026e1147fcb6049cc4ffc6318a86d9",
+      "prompt": "professional editorial photograph, waist-up shot, three-quarter view from her left, of one late-20s adult woman, age-27 facial appearance, adult woman in her late twenties, smooth skin with natural texture, firm jawline, contemporary adult styling, angular face, high cheekbones, strong jawline, defined brows, jet black, undercut on left side, longer sweep to the right hair, gray eyes, fair, cool undertone, athletic, small circuit-board tattoo on left forearm, wearing dark utility vest over black tee, blurred city street, golden hour window light, sharp focus, photorealistic, solo, exactly one person",
+      "negativePromptExtra": "gray or silver hair, deep facial wrinkles, crow's feet, nasolabial folds, sagging skin, middle-aged or elderly appearance, matronly or older-looking styling",
+      "variation": {
+        "angle": "three-quarter view from her left",
+        "light": "golden hour window light",
+        "wardrobe": "dark utility vest over black tee",
+        "background": "blurred city street",
+        "framing": "waist-up shot"
+      },
+      "outputPath": "Q:/AI/training/nova/v1/candidates-r2/nova-r2c06-s600005.png",
+      "sha256": "3854dcffedb7898891d24114b482f6958d5f0f1af4d4e96f2e3fafec397fd533",
+      "approval": {
+        "status": "pending",
+        "approvedBy": null,
+        "at": null,
+        "rejectedReason": null
+      }
+    },
+    {
+      "candidateId": "nova-r2c07",
+      "round": 2,
+      "seed": 600006,
+      "workflowHash": "866051dbb466b8300a9391a8e148ef025b6733f6326fab0b9621264609664cc5",
+      "prompt": "professional editorial photograph, head and shoulders portrait, three-quarter view from her right, of one late-20s adult woman, age-27 facial appearance, adult woman in her late twenties, smooth skin with natural texture, firm jawline, contemporary adult styling, angular face, high cheekbones, strong jawline, defined brows, jet black, undercut on left side, longer sweep to the right hair, gray eyes, fair, cool undertone, athletic, small circuit-board tattoo on left forearm, wearing black techwear jacket, soft interior, warm tones, golden hour window light, sharp focus, photorealistic, solo, exactly one person",
+      "negativePromptExtra": "gray or silver hair, deep facial wrinkles, crow's feet, nasolabial folds, sagging skin, middle-aged or elderly appearance, matronly or older-looking styling",
+      "variation": {
+        "angle": "three-quarter view from her right",
+        "light": "golden hour window light",
+        "wardrobe": "black techwear jacket",
+        "background": "soft interior, warm tones",
+        "framing": "head and shoulders portrait"
+      },
+      "outputPath": "Q:/AI/training/nova/v1/candidates-r2/nova-r2c07-s600006.png",
+      "sha256": "750852e94bd98216b5f64e3771f19cbba9c2aeceb0f45626a452bd68fbc489f5",
+      "approval": {
+        "status": "pending",
+        "approvedBy": null,
+        "at": null,
+        "rejectedReason": null
+      }
+    },
+    {
+      "candidateId": "nova-r2c08",
+      "round": 2,
+      "seed": 600007,
+      "workflowHash": "692ac14913c1e2cd5b3d61c6da92456646c507218d61519d4e659ab478dcfcc1",
+      "prompt": "professional editorial photograph, full body shot, profile view, of one late-20s adult woman, age-27 facial appearance, adult woman in her late twenties, smooth skin with natural texture, firm jawline, contemporary adult styling, angular face, high cheekbones, strong jawline, defined brows, jet black, undercut on left side, longer sweep to the right hair, gray eyes, fair, cool undertone, athletic, small circuit-board tattoo on left forearm, wearing charcoal fitted turtleneck, leafy outdoor background, golden hour window light, sharp focus, photorealistic, solo, exactly one person",
+      "negativePromptExtra": "gray or silver hair, deep facial wrinkles, crow's feet, nasolabial folds, sagging skin, middle-aged or elderly appearance, matronly or older-looking styling",
+      "variation": {
+        "angle": "profile view",
+        "light": "golden hour window light",
+        "wardrobe": "charcoal fitted turtleneck",
+        "background": "leafy outdoor background",
+        "framing": "full body shot"
+      },
+      "outputPath": "Q:/AI/training/nova/v1/candidates-r2/nova-r2c08-s600007.png",
+      "sha256": "5d4dd1cad3c0721a36ed26214d479d1267d867b418a8afdf4f91aa0dcf4346da",
+      "approval": {
+        "status": "pending",
+        "approvedBy": null,
+        "at": null,
+        "rejectedReason": null
+      }
+    },
+    {
+      "candidateId": "nova-r2c09",
+      "round": 2,
+      "seed": 600008,
+      "workflowHash": "529bc55f338cb00d4d51a6b8c68c7247c44efd30df21f1f08bd3ecb51859ae3b",
+      "prompt": "professional editorial photograph, head and shoulders portrait, frontal portrait, looking at camera, of one late-20s adult woman, age-27 facial appearance, adult woman in her late twenties, smooth skin with natural texture, firm jawline, contemporary adult styling, angular face, high cheekbones, strong jawline, defined brows, jet black, undercut on left side, longer sweep to the right hair, gray eyes, fair, cool undertone, athletic, small circuit-board tattoo on left forearm, wearing dark utility vest over black tee, neutral studio backdrop, overcast daylight, sharp focus, photorealistic, solo, exactly one person",
+      "negativePromptExtra": "gray or silver hair, deep facial wrinkles, crow's feet, nasolabial folds, sagging skin, middle-aged or elderly appearance, matronly or older-looking styling",
+      "variation": {
+        "angle": "frontal portrait, looking at camera",
+        "light": "overcast daylight",
+        "wardrobe": "dark utility vest over black tee",
+        "background": "neutral studio backdrop",
+        "framing": "head and shoulders portrait"
+      },
+      "outputPath": "Q:/AI/training/nova/v1/candidates-r2/nova-r2c09-s600008.png",
+      "sha256": "24d44edaaad85ad826bd4d314763ecf8ec7bea67e3dddeaad11ff099d6ac0f6d",
+      "approval": {
+        "status": "pending",
+        "approvedBy": null,
+        "at": null,
+        "rejectedReason": null
+      }
+    },
+    {
+      "candidateId": "nova-r2c10",
+      "round": 2,
+      "seed": 600009,
+      "workflowHash": "43bb95eb9b0104d37f667383ebca209d50e534f051b16b16d03249a9ed9e76a0",
+      "prompt": "professional editorial photograph, waist-up shot, three-quarter view from her left, of one late-20s adult woman, age-27 facial appearance, adult woman in her late twenties, smooth skin with natural texture, firm jawline, contemporary adult styling, angular face, high cheekbones, strong jawline, defined brows, jet black, undercut on left side, longer sweep to the right hair, gray eyes, fair, cool undertone, athletic, small circuit-board tattoo on left forearm, wearing black techwear jacket, blurred city street, overcast daylight, sharp focus, photorealistic, solo, exactly one person",
+      "negativePromptExtra": "gray or silver hair, deep facial wrinkles, crow's feet, nasolabial folds, sagging skin, middle-aged or elderly appearance, matronly or older-looking styling",
+      "variation": {
+        "angle": "three-quarter view from her left",
+        "light": "overcast daylight",
+        "wardrobe": "black techwear jacket",
+        "background": "blurred city street",
+        "framing": "waist-up shot"
+      },
+      "outputPath": "Q:/AI/training/nova/v1/candidates-r2/nova-r2c10-s600009.png",
+      "sha256": "e158bea096860ff3c56d5635ade812b30630aee0ac0e48b274f7f3e89f1ce0df",
+      "approval": {
+        "status": "pending",
+        "approvedBy": null,
+        "at": null,
+        "rejectedReason": null
+      }
+    },
+    {
+      "candidateId": "nova-r2c11",
+      "round": 2,
+      "seed": 600010,
+      "workflowHash": "154bebcbe2fda88664be84ae1a75affda3c9d3a666aeb3db0a52f61e51be92c0",
+      "prompt": "professional editorial photograph, head and shoulders portrait, three-quarter view from her right, of one late-20s adult woman, age-27 facial appearance, adult woman in her late twenties, smooth skin with natural texture, firm jawline, contemporary adult styling, angular face, high cheekbones, strong jawline, defined brows, jet black, undercut on left side, longer sweep to the right hair, gray eyes, fair, cool undertone, athletic, small circuit-board tattoo on left forearm, wearing charcoal fitted turtleneck, soft interior, warm tones, overcast daylight, sharp focus, photorealistic, solo, exactly one person",
+      "negativePromptExtra": "gray or silver hair, deep facial wrinkles, crow's feet, nasolabial folds, sagging skin, middle-aged or elderly appearance, matronly or older-looking styling",
+      "variation": {
+        "angle": "three-quarter view from her right",
+        "light": "overcast daylight",
+        "wardrobe": "charcoal fitted turtleneck",
+        "background": "soft interior, warm tones",
+        "framing": "head and shoulders portrait"
+      },
+      "outputPath": "Q:/AI/training/nova/v1/candidates-r2/nova-r2c11-s600010.png",
+      "sha256": "3148db8cbc99d9add9c1ed49a9e85e9a24ca727da7e1f526d7570bf70151c35d",
+      "approval": {
+        "status": "pending",
+        "approvedBy": null,
+        "at": null,
+        "rejectedReason": null
+      }
+    },
+    {
+      "candidateId": "nova-r2c12",
+      "round": 2,
+      "seed": 600011,
+      "workflowHash": "8428d2c865e07f4311d7852ccd7125874a3d4a024afa194a00d1e31a2287d54d",
+      "prompt": "professional editorial photograph, full body shot, profile view, of one late-20s adult woman, age-27 facial appearance, adult woman in her late twenties, smooth skin with natural texture, firm jawline, contemporary adult styling, angular face, high cheekbones, strong jawline, defined brows, jet black, undercut on left side, longer sweep to the right hair, gray eyes, fair, cool undertone, athletic, small circuit-board tattoo on left forearm, wearing dark utility vest over black tee, leafy outdoor background, overcast daylight, sharp focus, photorealistic, solo, exactly one person",
+      "negativePromptExtra": "gray or silver hair, deep facial wrinkles, crow's feet, nasolabial folds, sagging skin, middle-aged or elderly appearance, matronly or older-looking styling",
+      "variation": {
+        "angle": "profile view",
+        "light": "overcast daylight",
+        "wardrobe": "dark utility vest over black tee",
+        "background": "leafy outdoor background",
+        "framing": "full body shot"
+      },
+      "outputPath": "Q:/AI/training/nova/v1/candidates-r2/nova-r2c12-s600011.png",
+      "sha256": "cfed927949ef07f99bbc509cadc237833cfb6ddb02585ef1325f2aece29d5587",
+      "approval": {
+        "status": "pending",
+        "approvedBy": null,
+        "at": null,
+        "rejectedReason": null
+      }
+    },
+    {
+      "candidateId": "nova-r2c13",
+      "round": 2,
+      "seed": 600012,
+      "workflowHash": "7580ac9c85866f3547435ae9f30dc108d3c69a9b9ecdd9e8268b658ebe580a50",
+      "prompt": "professional editorial photograph, head and shoulders portrait, frontal portrait, looking at camera, of one late-20s adult woman, age-27 facial appearance, adult woman in her late twenties, smooth skin with natural texture, firm jawline, contemporary adult styling, angular face, high cheekbones, strong jawline, defined brows, jet black, undercut on left side, longer sweep to the right hair, gray eyes, fair, cool undertone, athletic, small circuit-board tattoo on left forearm, wearing black techwear jacket, neutral studio backdrop, soft studio lighting, sharp focus, photorealistic, solo, exactly one person",
+      "negativePromptExtra": "gray or silver hair, deep facial wrinkles, crow's feet, nasolabial folds, sagging skin, middle-aged or elderly appearance, matronly or older-looking styling",
+      "variation": {
+        "angle": "frontal portrait, looking at camera",
+        "light": "soft studio lighting",
+        "wardrobe": "black techwear jacket",
+        "background": "neutral studio backdrop",
+        "framing": "head and shoulders portrait"
+      },
+      "outputPath": "Q:/AI/training/nova/v1/candidates-r2/nova-r2c13-s600012.png",
+      "sha256": "2a934714bb1c565acee8177d7ca486044a8b79440f92e9c12a193d78215c1722",
+      "approval": {
+        "status": "pending",
+        "approvedBy": null,
+        "at": null,
+        "rejectedReason": null
+      }
+    },
+    {
+      "candidateId": "nova-r2c14",
+      "round": 2,
+      "seed": 600013,
+      "workflowHash": "58a9ecd42ae38771baed74712c268216de613415f07a38841f5877f6dfdcc3f7",
+      "prompt": "professional editorial photograph, waist-up shot, three-quarter view from her left, of one late-20s adult woman, age-27 facial appearance, adult woman in her late twenties, smooth skin with natural texture, firm jawline, contemporary adult styling, angular face, high cheekbones, strong jawline, defined brows, jet black, undercut on left side, longer sweep to the right hair, gray eyes, fair, cool undertone, athletic, small circuit-board tattoo on left forearm, wearing charcoal fitted turtleneck, blurred city street, soft studio lighting, sharp focus, photorealistic, solo, exactly one person",
+      "negativePromptExtra": "gray or silver hair, deep facial wrinkles, crow's feet, nasolabial folds, sagging skin, middle-aged or elderly appearance, matronly or older-looking styling",
+      "variation": {
+        "angle": "three-quarter view from her left",
+        "light": "soft studio lighting",
+        "wardrobe": "charcoal fitted turtleneck",
+        "background": "blurred city street",
+        "framing": "waist-up shot"
+      },
+      "outputPath": "Q:/AI/training/nova/v1/candidates-r2/nova-r2c14-s600013.png",
+      "sha256": "163265069dd7f45df304c1d63d161ed8d0b8b3730ed1e4c17755e5d0e4412e82",
+      "approval": {
+        "status": "pending",
+        "approvedBy": null,
+        "at": null,
+        "rejectedReason": null
+      }
+    },
+    {
+      "candidateId": "nova-r2c15",
+      "round": 2,
+      "seed": 600014,
+      "workflowHash": "28cab61d0cac4c9dfa1c78778c63e1aebcc1811bbef9c6479fe468609f4dfb68",
+      "prompt": "professional editorial photograph, head and shoulders portrait, three-quarter view from her right, of one late-20s adult woman, age-27 facial appearance, adult woman in her late twenties, smooth skin with natural texture, firm jawline, contemporary adult styling, angular face, high cheekbones, strong jawline, defined brows, jet black, undercut on left side, longer sweep to the right hair, gray eyes, fair, cool undertone, athletic, small circuit-board tattoo on left forearm, wearing dark utility vest over black tee, soft interior, warm tones, soft studio lighting, sharp focus, photorealistic, solo, exactly one person",
+      "negativePromptExtra": "gray or silver hair, deep facial wrinkles, crow's feet, nasolabial folds, sagging skin, middle-aged or elderly appearance, matronly or older-looking styling",
+      "variation": {
+        "angle": "three-quarter view from her right",
+        "light": "soft studio lighting",
+        "wardrobe": "dark utility vest over black tee",
+        "background": "soft interior, warm tones",
+        "framing": "head and shoulders portrait"
+      },
+      "outputPath": "Q:/AI/training/nova/v1/candidates-r2/nova-r2c15-s600014.png",
+      "sha256": "7c98d95894a85469d895f1d3e2ef8163ccbc62b176c5972403ea4a06cf437087",
+      "approval": {
+        "status": "pending",
+        "approvedBy": null,
+        "at": null,
+        "rejectedReason": null
+      }
+    },
+    {
+      "candidateId": "nova-r2c16",
+      "round": 2,
+      "seed": 600015,
+      "workflowHash": "0049c288fefd5de967fa68884b20cbe5ef79f1a5f9cfbff212250d5b7d232f8d",
+      "prompt": "professional editorial photograph, full body shot, profile view, of one late-20s adult woman, age-27 facial appearance, adult woman in her late twenties, smooth skin with natural texture, firm jawline, contemporary adult styling, angular face, high cheekbones, strong jawline, defined brows, jet black, undercut on left side, longer sweep to the right hair, gray eyes, fair, cool undertone, athletic, small circuit-board tattoo on left forearm, wearing black techwear jacket, leafy outdoor background, soft studio lighting, sharp focus, photorealistic, solo, exactly one person",
+      "negativePromptExtra": "gray or silver hair, deep facial wrinkles, crow's feet, nasolabial folds, sagging skin, middle-aged or elderly appearance, matronly or older-looking styling",
+      "variation": {
+        "angle": "profile view",
+        "light": "soft studio lighting",
+        "wardrobe": "black techwear jacket",
+        "background": "leafy outdoor background",
+        "framing": "full body shot"
+      },
+      "outputPath": "Q:/AI/training/nova/v1/candidates-r2/nova-r2c16-s600015.png",
+      "sha256": "f06f97a370ee82a8e5d8bbee0fd1146f7875603793143473681de5355f113cca",
+      "approval": {
+        "status": "pending",
+        "approvedBy": null,
+        "at": null,
+        "rejectedReason": null
+      }
+    },
+    {
+      "candidateId": "nova-r2c17",
+      "round": 2,
+      "seed": 600016,
+      "workflowHash": "1b716d35f3a2a089c217dd0fc747a05abf1c27a46443e85d2cf2c8b58a6f5a7c",
+      "prompt": "professional editorial photograph, head and shoulders portrait, frontal portrait, looking at camera, of one late-20s adult woman, age-27 facial appearance, adult woman in her late twenties, smooth skin with natural texture, firm jawline, contemporary adult styling, angular face, high cheekbones, strong jawline, defined brows, jet black, undercut on left side, longer sweep to the right hair, gray eyes, fair, cool undertone, athletic, small circuit-board tattoo on left forearm, wearing charcoal fitted turtleneck, neutral studio backdrop, golden hour window light, sharp focus, photorealistic, solo, exactly one person",
+      "negativePromptExtra": "gray or silver hair, deep facial wrinkles, crow's feet, nasolabial folds, sagging skin, middle-aged or elderly appearance, matronly or older-looking styling",
+      "variation": {
+        "angle": "frontal portrait, looking at camera",
+        "light": "golden hour window light",
+        "wardrobe": "charcoal fitted turtleneck",
+        "background": "neutral studio backdrop",
+        "framing": "head and shoulders portrait"
+      },
+      "outputPath": "Q:/AI/training/nova/v1/candidates-r2/nova-r2c17-s600016.png",
+      "sha256": "b22aa8ac915e68b22e1997d69ca68329da050de55881be3724fec4dee94a5eab",
+      "approval": {
+        "status": "pending",
+        "approvedBy": null,
+        "at": null,
+        "rejectedReason": null
+      }
+    },
+    {
+      "candidateId": "nova-r2c18",
+      "round": 2,
+      "seed": 600017,
+      "workflowHash": "35d6ae9213bb90da2ed476dc954b07befeccfa9ec1d16ada253c27ea4be622df",
+      "prompt": "professional editorial photograph, waist-up shot, three-quarter view from her left, of one late-20s adult woman, age-27 facial appearance, adult woman in her late twenties, smooth skin with natural texture, firm jawline, contemporary adult styling, angular face, high cheekbones, strong jawline, defined brows, jet black, undercut on left side, longer sweep to the right hair, gray eyes, fair, cool undertone, athletic, small circuit-board tattoo on left forearm, wearing dark utility vest over black tee, blurred city street, golden hour window light, sharp focus, photorealistic, solo, exactly one person",
+      "negativePromptExtra": "gray or silver hair, deep facial wrinkles, crow's feet, nasolabial folds, sagging skin, middle-aged or elderly appearance, matronly or older-looking styling",
+      "variation": {
+        "angle": "three-quarter view from her left",
+        "light": "golden hour window light",
+        "wardrobe": "dark utility vest over black tee",
+        "background": "blurred city street",
+        "framing": "waist-up shot"
+      },
+      "outputPath": "Q:/AI/training/nova/v1/candidates-r2/nova-r2c18-s600017.png",
+      "sha256": "ecb480cbb3b1f1c34c61e58ecd735c7f52c72d5ca3af9a322fce1229bf61c3be",
+      "approval": {
+        "status": "pending",
+        "approvedBy": null,
+        "at": null,
+        "rejectedReason": null
+      }
+    },
+    {
+      "candidateId": "nova-r2c19",
+      "round": 2,
+      "seed": 600018,
+      "workflowHash": "4fe58cab1e074fb44f34149635129d9726e2e31cb083dc3e7757f5950e03e276",
+      "prompt": "professional editorial photograph, head and shoulders portrait, three-quarter view from her right, of one late-20s adult woman, age-27 facial appearance, adult woman in her late twenties, smooth skin with natural texture, firm jawline, contemporary adult styling, angular face, high cheekbones, strong jawline, defined brows, jet black, undercut on left side, longer sweep to the right hair, gray eyes, fair, cool undertone, athletic, small circuit-board tattoo on left forearm, wearing black techwear jacket, soft interior, warm tones, golden hour window light, sharp focus, photorealistic, solo, exactly one person",
+      "negativePromptExtra": "gray or silver hair, deep facial wrinkles, crow's feet, nasolabial folds, sagging skin, middle-aged or elderly appearance, matronly or older-looking styling",
+      "variation": {
+        "angle": "three-quarter view from her right",
+        "light": "golden hour window light",
+        "wardrobe": "black techwear jacket",
+        "background": "soft interior, warm tones",
+        "framing": "head and shoulders portrait"
+      },
+      "outputPath": "Q:/AI/training/nova/v1/candidates-r2/nova-r2c19-s600018.png",
+      "sha256": "60904c4437b37f11b69304c0e8907f6e0114011095aec68fffe4d702cf1145bb",
+      "approval": {
+        "status": "pending",
+        "approvedBy": null,
+        "at": null,
+        "rejectedReason": null
+      }
+    },
+    {
+      "candidateId": "nova-r2c20",
+      "round": 2,
+      "seed": 600019,
+      "workflowHash": "9cbee75a725c8b745a023ff6c6eb3b649621845da469bd940a3c487433dab356",
+      "prompt": "professional editorial photograph, full body shot, profile view, of one late-20s adult woman, age-27 facial appearance, adult woman in her late twenties, smooth skin with natural texture, firm jawline, contemporary adult styling, angular face, high cheekbones, strong jawline, defined brows, jet black, undercut on left side, longer sweep to the right hair, gray eyes, fair, cool undertone, athletic, small circuit-board tattoo on left forearm, wearing charcoal fitted turtleneck, leafy outdoor background, golden hour window light, sharp focus, photorealistic, solo, exactly one person",
+      "negativePromptExtra": "gray or silver hair, deep facial wrinkles, crow's feet, nasolabial folds, sagging skin, middle-aged or elderly appearance, matronly or older-looking styling",
+      "variation": {
+        "angle": "profile view",
+        "light": "golden hour window light",
+        "wardrobe": "charcoal fitted turtleneck",
+        "background": "leafy outdoor background",
+        "framing": "full body shot"
+      },
+      "outputPath": "Q:/AI/training/nova/v1/candidates-r2/nova-r2c20-s600019.png",
+      "sha256": "bb022da0c9ad7c7fcd6134cb376de234775122d78cb50fa3683f9ab52396e4ed",
+      "approval": {
+        "status": "pending",
+        "approvedBy": null,
+        "at": null,
+        "rejectedReason": null
+      }
+    },
+    {
+      "candidateId": "nova-r2c21",
+      "round": 2,
+      "seed": 600020,
+      "workflowHash": "9664f690f43f17762153c41487b4f0f1fd2ceb58420f9acdca71d7b497b3936c",
+      "prompt": "professional editorial photograph, head and shoulders portrait, frontal portrait, looking at camera, of one late-20s adult woman, age-27 facial appearance, adult woman in her late twenties, smooth skin with natural texture, firm jawline, contemporary adult styling, angular face, high cheekbones, strong jawline, defined brows, jet black, undercut on left side, longer sweep to the right hair, gray eyes, fair, cool undertone, athletic, small circuit-board tattoo on left forearm, wearing dark utility vest over black tee, neutral studio backdrop, overcast daylight, sharp focus, photorealistic, solo, exactly one person",
+      "negativePromptExtra": "gray or silver hair, deep facial wrinkles, crow's feet, nasolabial folds, sagging skin, middle-aged or elderly appearance, matronly or older-looking styling",
+      "variation": {
+        "angle": "frontal portrait, looking at camera",
+        "light": "overcast daylight",
+        "wardrobe": "dark utility vest over black tee",
+        "background": "neutral studio backdrop",
+        "framing": "head and shoulders portrait"
+      },
+      "outputPath": "Q:/AI/training/nova/v1/candidates-r2/nova-r2c21-s600020.png",
+      "sha256": "6b98fc9c69a4673be168dd829346ca93092b3d4a623231a83e1e1d65fe1a0de5",
+      "approval": {
+        "status": "pending",
+        "approvedBy": null,
+        "at": null,
+        "rejectedReason": null
+      }
+    },
+    {
+      "candidateId": "nova-r2c22",
+      "round": 2,
+      "seed": 600021,
+      "workflowHash": "b0abe4d88b917c5fb31bfdaa561e0aa104353ab58eaf4b110954c0a144650d76",
+      "prompt": "professional editorial photograph, waist-up shot, three-quarter view from her left, of one late-20s adult woman, age-27 facial appearance, adult woman in her late twenties, smooth skin with natural texture, firm jawline, contemporary adult styling, angular face, high cheekbones, strong jawline, defined brows, jet black, undercut on left side, longer sweep to the right hair, gray eyes, fair, cool undertone, athletic, small circuit-board tattoo on left forearm, wearing black techwear jacket, blurred city street, overcast daylight, sharp focus, photorealistic, solo, exactly one person",
+      "negativePromptExtra": "gray or silver hair, deep facial wrinkles, crow's feet, nasolabial folds, sagging skin, middle-aged or elderly appearance, matronly or older-looking styling",
+      "variation": {
+        "angle": "three-quarter view from her left",
+        "light": "overcast daylight",
+        "wardrobe": "black techwear jacket",
+        "background": "blurred city street",
+        "framing": "waist-up shot"
+      },
+      "outputPath": "Q:/AI/training/nova/v1/candidates-r2/nova-r2c22-s600021.png",
+      "sha256": "e9427c0fde5013da18aa82383e0c67c902312398c394ec6f9d1d4baba6d22b15",
+      "approval": {
+        "status": "pending",
+        "approvedBy": null,
+        "at": null,
+        "rejectedReason": null
+      }
+    },
+    {
+      "candidateId": "nova-r2c23",
+      "round": 2,
+      "seed": 600022,
+      "workflowHash": "76bf8b2a0f3569b03e32f3cd55e36e9524416ff2df1ba300595e2e8530801e52",
+      "prompt": "professional editorial photograph, head and shoulders portrait, three-quarter view from her right, of one late-20s adult woman, age-27 facial appearance, adult woman in her late twenties, smooth skin with natural texture, firm jawline, contemporary adult styling, angular face, high cheekbones, strong jawline, defined brows, jet black, undercut on left side, longer sweep to the right hair, gray eyes, fair, cool undertone, athletic, small circuit-board tattoo on left forearm, wearing charcoal fitted turtleneck, soft interior, warm tones, overcast daylight, sharp focus, photorealistic, solo, exactly one person",
+      "negativePromptExtra": "gray or silver hair, deep facial wrinkles, crow's feet, nasolabial folds, sagging skin, middle-aged or elderly appearance, matronly or older-looking styling",
+      "variation": {
+        "angle": "three-quarter view from her right",
+        "light": "overcast daylight",
+        "wardrobe": "charcoal fitted turtleneck",
+        "background": "soft interior, warm tones",
+        "framing": "head and shoulders portrait"
+      },
+      "outputPath": "Q:/AI/training/nova/v1/candidates-r2/nova-r2c23-s600022.png",
+      "sha256": "4b30d761d2660194eca408fa4f01c122f2dcbd35f8c42dc426af2bf6cb567e31",
+      "approval": {
+        "status": "pending",
+        "approvedBy": null,
+        "at": null,
+        "rejectedReason": null
+      }
+    },
+    {
+      "candidateId": "nova-r2c24",
+      "round": 2,
+      "seed": 600023,
+      "workflowHash": "ee3319e4e076acc538560a71d7ad37f73cd2c348d009117c9b61dc866abb12f7",
+      "prompt": "professional editorial photograph, full body shot, profile view, of one late-20s adult woman, age-27 facial appearance, adult woman in her late twenties, smooth skin with natural texture, firm jawline, contemporary adult styling, angular face, high cheekbones, strong jawline, defined brows, jet black, undercut on left side, longer sweep to the right hair, gray eyes, fair, cool undertone, athletic, small circuit-board tattoo on left forearm, wearing dark utility vest over black tee, leafy outdoor background, overcast daylight, sharp focus, photorealistic, solo, exactly one person",
+      "negativePromptExtra": "gray or silver hair, deep facial wrinkles, crow's feet, nasolabial folds, sagging skin, middle-aged or elderly appearance, matronly or older-looking styling",
+      "variation": {
+        "angle": "profile view",
+        "light": "overcast daylight",
+        "wardrobe": "dark utility vest over black tee",
+        "background": "leafy outdoor background",
+        "framing": "full body shot"
+      },
+      "outputPath": "Q:/AI/training/nova/v1/candidates-r2/nova-r2c24-s600023.png",
+      "sha256": "b044925b10729b5374da50412ed8bf7aa559677d230723e63b5a7f3b32478731",
+      "approval": {
+        "status": "pending",
+        "approvedBy": null,
+        "at": null,
+        "rejectedReason": null
+      }
+    }
+  ]
+}

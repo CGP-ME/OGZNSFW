@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ogznsfw/lora-provenance",
+  "title": "Character LoRA provenance record",
+  "description": "One record per trained LoRA revision. Generation provenance references loraId+revision; this record makes every generation traceable back to base model, dataset, and training config.",
+  "type": "object",
+  "required": ["loraId", "characterId", "characterVersion", "revision", "fileHash", "baseModel", "datasetManifestHash", "training", "validation"],
+  "properties": {
+    "loraId": { "type": "string", "description": "e.g. nova-identity" },
+    "characterId": { "type": "string" },
+    "characterVersion": { "type": "integer", "minimum": 1 },
+    "revision": { "type": "integer", "minimum": 1, "description": "increments per retraining of the same character version" },
+    "fileHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "filePath": { "type": "string" },
+    "baseModel": {
+      "type": "object",
+      "required": ["checkpoint", "sha256", "license"],
+      "properties": { "checkpoint": { "type": "string" }, "sha256": { "type": "string" }, "license": { "type": "string" } }
+    },
+    "datasetManifestHash": { "type": "string", "description": "sha256 of the audited manifest used for this training run" },
+    "triggerToken": { "type": "string" },
+    "captionPolicy": { "type": "string" },
+    "training": {
+      "type": "object",
+      "required": ["tool", "rank", "learningRate", "steps", "resolution", "seed"],
+      "properties": {
+        "tool": { "type": "string" },
+        "toolRevision": { "type": ["string", "null"] },
+        "rank": { "type": "integer" },
+        "alpha": { "type": ["integer", "null"] },
+        "learningRate": { "type": "number" },
+        "textEncoderLearningRate": { "type": ["number", "null"] },
+        "steps": { "type": "integer" },
+        "resolution": { "type": "integer" },
+        "batchSize": { "type": ["integer", "null"] },
+        "seed": { "type": "integer" },
+        "vramPeakMB": { "type": ["integer", "null"] },
+        "durationMs": { "type": ["integer", "null"] }
+      }
+    },
+    "validation": {
+      "type": "object",
+      "required": ["status"],
+      "properties": {
+        "status": { "type": "string", "enum": ["not-run", "in-review", "passed", "failed"], "description": "passed requires the full evaluation set reviewed - never one good image" },
+        "reportPath": { "type": ["string", "null"] },
+        "reviewedBy": { "type": ["string", "null"] }
+      }
+    }
+  }
+}

@@ -1,0 +1,527 @@
+{
+  "characterId": "iris",
+  "characterVersion": 1,
+  "specHash": "de16905c73ce65afd5f1b197ece236ea681bd7b3ff3612efc019bd036c78f073",
+  "specStatus": "approved-by-Trey",
+  "triggerToken": "irisident",
+  "generatedAt": "2026-08-18T21:16:52.413Z",
+  "note": "CANDIDATES ONLY - nothing here is approved; Trey reviews and marks approved/rejected before any manifest entry becomes training data",
+  "candidates": [
+    {
+      "candidateId": "iris-c01",
+      "seed": 500000,
+      "workflowHash": "79222f4d131bcab6097f1e9f7c3a8cedf3538eebe7cbbba3d2dc0bd584bdf540",
+      "prompt": "professional photograph, head and shoulders portrait, frontal portrait, looking at camera, of one adult woman, age 29, soft oval face, gentle cheekbones, arched brows, light freckling across the nose, long auburn, natural wave, side part hair, green eyes, fair, warm undertone, light freckles, slim, graceful posture, wearing olive silk blouse, neutral studio backdrop, soft studio lighting, sharp focus, photorealistic, solo, exactly one person",
+      "variation": {
+        "angle": "frontal portrait, looking at camera",
+        "light": "soft studio lighting",
+        "wardrobe": "olive silk blouse",
+        "background": "neutral studio backdrop",
+        "framing": "head and shoulders portrait"
+      },
+      "outputPath": "Q:/AI/training/iris/v1/candidates/iris-c01-s500000.png",
+      "sha256": "8c30b1413d6466f04f5947f57cbd3868cfaf2cfe28d2532b4bfb9b422fecddbd",
+      "approval": {
+        "status": "rejected",
+        "approvedBy": null,
+        "at": "2026-08-18T14:09:13-07:00",
+        "rejectedReason": "age-presentation mismatch: reads substantially older than approved canon age"
+      }
+    },
+    {
+      "candidateId": "iris-c02",
+      "seed": 500001,
+      "workflowHash": "158784a40ad4953269bee645d7db8a610b3888e7fe8b761c6dfba97f2c8962a7",
+      "prompt": "professional photograph, waist-up shot, three-quarter view from her left, of one adult woman, age 29, soft oval face, gentle cheekbones, arched brows, light freckling across the nose, long auburn, natural wave, side part hair, green eyes, fair, warm undertone, light freckles, slim, graceful posture, wearing cream knit sweater, blurred city street, soft studio lighting, sharp focus, photorealistic, solo, exactly one person",
+      "variation": {
+        "angle": "three-quarter view from her left",
+        "light": "soft studio lighting",
+        "wardrobe": "cream knit sweater",
+        "background": "blurred city street",
+        "framing": "waist-up shot"
+      },
+      "outputPath": "Q:/AI/training/iris/v1/candidates/iris-c02-s500001.png",
+      "sha256": "0a7c15979501109c193b03ed4e4b05d224fe2c2ff9cf1ab0bfd73f9de9b7c1bc",
+      "approval": {
+        "status": "rejected",
+        "approvedBy": null,
+        "at": "2026-08-18T14:09:13-07:00",
+        "rejectedReason": "age-presentation mismatch: reads substantially older than approved canon age"
+      }
+    },
+    {
+      "candidateId": "iris-c03",
+      "seed": 500002,
+      "workflowHash": "7d90562b44160f7e9ce321add027c7f9396e68c1598866e7ec38472d2c3c2d8c",
+      "prompt": "professional photograph, head and shoulders portrait, three-quarter view from her right, of one adult woman, age 29, soft oval face, gentle cheekbones, arched brows, light freckling across the nose, long auburn, natural wave, side part hair, green eyes, fair, warm undertone, light freckles, slim, graceful posture, wearing rust-toned wrap dress, soft interior, warm tones, soft studio lighting, sharp focus, photorealistic, solo, exactly one person",
+      "variation": {
+        "angle": "three-quarter view from her right",
+        "light": "soft studio lighting",
+        "wardrobe": "rust-toned wrap dress",
+        "background": "soft interior, warm tones",
+        "framing": "head and shoulders portrait"
+      },
+      "outputPath": "Q:/AI/training/iris/v1/candidates/iris-c03-s500002.png",
+      "sha256": "b7b0c1e964654df1b59257aca8d29d2db909c465d956a4fb4590dfa460294bfe",
+      "approval": {
+        "status": "rejected",
+        "approvedBy": null,
+        "at": "2026-08-18T14:09:13-07:00",
+        "rejectedReason": "age-presentation mismatch: reads substantially older than approved canon age"
+      }
+    },
+    {
+      "candidateId": "iris-c04",
+      "seed": 500003,
+      "workflowHash": "a4a34b4a0ddc618fe16bbb67a394a06049979258824f1f35fc7ca5bc125b7630",
+      "prompt": "professional photograph, full body shot, profile view, of one adult woman, age 29, soft oval face, gentle cheekbones, arched brows, light freckling across the nose, long auburn, natural wave, side part hair, green eyes, fair, warm undertone, light freckles, slim, graceful posture, wearing olive silk blouse, leafy outdoor background, soft studio lighting, sharp focus, photorealistic, solo, exactly one person",
+      "variation": {
+        "angle": "profile view",
+        "light": "soft studio lighting",
+        "wardrobe": "olive silk blouse",
+        "background": "leafy outdoor background",
+        "framing": "full body shot"
+      },
+      "outputPath": "Q:/AI/training/iris/v1/candidates/iris-c04-s500003.png",
+      "sha256": "09e87d0f1fb2e64c952d8e7448f560c241c80f37dd25c34a2b72ecd38d5dd230",
+      "approval": {
+        "status": "rejected",
+        "approvedBy": null,
+        "at": "2026-08-18T14:09:13-07:00",
+        "rejectedReason": "age-presentation mismatch: reads substantially older than approved canon age"
+      }
+    },
+    {
+      "candidateId": "iris-c05",
+      "seed": 500004,
+      "workflowHash": "d4b1b0ac3bb418087cffe1562fec2f5f70a80aad4c9482434caf45ad7697fce1",
+      "prompt": "professional photograph, head and shoulders portrait, frontal portrait, looking at camera, of one adult woman, age 29, soft oval face, gentle cheekbones, arched brows, light freckling across the nose, long auburn, natural wave, side part hair, green eyes, fair, warm undertone, light freckles, slim, graceful posture, wearing cream knit sweater, neutral studio backdrop, golden hour window light, sharp focus, photorealistic, solo, exactly one person",
+      "variation": {
+        "angle": "frontal portrait, looking at camera",
+        "light": "golden hour window light",
+        "wardrobe": "cream knit sweater",
+        "background": "neutral studio backdrop",
+        "framing": "head and shoulders portrait"
+      },
+      "outputPath": "Q:/AI/training/iris/v1/candidates/iris-c05-s500004.png",
+      "sha256": "f136d2db496c7f9ce570edf549e21f42b1070c748b0733cb457cad359f62940b",
+      "approval": {
+        "status": "rejected",
+        "approvedBy": null,
+        "at": "2026-08-18T14:09:13-07:00",
+        "rejectedReason": "age-presentation mismatch: reads substantially older than approved canon age"
+      }
+    },
+    {
+      "candidateId": "iris-c06",
+      "seed": 500005,
+      "workflowHash": "7d8e97e89762f4a9fa806188347d95330f8184993ac408085ae3e439326ef12e",
+      "prompt": "professional photograph, waist-up shot, three-quarter view from her left, of one adult woman, age 29, soft oval face, gentle cheekbones, arched brows, light freckling across the nose, long auburn, natural wave, side part hair, green eyes, fair, warm undertone, light freckles, slim, graceful posture, wearing rust-toned wrap dress, blurred city street, golden hour window light, sharp focus, photorealistic, solo, exactly one person",
+      "variation": {
+        "angle": "three-quarter view from her left",
+        "light": "golden hour window light",
+        "wardrobe": "rust-toned wrap dress",
+        "background": "blurred city street",
+        "framing": "waist-up shot"
+      },
+      "outputPath": "Q:/AI/training/iris/v1/candidates/iris-c06-s500005.png",
+      "sha256": "7bb4b90b382b6639929a07188e1567ae4466d7c5c7e9f5961130f7af93bc8319",
+      "approval": {
+        "status": "rejected",
+        "approvedBy": null,
+        "at": "2026-08-18T14:09:13-07:00",
+        "rejectedReason": "age-presentation mismatch: reads substantially older than approved canon age"
+      }
+    },
+    {
+      "candidateId": "iris-c07",
+      "seed": 500006,
+      "workflowHash": "094243be999179321fb6d155deb47ab313e3afaa103c9d4a70f4151d23883891",
+      "prompt": "professional photograph, head and shoulders portrait, three-quarter view from her right, of one adult woman, age 29, soft oval face, gentle cheekbones, arched brows, light freckling across the nose, long auburn, natural wave, side part hair, green eyes, fair, warm undertone, light freckles, slim, graceful posture, wearing olive silk blouse, soft interior, warm tones, golden hour window light, sharp focus, photorealistic, solo, exactly one person",
+      "variation": {
+        "angle": "three-quarter view from her right",
+        "light": "golden hour window light",
+        "wardrobe": "olive silk blouse",
+        "background": "soft interior, warm tones",
+        "framing": "head and shoulders portrait"
+      },
+      "outputPath": "Q:/AI/training/iris/v1/candidates/iris-c07-s500006.png",
+      "sha256": "92860a7bd45405cff94024c83a44a3f1344242fced4a79e23f255d81dc863fb6",
+      "approval": {
+        "status": "rejected",
+        "approvedBy": null,
+        "at": "2026-08-18T14:09:13-07:00",
+        "rejectedReason": "age-presentation mismatch: reads substantially older than approved canon age"
+      }
+    },
+    {
+      "candidateId": "iris-c08",
+      "seed": 500007,
+      "workflowHash": "c9aa963663e1157e56557cfa2dc112f972d1cced6c3a1e10769ec301d5983fdc",
+      "prompt": "professional photograph, full body shot, profile view, of one adult woman, age 29, soft oval face, gentle cheekbones, arched brows, light freckling across the nose, long auburn, natural wave, side part hair, green eyes, fair, warm undertone, light freckles, slim, graceful posture, wearing cream knit sweater, leafy outdoor background, golden hour window light, sharp focus, photorealistic, solo, exactly one person",
+      "variation": {
+        "angle": "profile view",
+        "light": "golden hour window light",
+        "wardrobe": "cream knit sweater",
+        "background": "leafy outdoor background",
+        "framing": "full body shot"
+      },
+      "outputPath": "Q:/AI/training/iris/v1/candidates/iris-c08-s500007.png",
+      "sha256": "7eec92c888f2aab21a0204268956ea155911852795ca5cee93d5770b847b1949",
+      "approval": {
+        "status": "rejected",
+        "approvedBy": null,
+        "at": "2026-08-18T14:09:13-07:00",
+        "rejectedReason": "age-presentation mismatch: reads substantially older than approved canon age"
+      }
+    },
+    {
+      "candidateId": "iris-c09",
+      "seed": 500008,
+      "workflowHash": "1507aac9ce2d15dc76d844b24fc44419675fac6e35ae83972229c92bac133251",
+      "prompt": "professional photograph, head and shoulders portrait, frontal portrait, looking at camera, of one adult woman, age 29, soft oval face, gentle cheekbones, arched brows, light freckling across the nose, long auburn, natural wave, side part hair, green eyes, fair, warm undertone, light freckles, slim, graceful posture, wearing rust-toned wrap dress, neutral studio backdrop, overcast daylight, sharp focus, photorealistic, solo, exactly one person",
+      "variation": {
+        "angle": "frontal portrait, looking at camera",
+        "light": "overcast daylight",
+        "wardrobe": "rust-toned wrap dress",
+        "background": "neutral studio backdrop",
+        "framing": "head and shoulders portrait"
+      },
+      "outputPath": "Q:/AI/training/iris/v1/candidates/iris-c09-s500008.png",
+      "sha256": "a853a8731c71b64f197b5066a3d6dc2913b1749a8da734cfc315378e51d56c06",
+      "approval": {
+        "status": "rejected",
+        "approvedBy": null,
+        "at": "2026-08-18T14:09:13-07:00",
+        "rejectedReason": "age-presentation mismatch: reads substantially older than approved canon age"
+      }
+    },
+    {
+      "candidateId": "iris-c10",
+      "seed": 500009,
+      "workflowHash": "17d61b3fc06863a3ee29896d4036e3132c642dde02f282035644f1d503811f05",
+      "prompt": "professional photograph, waist-up shot, three-quarter view from her left, of one adult woman, age 29, soft oval face, gentle cheekbones, arched brows, light freckling across the nose, long auburn, natural wave, side part hair, green eyes, fair, warm undertone, light freckles, slim, graceful posture, wearing olive silk blouse, blurred city street, overcast daylight, sharp focus, photorealistic, solo, exactly one person",
+      "variation": {
+        "angle": "three-quarter view from her left",
+        "light": "overcast daylight",
+        "wardrobe": "olive silk blouse",
+        "background": "blurred city street",
+        "framing": "waist-up shot"
+      },
+      "outputPath": "Q:/AI/training/iris/v1/candidates/iris-c10-s500009.png",
+      "sha256": "921a1a7e6d999d27ed516e6967e3b3f94662db0688a76881711a59c4127994d0",
+      "approval": {
+        "status": "rejected",
+        "approvedBy": null,
+        "at": "2026-08-18T14:09:13-07:00",
+        "rejectedReason": "age-presentation mismatch: reads substantially older than approved canon age"
+      }
+    },
+    {
+      "candidateId": "iris-c11",
+      "seed": 500010,
+      "workflowHash": "15bf62d8795ac732c1bd690f8641162e47fb52eb1e440147ece27fae108996ff",
+      "prompt": "professional photograph, head and shoulders portrait, three-quarter view from her right, of one adult woman, age 29, soft oval face, gentle cheekbones, arched brows, light freckling across the nose, long auburn, natural wave, side part hair, green eyes, fair, warm undertone, light freckles, slim, graceful posture, wearing cream knit sweater, soft interior, warm tones, overcast daylight, sharp focus, photorealistic, solo, exactly one person",
+      "variation": {
+        "angle": "three-quarter view from her right",
+        "light": "overcast daylight",
+        "wardrobe": "cream knit sweater",
+        "background": "soft interior, warm tones",
+        "framing": "head and shoulders portrait"
+      },
+      "outputPath": "Q:/AI/training/iris/v1/candidates/iris-c11-s500010.png",
+      "sha256": "61033e8b07cec5e0c67fa230253171840d476033fb2d1e0d6b0dc3ba174ede98",
+      "approval": {
+        "status": "rejected",
+        "approvedBy": null,
+        "at": "2026-08-18T14:09:13-07:00",
+        "rejectedReason": "age-presentation mismatch: reads substantially older than approved canon age"
+      }
+    },
+    {
+      "candidateId": "iris-c12",
+      "seed": 500011,
+      "workflowHash": "8386e53acdbe642dc37bbf44681c6d02a1d446ecaf3b9941c410af2d98dd1d9f",
+      "prompt": "professional photograph, full body shot, profile view, of one adult woman, age 29, soft oval face, gentle cheekbones, arched brows, light freckling across the nose, long auburn, natural wave, side part hair, green eyes, fair, warm undertone, light freckles, slim, graceful posture, wearing rust-toned wrap dress, leafy outdoor background, overcast daylight, sharp focus, photorealistic, solo, exactly one person",
+      "variation": {
+        "angle": "profile view",
+        "light": "overcast daylight",
+        "wardrobe": "rust-toned wrap dress",
+        "background": "leafy outdoor background",
+        "framing": "full body shot"
+      },
+      "outputPath": "Q:/AI/training/iris/v1/candidates/iris-c12-s500011.png",
+      "sha256": "e719132ae9771b0bb261bebe51d63c6b828fe29c1a31264712c500003928c378",
+      "approval": {
+        "status": "rejected",
+        "approvedBy": null,
+        "at": "2026-08-18T14:09:13-07:00",
+        "rejectedReason": "age-presentation mismatch: reads substantially older than approved canon age"
+      }
+    },
+    {
+      "candidateId": "iris-c13",
+      "seed": 500012,
+      "workflowHash": "023fdae324c88f0cc0b0f9dc81fc73747b649492a31b9523debefbc83fe0951a",
+      "prompt": "professional photograph, head and shoulders portrait, frontal portrait, looking at camera, of one adult woman, age 29, soft oval face, gentle cheekbones, arched brows, light freckling across the nose, long auburn, natural wave, side part hair, green eyes, fair, warm undertone, light freckles, slim, graceful posture, wearing olive silk blouse, neutral studio backdrop, soft studio lighting, sharp focus, photorealistic, solo, exactly one person",
+      "variation": {
+        "angle": "frontal portrait, looking at camera",
+        "light": "soft studio lighting",
+        "wardrobe": "olive silk blouse",
+        "background": "neutral studio backdrop",
+        "framing": "head and shoulders portrait"
+      },
+      "outputPath": "Q:/AI/training/iris/v1/candidates/iris-c13-s500012.png",
+      "sha256": "e684fb56960a6dc210a575d6b5c4e58db6ad456ebc824c77151629f7eb0d7359",
+      "approval": {
+        "status": "rejected",
+        "approvedBy": null,
+        "at": "2026-08-18T14:09:13-07:00",
+        "rejectedReason": "age-presentation mismatch: reads substantially older than approved canon age"
+      }
+    },
+    {
+      "candidateId": "iris-c14",
+      "seed": 500013,
+      "workflowHash": "4f25b9de2898e33d885df223324d9870c635988ad3127a37f7a77489d27c98bf",
+      "prompt": "professional photograph, waist-up shot, three-quarter view from her left, of one adult woman, age 29, soft oval face, gentle cheekbones, arched brows, light freckling across the nose, long auburn, natural wave, side part hair, green eyes, fair, warm undertone, light freckles, slim, graceful posture, wearing cream knit sweater, blurred city street, soft studio lighting, sharp focus, photorealistic, solo, exactly one person",
+      "variation": {
+        "angle": "three-quarter view from her left",
+        "light": "soft studio lighting",
+        "wardrobe": "cream knit sweater",
+        "background": "blurred city street",
+        "framing": "waist-up shot"
+      },
+      "outputPath": "Q:/AI/training/iris/v1/candidates/iris-c14-s500013.png",
+      "sha256": "7d0f147d104a08c4f0410d9e4db4ac846fb60bbfd3372d34e61b0401be968bb5",
+      "approval": {
+        "status": "rejected",
+        "approvedBy": null,
+        "at": "2026-08-18T14:09:13-07:00",
+        "rejectedReason": "age-presentation mismatch: reads substantially older than approved canon age"
+      }
+    },
+    {
+      "candidateId": "iris-c15",
+      "seed": 500014,
+      "workflowHash": "92c2bd369cdcc0447d011805f306f45b520001386b35e9013e33cf33987921fd",
+      "prompt": "professional photograph, head and shoulders portrait, three-quarter view from her right, of one adult woman, age 29, soft oval face, gentle cheekbones, arched brows, light freckling across the nose, long auburn, natural wave, side part hair, green eyes, fair, warm undertone, light freckles, slim, graceful posture, wearing rust-toned wrap dress, soft interior, warm tones, soft studio lighting, sharp focus, photorealistic, solo, exactly one person",
+      "variation": {
+        "angle": "three-quarter view from her right",
+        "light": "soft studio lighting",
+        "wardrobe": "rust-toned wrap dress",
+        "background": "soft interior, warm tones",
+        "framing": "head and shoulders portrait"
+      },
+      "outputPath": "Q:/AI/training/iris/v1/candidates/iris-c15-s500014.png",
+      "sha256": "441508c4854d8eacf9d7eb9e452bc109aa5af96ed934be1fc0020fce8f6baad3",
+      "approval": {
+        "status": "rejected",
+        "approvedBy": null,
+        "at": "2026-08-18T14:09:13-07:00",
+        "rejectedReason": "age-presentation mismatch: reads substantially older than approved canon age"
+      }
+    },
+    {
+      "candidateId": "iris-c16",
+      "seed": 500015,
+      "workflowHash": "56a3122d746e0907125f063274ca18bacc7aef92b9a37953f228b39483fe2ef0",
+      "prompt": "professional photograph, full body shot, profile view, of one adult woman, age 29, soft oval face, gentle cheekbones, arched brows, light freckling across the nose, long auburn, natural wave, side part hair, green eyes, fair, warm undertone, light freckles, slim, graceful posture, wearing olive silk blouse, leafy outdoor background, soft studio lighting, sharp focus, photorealistic, solo, exactly one person",
+      "variation": {
+        "angle": "profile view",
+        "light": "soft studio lighting",
+        "wardrobe": "olive silk blouse",
+        "background": "leafy outdoor background",
+        "framing": "full body shot"
+      },
+      "outputPath": "Q:/AI/training/iris/v1/candidates/iris-c16-s500015.png",
+      "sha256": "c22902a8beecf4a3e271c501772b1381a71002d4b738d6ec18702e6b339d432b",
+      "approval": {
+        "status": "rejected",
+        "approvedBy": null,
+        "at": "2026-08-18T14:09:13-07:00",
+        "rejectedReason": "age-presentation mismatch: reads substantially older than approved canon age"
+      }
+    },
+    {
+      "candidateId": "iris-c17",
+      "seed": 500016,
+      "workflowHash": "bfd6c5c8270bda476fdb3fe3e73069c0fd9ef377adb40626646d2280c15f2441",
+      "prompt": "professional photograph, head and shoulders portrait, frontal portrait, looking at camera, of one adult woman, age 29, soft oval face, gentle cheekbones, arched brows, light freckling across the nose, long auburn, natural wave, side part hair, green eyes, fair, warm undertone, light freckles, slim, graceful posture, wearing cream knit sweater, neutral studio backdrop, golden hour window light, sharp focus, photorealistic, solo, exactly one person",
+      "variation": {
+        "angle": "frontal portrait, looking at camera",
+        "light": "golden hour window light",
+        "wardrobe": "cream knit sweater",
+        "background": "neutral studio backdrop",
+        "framing": "head and shoulders portrait"
+      },
+      "outputPath": "Q:/AI/training/iris/v1/candidates/iris-c17-s500016.png",
+      "sha256": "eb08521383e3a470c8019249ff0c14ff9f49417eeba721d0d9859d00a9ef5861",
+      "approval": {
+        "status": "rejected",
+        "approvedBy": null,
+        "at": "2026-08-18T14:09:13-07:00",
+        "rejectedReason": "age-presentation mismatch: reads substantially older than approved canon age"
+      }
+    },
+    {
+      "candidateId": "iris-c18",
+      "seed": 500017,
+      "workflowHash": "201fc18dd64afa30c1637a5d7ae964430c291bb4933b3cdf08959867bffd5908",
+      "prompt": "professional photograph, waist-up shot, three-quarter view from her left, of one adult woman, age 29, soft oval face, gentle cheekbones, arched brows, light freckling across the nose, long auburn, natural wave, side part hair, green eyes, fair, warm undertone, light freckles, slim, graceful posture, wearing rust-toned wrap dress, blurred city street, golden hour window light, sharp focus, photorealistic, solo, exactly one person",
+      "variation": {
+        "angle": "three-quarter view from her left",
+        "light": "golden hour window light",
+        "wardrobe": "rust-toned wrap dress",
+        "background": "blurred city street",
+        "framing": "waist-up shot"
+      },
+      "outputPath": "Q:/AI/training/iris/v1/candidates/iris-c18-s500017.png",
+      "sha256": "0ae7667e695e029422915411990b998362a16d786022ce3012784cc6d054654c",
+      "approval": {
+        "status": "rejected",
+        "approvedBy": null,
+        "at": "2026-08-18T14:09:13-07:00",
+        "rejectedReason": "age-presentation mismatch: reads substantially older than approved canon age"
+      }
+    },
+    {
+      "candidateId": "iris-c19",
+      "seed": 500018,
+      "workflowHash": "121cce0bb0783647c6afa1f6511fdcfb117e3161ba72c1afc04fa7a26f44f016",
+      "prompt": "professional photograph, head and shoulders portrait, three-quarter view from her right, of one adult woman, age 29, soft oval face, gentle cheekbones, arched brows, light freckling across the nose, long auburn, natural wave, side part hair, green eyes, fair, warm undertone, light freckles, slim, graceful posture, wearing olive silk blouse, soft interior, warm tones, golden hour window light, sharp focus, photorealistic, solo, exactly one person",
+      "variation": {
+        "angle": "three-quarter view from her right",
+        "light": "golden hour window light",
+        "wardrobe": "olive silk blouse",
+        "background": "soft interior, warm tones",
+        "framing": "head and shoulders portrait"
+      },
+      "outputPath": "Q:/AI/training/iris/v1/candidates/iris-c19-s500018.png",
+      "sha256": "da76185a9074459580456072cb08e14e8b9b4bab6026af45ff6c02da2fc1589b",
+      "approval": {
+        "status": "rejected",
+        "approvedBy": null,
+        "at": "2026-08-18T14:09:13-07:00",
+        "rejectedReason": "age-presentation mismatch: reads substantially older than approved canon age"
+      }
+    },
+    {
+      "candidateId": "iris-c20",
+      "seed": 500019,
+      "workflowHash": "f5ff1ef656110e44f3ef07eed9644f314d5987f04fd05eff2218aac20bfd1968",
+      "prompt": "professional photograph, full body shot, profile view, of one adult woman, age 29, soft oval face, gentle cheekbones, arched brows, light freckling across the nose, long auburn, natural wave, side part hair, green eyes, fair, warm undertone, light freckles, slim, graceful posture, wearing cream knit sweater, leafy outdoor background, golden hour window light, sharp focus, photorealistic, solo, exactly one person",
+      "variation": {
+        "angle": "profile view",
+        "light": "golden hour window light",
+        "wardrobe": "cream knit sweater",
+        "background": "leafy outdoor background",
+        "framing": "full body shot"
+      },
+      "outputPath": "Q:/AI/training/iris/v1/candidates/iris-c20-s500019.png",
+      "sha256": "71ce21c56819955c19f4f6d9a89a6af405079afe6f0d78b2dff1c42cf2e8de4a",
+      "approval": {
+        "status": "rejected",
+        "approvedBy": null,
+        "at": "2026-08-18T14:09:13-07:00",
+        "rejectedReason": "age-presentation mismatch: reads substantially older than approved canon age"
+      }
+    },
+    {
+      "candidateId": "iris-c21",
+      "seed": 500020,
+      "workflowHash": "3d9e9aec01dbdce62c46e6fe192bbc8211b6a12ffce9ba64601ea213c3ee6078",
+      "prompt": "professional photograph, head and shoulders portrait, frontal portrait, looking at camera, of one adult woman, age 29, soft oval face, gentle cheekbones, arched brows, light freckling across the nose, long auburn, natural wave, side part hair, green eyes, fair, warm undertone, light freckles, slim, graceful posture, wearing rust-toned wrap dress, neutral studio backdrop, overcast daylight, sharp focus, photorealistic, solo, exactly one person",
+      "variation": {
+        "angle": "frontal portrait, looking at camera",
+        "light": "overcast daylight",
+        "wardrobe": "rust-toned wrap dress",
+        "background": "neutral studio backdrop",
+        "framing": "head and shoulders portrait"
+      },
+      "outputPath": "Q:/AI/training/iris/v1/candidates/iris-c21-s500020.png",
+      "sha256": "4cd44f663bb31cafe169f9565b2dcb744a5672395df7b0563264efe27cdf8ded",
+      "approval": {
+        "status": "rejected",
+        "approvedBy": null,
+        "at": "2026-08-18T14:09:13-07:00",
+        "rejectedReason": "age-presentation mismatch: reads substantially older than approved canon age"
+      }
+    },
+    {
+      "candidateId": "iris-c22",
+      "seed": 500021,
+      "workflowHash": "8b1ca0a870c007c5ffb6d2fc02e3074872df9353de7b298ec40eaf5958976333",
+      "prompt": "professional photograph, waist-up shot, three-quarter view from her left, of one adult woman, age 29, soft oval face, gentle cheekbones, arched brows, light freckling across the nose, long auburn, natural wave, side part hair, green eyes, fair, warm undertone, light freckles, slim, graceful posture, wearing olive silk blouse, blurred city street, overcast daylight, sharp focus, photorealistic, solo, exactly one person",
+      "variation": {
+        "angle": "three-quarter view from her left",
+        "light": "overcast daylight",
+        "wardrobe": "olive silk blouse",
+        "background": "blurred city street",
+        "framing": "waist-up shot"
+      },
+      "outputPath": "Q:/AI/training/iris/v1/candidates/iris-c22-s500021.png",
+      "sha256": "117dce98b898e806b32273faf1261545795455ae82064fcd65da1e7690a18f27",
+      "approval": {
+        "status": "rejected",
+        "approvedBy": null,
+        "at": "2026-08-18T14:09:13-07:00",
+        "rejectedReason": "age-presentation mismatch: reads substantially older than approved canon age"
+      }
+    },
+    {
+      "candidateId": "iris-c23",
+      "seed": 500022,
+      "workflowHash": "949ebb127a5d8d94fc8443841dd515fb6c3dbdb90a52a2212893c2dfdd412fe6",
+      "prompt": "professional photograph, head and shoulders portrait, three-quarter view from her right, of one adult woman, age 29, soft oval face, gentle cheekbones, arched brows, light freckling across the nose, long auburn, natural wave, side part hair, green eyes, fair, warm undertone, light freckles, slim, graceful posture, wearing cream knit sweater, soft interior, warm tones, overcast daylight, sharp focus, photorealistic, solo, exactly one person",
+      "variation": {
+        "angle": "three-quarter view from her right",
+        "light": "overcast daylight",
+        "wardrobe": "cream knit sweater",
+        "background": "soft interior, warm tones",
+        "framing": "head and shoulders portrait"
+      },
+      "outputPath": "Q:/AI/training/iris/v1/candidates/iris-c23-s500022.png",
+      "sha256": "1cb4af17a1d2fa0a09876db5f1c2b75795e7b5457f9342bd3a340dafd19977c9",
+      "approval": {
+        "status": "rejected",
+        "approvedBy": null,
+        "at": "2026-08-18T14:09:13-07:00",
+        "rejectedReason": "age-presentation mismatch: reads substantially older than approved canon age"
+      }
+    },
+    {
+      "candidateId": "iris-c24",
+      "seed": 500023,
+      "workflowHash": "b58f0ba7929972209f19a974cfedc74389c8d43ee948f5d61a7c418f3b75dc69",
+      "prompt": "professional photograph, full body shot, profile view, of one adult woman, age 29, soft oval face, gentle cheekbones, arched brows, light freckling across the nose, long auburn, natural wave, side part hair, green eyes, fair, warm undertone, light freckles, slim, graceful posture, wearing rust-toned wrap dress, leafy outdoor background, overcast daylight, sharp focus, photorealistic, solo, exactly one person",
+      "variation": {
+        "angle": "profile view",
+        "light": "overcast daylight",
+        "wardrobe": "rust-toned wrap dress",
+        "background": "leafy outdoor background",
+        "framing": "full body shot"
+      },
+      "outputPath": "Q:/AI/training/iris/v1/candidates/iris-c24-s500023.png",
+      "sha256": "38e74e1e4a81f64cba07f09abd97acaf96933ae1c4e695966ae8b64de1cefb16",
+      "approval": {
+        "status": "rejected",
+        "approvedBy": null,
+        "at": "2026-08-18T14:09:13-07:00",
+        "rejectedReason": "age-presentation mismatch: reads substantially older than approved canon age"
+      }
+    }
+  ],
+  "round": 1,
+  "batchStatus": "rejected-for-training",
+  "batchRejection": {
+    "rejectedBy": "Trey",
+    "at": "2026-08-18T14:09:13-07:00",
+    "reasons": [
+      "age-presentation mismatch",
+      "mature facial-aging drift",
+      "insufficient match to approved canon"
+    ],
+    "note": "No candidate from this batch may enter any training or evaluation split."
+  }
+}

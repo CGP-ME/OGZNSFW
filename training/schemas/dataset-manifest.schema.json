@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ogznsfw/dataset-manifest",
+  "title": "Character LoRA dataset manifest",
+  "description": "One manifest per character version. Training may not start until audit passes: every training/evaluation image approved, no duplicates, splits disjoint, licensing clear.",
+  "type": "object",
+  "required": ["tenantId", "characterId", "characterVersion", "specHash", "captionPolicy", "images"],
+  "properties": {
+    "tenantId": { "type": "string", "minLength": 1 },
+    "characterId": { "type": "string", "minLength": 1 },
+    "characterVersion": { "type": "integer", "minimum": 1 },
+    "specHash": { "type": "string", "description": "sha256 of the character spec this dataset was curated against" },
+    "captionPolicy": {
+      "type": "string",
+      "enum": ["trigger-plus-variables"],
+      "description": "trigger-plus-variables: caption = trigger token + ONLY scene-dependent traits (wardrobe/background/lighting/pose), never invariant identity traits - so identity binds to the trigger, variables stay promptable"
+    },
+    "triggerToken": { "type": "string", "minLength": 3 },
+    "images": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["path", "sha256", "caption", "split", "resolution", "source", "approval"],
+        "properties": {
+          "path": { "type": "string" },
+          "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+          "caption": { "type": "string", "minLength": 4 },
+          "split": { "type": "string", "enum": ["training", "evaluation"] },
+          "resolution": { "type": "object", "required": ["width", "height"], "properties": { "width": { "type": "integer" }, "height": { "type": "integer" } } },
+          "crop": { "type": ["string", "null"] },
+          "source": {
+            "type": "object",
+            "required": ["kind", "licensing"],
+            "properties": {
+              "kind": { "type": "string", "enum": ["generated-local", "commissioned", "other"], "description": "generated-local: produced by our own pipeline with recorded provenance" },
+              "generationProvenance": { "type": ["object", "null"] },
+              "licensing": { "type": "string", "enum": ["owned", "licensed", "unclear"], "description": "unclear is auto-rejected by audit" }
+            }
+          },
+          "approval": {
+            "type": "object",
+            "required": ["status"],
+            "properties": {
+              "status": { "type": "string", "enum": ["pending", "approved", "rejected"] },
+              "approvedBy": { "type": ["string", "null"] },
+              "at": { "type": ["string", "null"] },
+              "rejectedReason": { "type": ["string", "null"], "description": "required when status=rejected: duplicate | ambiguous-identity | inconsistent-appearance | other-people-in-frame | unsafe-or-unclear-provenance | bakes-in-wardrobe-or-background | quality" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

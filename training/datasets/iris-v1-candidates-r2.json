@@ -1,0 +1,565 @@
+{
+  "characterId": "iris",
+  "characterVersion": 1,
+  "round": 2,
+  "specHash": "48e25c88d82d09f7c26efec5d7eb5cea67c4954917e87cfac2819ecfa3ed7ee5",
+  "specStatus": "approved-by-Trey",
+  "triggerToken": "irisident",
+  "agePresentationTarget": "late-20s adult woman, age-29 facial appearance",
+  "generatedAt": "2026-08-19T01:29:31.830Z",
+  "note": "CANDIDATES ONLY - nothing here is approved; Trey reviews and marks approved/rejected before any manifest entry becomes training data",
+  "candidates": [
+    {
+      "candidateId": "iris-r2c01",
+      "round": 2,
+      "seed": 600000,
+      "workflowHash": "35f730ef4ce4bc95bace1b566b2cc600074250f13fbf991a02eb710e2e7131be",
+      "prompt": "professional editorial photograph, head and shoulders portrait, frontal portrait, looking at camera, of one late-20s adult woman, age-29 facial appearance, adult woman in her late twenties, smooth skin with natural texture, soft but defined features, contemporary adult styling, soft oval face, gentle cheekbones, arched brows, light freckling across the nose, long auburn, natural wave, side part hair, green eyes, fair, warm undertone, light freckles, slim, graceful posture, wearing olive silk blouse, neutral studio backdrop, soft studio lighting, sharp focus, photorealistic, solo, exactly one person",
+      "negativePromptExtra": "gray or silver hair, blonde hair, deep facial wrinkles, crow's feet, nasolabial folds, sagging skin, middle-aged or elderly appearance, matronly or older-looking styling",
+      "variation": {
+        "angle": "frontal portrait, looking at camera",
+        "light": "soft studio lighting",
+        "wardrobe": "olive silk blouse",
+        "background": "neutral studio backdrop",
+        "framing": "head and shoulders portrait"
+      },
+      "outputPath": "Q:/AI/training/iris/v1/candidates-r2/iris-r2c01-s600000.png",
+      "sha256": "360e9b60f9c01fc33265c146bcdbd96cada557eb9aa2632e14eddf9d6d8e466d",
+      "approval": {
+        "status": "pending",
+        "approvedBy": null,
+        "at": null,
+        "rejectedReason": null
+      }
+    },
+    {
+      "candidateId": "iris-r2c02",
+      "round": 2,
+      "seed": 600001,
+      "workflowHash": "b333564b3b5f67b5e2dc01f9e37d802b07d58e57d8fb25a08d24db627abcb6bc",
+      "prompt": "professional editorial photograph, waist-up shot, three-quarter view from her left, of one late-20s adult woman, age-29 facial appearance, adult woman in her late twenties, smooth skin with natural texture, soft but defined features, contemporary adult styling, soft oval face, gentle cheekbones, arched brows, light freckling across the nose, long auburn, natural wave, side part hair, green eyes, fair, warm undertone, light freckles, slim, graceful posture, wearing cream knit sweater, blurred city street, soft studio lighting, sharp focus, photorealistic, solo, exactly one person",
+      "negativePromptExtra": "gray or silver hair, blonde hair, deep facial wrinkles, crow's feet, nasolabial folds, sagging skin, middle-aged or elderly appearance, matronly or older-looking styling",
+      "variation": {
+        "angle": "three-quarter view from her left",
+        "light": "soft studio lighting",
+        "wardrobe": "cream knit sweater",
+        "background": "blurred city street",
+        "framing": "waist-up shot"
+      },
+      "outputPath": "Q:/AI/training/iris/v1/candidates-r2/iris-r2c02-s600001.png",
+      "sha256": "8e762a6667dd4c128294efb0662a6748cf504b528d31c6dbf4d7226056cc89d3",
+      "approval": {
+        "status": "pending",
+        "approvedBy": null,
+        "at": null,
+        "rejectedReason": null
+      }
+    },
+    {
+      "candidateId": "iris-r2c03",
+      "round": 2,
+      "seed": 600002,
+      "workflowHash": "b1a5fffb26bc1e15ccf54a3e42687ed2af05ac78cedb1034c57a55ab63147399",
+      "prompt": "professional editorial photograph, head and shoulders portrait, three-quarter view from her right, of one late-20s adult woman, age-29 facial appearance, adult woman in her late twenties, smooth skin with natural texture, soft but defined features, contemporary adult styling, soft oval face, gentle cheekbones, arched brows, light freckling across the nose, long auburn, natural wave, side part hair, green eyes, fair, warm undertone, light freckles, slim, graceful posture, wearing rust-toned wrap dress, soft interior, warm tones, soft studio lighting, sharp focus, photorealistic, solo, exactly one person",
+      "negativePromptExtra": "gray or silver hair, blonde hair, deep facial wrinkles, crow's feet, nasolabial folds, sagging skin, middle-aged or elderly appearance, matronly or older-looking styling",
+      "variation": {
+        "angle": "three-quarter view from her right",
+        "light": "soft studio lighting",
+        "wardrobe": "rust-toned wrap dress",
+        "background": "soft interior, warm tones",
+        "framing": "head and shoulders portrait"
+      },
+      "outputPath": "Q:/AI/training/iris/v1/candidates-r2/iris-r2c03-s600002.png",
+      "sha256": "eea2dfc78957fef8603c9db32bbd4358770bb21a11e476ea97f5f034c52bf4b3",
+      "approval": {
+        "status": "pending",
+        "approvedBy": null,
+        "at": null,
+        "rejectedReason": null
+      }
+    },
+    {
+      "candidateId": "iris-r2c04",
+      "round": 2,
+      "seed": 600003,
+      "workflowHash": "492f43d4614cbfab58a9127ca6a351379a9877b2c4bd7cf0357cd05422f3b68f",
+      "prompt": "professional editorial photograph, full body shot, profile view, of one late-20s adult woman, age-29 facial appearance, adult woman in her late twenties, smooth skin with natural texture, soft but defined features, contemporary adult styling, soft oval face, gentle cheekbones, arched brows, light freckling across the nose, long auburn, natural wave, side part hair, green eyes, fair, warm undertone, light freckles, slim, graceful posture, wearing olive silk blouse, leafy outdoor background, soft studio lighting, sharp focus, photorealistic, solo, exactly one person",
+      "negativePromptExtra": "gray or silver hair, blonde hair, deep facial wrinkles, crow's feet, nasolabial folds, sagging skin, middle-aged or elderly appearance, matronly or older-looking styling",
+      "variation": {
+        "angle": "profile view",
+        "light": "soft studio lighting",
+        "wardrobe": "olive silk blouse",
+        "background": "leafy outdoor background",
+        "framing": "full body shot"
+      },
+      "outputPath": "Q:/AI/training/iris/v1/candidates-r2/iris-r2c04-s600003.png",
+      "sha256": "ecc03684de006e973833c157b4b69dc7a5bcd159cc1ecccc35e2b6ea49a78faf",
+      "approval": {
+        "status": "pending",
+        "approvedBy": null,
+        "at": null,
+        "rejectedReason": null
+      }
+    },
+    {
+      "candidateId": "iris-r2c05",
+      "round": 2,
+      "seed": 600004,
+      "workflowHash": "3c6bc37a40f023e91d57b911f13181c3c2fc9c564a9f51664cfe77a8f5da6d63",
+      "prompt": "professional editorial photograph, head and shoulders portrait, frontal portrait, looking at camera, of one late-20s adult woman, age-29 facial appearance, adult woman in her late twenties, smooth skin with natural texture, soft but defined features, contemporary adult styling, soft oval face, gentle cheekbones, arched brows, light freckling across the nose, long auburn, natural wave, side part hair, green eyes, fair, warm undertone, light freckles, slim, graceful posture, wearing cream knit sweater, neutral studio backdrop, golden hour window light, sharp focus, photorealistic, solo, exactly one person",
+      "negativePromptExtra": "gray or silver hair, blonde hair, deep facial wrinkles, crow's feet, nasolabial folds, sagging skin, middle-aged or elderly appearance, matronly or older-looking styling",
+      "variation": {
+        "angle": "frontal portrait, looking at camera",
+        "light": "golden hour window light",
+        "wardrobe": "cream knit sweater",
+        "background": "neutral studio backdrop",
+        "framing": "head and shoulders portrait"
+      },
+      "outputPath": "Q:/AI/training/iris/v1/candidates-r2/iris-r2c05-s600004.png",
+      "sha256": "df452cd95e68e0506cb0c81c193efc965c6882e10b6ff2bf2de5a99c91373d56",
+      "approval": {
+        "status": "pending",
+        "approvedBy": null,
+        "at": null,
+        "rejectedReason": null
+      }
+    },
+    {
+      "candidateId": "iris-r2c06",
+      "round": 2,
+      "seed": 600005,
+      "workflowHash": "4b5ecb0a7e36be85c7d27d1263c3e95728f5e22476a6a3082bd5bdf13d172d26",
+      "prompt": "professional editorial photograph, waist-up shot, three-quarter view from her left, of one late-20s adult woman, age-29 facial appearance, adult woman in her late twenties, smooth skin with natural texture, soft but defined features, contemporary adult styling, soft oval face, gentle cheekbones, arched brows, light freckling across the nose, long auburn, natural wave, side part hair, green eyes, fair, warm undertone, light freckles, slim, graceful posture, wearing rust-toned wrap dress, blurred city street, golden hour window light, sharp focus, photorealistic, solo, exactly one person",
+      "negativePromptExtra": "gray or silver hair, blonde hair, deep facial wrinkles, crow's feet, nasolabial folds, sagging skin, middle-aged or elderly appearance, matronly or older-looking styling",
+      "variation": {
+        "angle": "three-quarter view from her left",
+        "light": "golden hour window light",
+        "wardrobe": "rust-toned wrap dress",
+        "background": "blurred city street",
+        "framing": "waist-up shot"
+      },
+      "outputPath": "Q:/AI/training/iris/v1/candidates-r2/iris-r2c06-s600005.png",
+      "sha256": "099582e253cb877fa9c3114293bffbd075eb7c3f91c8155150340b06ace03650",
+      "approval": {
+        "status": "pending",
+        "approvedBy": null,
+        "at": null,
+        "rejectedReason": null
+      }
+    },
+    {
+      "candidateId": "iris-r2c07",
+      "round": 2,
+      "seed": 600006,
+      "workflowHash": "1e0d299030f34ed3c59b41a33bdffc4f0e5e58a9d5f4d2c9ba9f7635ff205ac3",
+      "prompt": "professional editorial photograph, head and shoulders portrait, three-quarter view from her right, of one late-20s adult woman, age-29 facial appearance, adult woman in her late twenties, smooth skin with natural texture, soft but defined features, contemporary adult styling, soft oval face, gentle cheekbones, arched brows, light freckling across the nose, long auburn, natural wave, side part hair, green eyes, fair, warm undertone, light freckles, slim, graceful posture, wearing olive silk blouse, soft interior, warm tones, golden hour window light, sharp focus, photorealistic, solo, exactly one person",
+      "negativePromptExtra": "gray or silver hair, blonde hair, deep facial wrinkles, crow's feet, nasolabial folds, sagging skin, middle-aged or elderly appearance, matronly or older-looking styling",
+      "variation": {
+        "angle": "three-quarter view from her right",
+        "light": "golden hour window light",
+        "wardrobe": "olive silk blouse",
+        "background": "soft interior, warm tones",
+        "framing": "head and shoulders portrait"
+      },
+      "outputPath": "Q:/AI/training/iris/v1/candidates-r2/iris-r2c07-s600006.png",
+      "sha256": "d095e46674df1bd973d164e05cb90a9971575965ec3a7ef85a4d29c1b6b8432c",
+      "approval": {
+        "status": "pending",
+        "approvedBy": null,
+        "at": null,
+        "rejectedReason": null
+      }
+    },
+    {
+      "candidateId": "iris-r2c08",
+      "round": 2,
+      "seed": 600007,
+      "workflowHash": "1fc170a2542e64a539e202322b70808e787c4705c72cd1042134ed95aedcd40a",
+      "prompt": "professional editorial photograph, full body shot, profile view, of one late-20s adult woman, age-29 facial appearance, adult woman in her late twenties, smooth skin with natural texture, soft but defined features, contemporary adult styling, soft oval face, gentle cheekbones, arched brows, light freckling across the nose, long auburn, natural wave, side part hair, green eyes, fair, warm undertone, light freckles, slim, graceful posture, wearing cream knit sweater, leafy outdoor background, golden hour window light, sharp focus, photorealistic, solo, exactly one person",
+      "negativePromptExtra": "gray or silver hair, blonde hair, deep facial wrinkles, crow's feet, nasolabial folds, sagging skin, middle-aged or elderly appearance, matronly or older-looking styling",
+      "variation": {
+        "angle": "profile view",
+        "light": "golden hour window light",
+        "wardrobe": "cream knit sweater",
+        "background": "leafy outdoor background",
+        "framing": "full body shot"
+      },
+      "outputPath": "Q:/AI/training/iris/v1/candidates-r2/iris-r2c08-s600007.png",
+      "sha256": "2c6da95d19811da7586cce011cf48c2a56251600b28bc4ceffc36497604a6e3a",
+      "approval": {
+        "status": "pending",
+        "approvedBy": null,
+        "at": null,
+        "rejectedReason": null
+      }
+    },
+    {
+      "candidateId": "iris-r2c09",
+      "round": 2,
+      "seed": 600008,
+      "workflowHash": "302732232f535376a6e1a71cfebfbd2735d1d31a907749103eae9483791529dd",
+      "prompt": "professional editorial photograph, head and shoulders portrait, frontal portrait, looking at camera, of one late-20s adult woman, age-29 facial appearance, adult woman in her late twenties, smooth skin with natural texture, soft but defined features, contemporary adult styling, soft oval face, gentle cheekbones, arched brows, light freckling across the nose, long auburn, natural wave, side part hair, green eyes, fair, warm undertone, light freckles, slim, graceful posture, wearing rust-toned wrap dress, neutral studio backdrop, overcast daylight, sharp focus, photorealistic, solo, exactly one person",
+      "negativePromptExtra": "gray or silver hair, blonde hair, deep facial wrinkles, crow's feet, nasolabial folds, sagging skin, middle-aged or elderly appearance, matronly or older-looking styling",
+      "variation": {
+        "angle": "frontal portrait, looking at camera",
+        "light": "overcast daylight",
+        "wardrobe": "rust-toned wrap dress",
+        "background": "neutral studio backdrop",
+        "framing": "head and shoulders portrait"
+      },
+      "outputPath": "Q:/AI/training/iris/v1/candidates-r2/iris-r2c09-s600008.png",
+      "sha256": "16890d6cd170ce9db2bbdb9ee12fb2efc5e1e5a7be44d1981f843ba24999474c",
+      "approval": {
+        "status": "pending",
+        "approvedBy": null,
+        "at": null,
+        "rejectedReason": null
+      }
+    },
+    {
+      "candidateId": "iris-r2c10",
+      "round": 2,
+      "seed": 600009,
+      "workflowHash": "2a43c8ea5ffad5e5b601ff3f0ea9c313f963e31568a632b06318230b63537d7a",
+      "prompt": "professional editorial photograph, waist-up shot, three-quarter view from her left, of one late-20s adult woman, age-29 facial appearance, adult woman in her late twenties, smooth skin with natural texture, soft but defined features, contemporary adult styling, soft oval face, gentle cheekbones, arched brows, light freckling across the nose, long auburn, natural wave, side part hair, green eyes, fair, warm undertone, light freckles, slim, graceful posture, wearing olive silk blouse, blurred city street, overcast daylight, sharp focus, photorealistic, solo, exactly one person",
+      "negativePromptExtra": "gray or silver hair, blonde hair, deep facial wrinkles, crow's feet, nasolabial folds, sagging skin, middle-aged or elderly appearance, matronly or older-looking styling",
+      "variation": {
+        "angle": "three-quarter view from her left",
+        "light": "overcast daylight",
+        "wardrobe": "olive silk blouse",
+        "background": "blurred city street",
+        "framing": "waist-up shot"
+      },
+      "outputPath": "Q:/AI/training/iris/v1/candidates-r2/iris-r2c10-s600009.png",
+      "sha256": "bee218e3bb6f7b864993aa2a69a02961114157e1e095fd3fbc79ba79f6bc59d1",
+      "approval": {
+        "status": "pending",
+        "approvedBy": null,
+        "at": null,
+        "rejectedReason": null
+      }
+    },
+    {
+      "candidateId": "iris-r2c11",
+      "round": 2,
+      "seed": 600010,
+      "workflowHash": "99137f5a75bd126a3d97850f4a722ee2facea2a7a76c899c4d1a0c91a5a2b7b5",
+      "prompt": "professional editorial photograph, head and shoulders portrait, three-quarter view from her right, of one late-20s adult woman, age-29 facial appearance, adult woman in her late twenties, smooth skin with natural texture, soft but defined features, contemporary adult styling, soft oval face, gentle cheekbones, arched brows, light freckling across the nose, long auburn, natural wave, side part hair, green eyes, fair, warm undertone, light freckles, slim, graceful posture, wearing cream knit sweater, soft interior, warm tones, overcast daylight, sharp focus, photorealistic, solo, exactly one person",
+      "negativePromptExtra": "gray or silver hair, blonde hair, deep facial wrinkles, crow's feet, nasolabial folds, sagging skin, middle-aged or elderly appearance, matronly or older-looking styling",
+      "variation": {
+        "angle": "three-quarter view from her right",
+        "light": "overcast daylight",
+        "wardrobe": "cream knit sweater",
+        "background": "soft interior, warm tones",
+        "framing": "head and shoulders portrait"
+      },
+      "outputPath": "Q:/AI/training/iris/v1/candidates-r2/iris-r2c11-s600010.png",
+      "sha256": "bd5172442cc989039c5d4620d129f0ac2b95ce6f282299d20b590ad7ccb136d0",
+      "approval": {
+        "status": "pending",
+        "approvedBy": null,
+        "at": null,
+        "rejectedReason": null
+      }
+    },
+    {
+      "candidateId": "iris-r2c12",
+      "round": 2,
+      "seed": 600011,
+      "workflowHash": "a4a652a47571ea56d13a34607af66c758a59df7e0a3fdb3556025117a1930d89",
+      "prompt": "professional editorial photograph, full body shot, profile view, of one late-20s adult woman, age-29 facial appearance, adult woman in her late twenties, smooth skin with natural texture, soft but defined features, contemporary adult styling, soft oval face, gentle cheekbones, arched brows, light freckling across the nose, long auburn, natural wave, side part hair, green eyes, fair, warm undertone, light freckles, slim, graceful posture, wearing rust-toned wrap dress, leafy outdoor background, overcast daylight, sharp focus, photorealistic, solo, exactly one person",
+      "negativePromptExtra": "gray or silver hair, blonde hair, deep facial wrinkles, crow's feet, nasolabial folds, sagging skin, middle-aged or elderly appearance, matronly or older-looking styling",
+      "variation": {
+        "angle": "profile view",
+        "light": "overcast daylight",
+        "wardrobe": "rust-toned wrap dress",
+        "background": "leafy outdoor background",
+        "framing": "full body shot"
+      },
+      "outputPath": "Q:/AI/training/iris/v1/candidates-r2/iris-r2c12-s600011.png",
+      "sha256": "0323cb403d0bf3322fdfc293ed7e3b00d99f979200294b6c9799f3636766f586",
+      "approval": {
+        "status": "pending",
+        "approvedBy": null,
+        "at": null,
+        "rejectedReason": null
+      }
+    },
+    {
+      "candidateId": "iris-r2c13",
+      "round": 2,
+      "seed": 600012,
+      "workflowHash": "e7ff1e5b7f9af2567886080cf1e4f480ea80884b5ecd23637234a5842094f9c1",
+      "prompt": "professional editorial photograph, head and shoulders portrait, frontal portrait, looking at camera, of one late-20s adult woman, age-29 facial appearance, adult woman in her late twenties, smooth skin with natural texture, soft but defined features, contemporary adult styling, soft oval face, gentle cheekbones, arched brows, light freckling across the nose, long auburn, natural wave, side part hair, green eyes, fair, warm undertone, light freckles, slim, graceful posture, wearing olive silk blouse, neutral studio backdrop, soft studio lighting, sharp focus, photorealistic, solo, exactly one person",
+      "negativePromptExtra": "gray or silver hair, blonde hair, deep facial wrinkles, crow's feet, nasolabial folds, sagging skin, middle-aged or elderly appearance, matronly or older-looking styling",
+      "variation": {
+        "angle": "frontal portrait, looking at camera",
+        "light": "soft studio lighting",
+        "wardrobe": "olive silk blouse",
+        "background": "neutral studio backdrop",
+        "framing": "head and shoulders portrait"
+      },
+      "outputPath": "Q:/AI/training/iris/v1/candidates-r2/iris-r2c13-s600012.png",
+      "sha256": "544fafdde26ab2977fd2fe42881b8fc8fe37c72543e9d8a6603b4bfd7e712ae9",
+      "approval": {
+        "status": "pending",
+        "approvedBy": null,
+        "at": null,
+        "rejectedReason": null
+      }
+    },
+    {
+      "candidateId": "iris-r2c14",
+      "round": 2,
+      "seed": 600013,
+      "workflowHash": "d5454ed90816d246d536347fd87c5f2439754967faf50b06da46b3d79332cf3f",
+      "prompt": "professional editorial photograph, waist-up shot, three-quarter view from her left, of one late-20s adult woman, age-29 facial appearance, adult woman in her late twenties, smooth skin with natural texture, soft but defined features, contemporary adult styling, soft oval face, gentle cheekbones, arched brows, light freckling across the nose, long auburn, natural wave, side part hair, green eyes, fair, warm undertone, light freckles, slim, graceful posture, wearing cream knit sweater, blurred city street, soft studio lighting, sharp focus, photorealistic, solo, exactly one person",
+      "negativePromptExtra": "gray or silver hair, blonde hair, deep facial wrinkles, crow's feet, nasolabial folds, sagging skin, middle-aged or elderly appearance, matronly or older-looking styling",
+      "variation": {
+        "angle": "three-quarter view from her left",
+        "light": "soft studio lighting",
+        "wardrobe": "cream knit sweater",
+        "background": "blurred city street",
+        "framing": "waist-up shot"
+      },
+      "outputPath": "Q:/AI/training/iris/v1/candidates-r2/iris-r2c14-s600013.png",
+      "sha256": "22e1f57cab3ac180ea3a42089b6d8e800d75abb672fb6f6f5f2ec9493a872c7f",
+      "approval": {
+        "status": "pending",
+        "approvedBy": null,
+        "at": null,
+        "rejectedReason": null
+      }
+    },
+    {
+      "candidateId": "iris-r2c15",
+      "round": 2,
+      "seed": 600014,
+      "workflowHash": "cc8c09a20768994f7a6ea0bb3cde6dadcd568a5c6fe6ed6b47e299a24fd7b69f",
+      "prompt": "professional editorial photograph, head and shoulders portrait, three-quarter view from her right, of one late-20s adult woman, age-29 facial appearance, adult woman in her late twenties, smooth skin with natural texture, soft but defined features, contemporary adult styling, soft oval face, gentle cheekbones, arched brows, light freckling across the nose, long auburn, natural wave, side part hair, green eyes, fair, warm undertone, light freckles, slim, graceful posture, wearing rust-toned wrap dress, soft interior, warm tones, soft studio lighting, sharp focus, photorealistic, solo, exactly one person",
+      "negativePromptExtra": "gray or silver hair, blonde hair, deep facial wrinkles, crow's feet, nasolabial folds, sagging skin, middle-aged or elderly appearance, matronly or older-looking styling",
+      "variation": {
+        "angle": "three-quarter view from her right",
+        "light": "soft studio lighting",
+        "wardrobe": "rust-toned wrap dress",
+        "background": "soft interior, warm tones",
+        "framing": "head and shoulders portrait"
+      },
+      "outputPath": "Q:/AI/training/iris/v1/candidates-r2/iris-r2c15-s600014.png",
+      "sha256": "02b7bad417501c5502cb90020eb61c8951a4824e517374d4c0bade43e0b564a5",
+      "approval": {
+        "status": "pending",
+        "approvedBy": null,
+        "at": null,
+        "rejectedReason": null
+      }
+    },
+    {
+      "candidateId": "iris-r2c16",
+      "round": 2,
+      "seed": 600015,
+      "workflowHash": "0e15e2eb644ee8b4003fd95122c0d34c40dd1b83500f385084386a1ea3bf1a05",
+      "prompt": "professional editorial photograph, full body shot, profile view, of one late-20s adult woman, age-29 facial appearance, adult woman in her late twenties, smooth skin with natural texture, soft but defined features, contemporary adult styling, soft oval face, gentle cheekbones, arched brows, light freckling across the nose, long auburn, natural wave, side part hair, green eyes, fair, warm undertone, light freckles, slim, graceful posture, wearing olive silk blouse, leafy outdoor background, soft studio lighting, sharp focus, photorealistic, solo, exactly one person",
+      "negativePromptExtra": "gray or silver hair, blonde hair, deep facial wrinkles, crow's feet, nasolabial folds, sagging skin, middle-aged or elderly appearance, matronly or older-looking styling",
+      "variation": {
+        "angle": "profile view",
+        "light": "soft studio lighting",
+        "wardrobe": "olive silk blouse",
+        "background": "leafy outdoor background",
+        "framing": "full body shot"
+      },
+      "outputPath": "Q:/AI/training/iris/v1/candidates-r2/iris-r2c16-s600015.png",
+      "sha256": "0b230ac6bfe55ca009ae6fab226a4c5e6e1972c235a6a41fcc9be507663042d3",
+      "approval": {
+        "status": "pending",
+        "approvedBy": null,
+        "at": null,
+        "rejectedReason": null
+      }
+    },
+    {
+      "candidateId": "iris-r2c17",
+      "round": 2,
+      "seed": 600016,
+      "workflowHash": "1427842be6cf2bb9bb69548dd300334c357c443607a82e2adf020c514e953f99",
+      "prompt": "professional editorial photograph, head and shoulders portrait, frontal portrait, looking at camera, of one late-20s adult woman, age-29 facial appearance, adult woman in her late twenties, smooth skin with natural texture, soft but defined features, contemporary adult styling, soft oval face, gentle cheekbones, arched brows, light freckling across the nose, long auburn, natural wave, side part hair, green eyes, fair, warm undertone, light freckles, slim, graceful posture, wearing cream knit sweater, neutral studio backdrop, golden hour window light, sharp focus, photorealistic, solo, exactly one person",
+      "negativePromptExtra": "gray or silver hair, blonde hair, deep facial wrinkles, crow's feet, nasolabial folds, sagging skin, middle-aged or elderly appearance, matronly or older-looking styling",
+      "variation": {
+        "angle": "frontal portrait, looking at camera",
+        "light": "golden hour window light",
+        "wardrobe": "cream knit sweater",
+        "background": "neutral studio backdrop",
+        "framing": "head and shoulders portrait"
+      },
+      "outputPath": "Q:/AI/training/iris/v1/candidates-r2/iris-r2c17-s600016.png",
+      "sha256": "46bf9b5471e327d8b8cca477bd6ae9d4ff4f78e70ce8fbcd49c480bb5b9d3982",
+      "approval": {
+        "status": "pending",
+        "approvedBy": null,
+        "at": null,
+        "rejectedReason": null
+      }
+    },
+    {
+      "candidateId": "iris-r2c18",
+      "round": 2,
+      "seed": 600017,
+      "workflowHash": "fdbe73db5a65fae55795d7fb48110b4e15730f35b1bb96ee9cc7d29e42b230d9",
+      "prompt": "professional editorial photograph, waist-up shot, three-quarter view from her left, of one late-20s adult woman, age-29 facial appearance, adult woman in her late twenties, smooth skin with natural texture, soft but defined features, contemporary adult styling, soft oval face, gentle cheekbones, arched brows, light freckling across the nose, long auburn, natural wave, side part hair, green eyes, fair, warm undertone, light freckles, slim, graceful posture, wearing rust-toned wrap dress, blurred city street, golden hour window light, sharp focus, photorealistic, solo, exactly one person",
+      "negativePromptExtra": "gray or silver hair, blonde hair, deep facial wrinkles, crow's feet, nasolabial folds, sagging skin, middle-aged or elderly appearance, matronly or older-looking styling",
+      "variation": {
+        "angle": "three-quarter view from her left",
+        "light": "golden hour window light",
+        "wardrobe": "rust-toned wrap dress",
+        "background": "blurred city street",
+        "framing": "waist-up shot"
+      },
+      "outputPath": "Q:/AI/training/iris/v1/candidates-r2/iris-r2c18-s600017.png",
+      "sha256": "435ba920291fb3f5dd8ee23197fbac759b7462cebe9cdc8561fe606bcb1e611a",
+      "approval": {
+        "status": "pending",
+        "approvedBy": null,
+        "at": null,
+        "rejectedReason": null
+      }
+    },
+    {
+      "candidateId": "iris-r2c19",
+      "round": 2,
+      "seed": 600018,
+      "workflowHash": "53f735df28d210d8b34fd69fc4a121d0fd7967c4355c513f148e4b9df2e59c38",
+      "prompt": "professional editorial photograph, head and shoulders portrait, three-quarter view from her right, of one late-20s adult woman, age-29 facial appearance, adult woman in her late twenties, smooth skin with natural texture, soft but defined features, contemporary adult styling, soft oval face, gentle cheekbones, arched brows, light freckling across the nose, long auburn, natural wave, side part hair, green eyes, fair, warm undertone, light freckles, slim, graceful posture, wearing olive silk blouse, soft interior, warm tones, golden hour window light, sharp focus, photorealistic, solo, exactly one person",
+      "negativePromptExtra": "gray or silver hair, blonde hair, deep facial wrinkles, crow's feet, nasolabial folds, sagging skin, middle-aged or elderly appearance, matronly or older-looking styling",
+      "variation": {
+        "angle": "three-quarter view from her right",
+        "light": "golden hour window light",
+        "wardrobe": "olive silk blouse",
+        "background": "soft interior, warm tones",
+        "framing": "head and shoulders portrait"
+      },
+      "outputPath": "Q:/AI/training/iris/v1/candidates-r2/iris-r2c19-s600018.png",
+      "sha256": "d11d4e405e6fe5d49ef14046e2ee2775f4c5f19869b6570bf829b3521f8ceaea",
+      "approval": {
+        "status": "pending",
+        "approvedBy": null,
+        "at": null,
+        "rejectedReason": null
+      }
+    },
+    {
+      "candidateId": "iris-r2c20",
+      "round": 2,
+      "seed": 600019,
+      "workflowHash": "adafadc37ae9806ddc8e783e067b73f1e827803c084275b442cf905854cc3dfa",
+      "prompt": "professional editorial photograph, full body shot, profile view, of one late-20s adult woman, age-29 facial appearance, adult woman in her late twenties, smooth skin with natural texture, soft but defined features, contemporary adult styling, soft oval face, gentle cheekbones, arched brows, light freckling across the nose, long auburn, natural wave, side part hair, green eyes, fair, warm undertone, light freckles, slim, graceful posture, wearing cream knit sweater, leafy outdoor background, golden hour window light, sharp focus, photorealistic, solo, exactly one person",
+      "negativePromptExtra": "gray or silver hair, blonde hair, deep facial wrinkles, crow's feet, nasolabial folds, sagging skin, middle-aged or elderly appearance, matronly or older-looking styling",
+      "variation": {
+        "angle": "profile view",
+        "light": "golden hour window light",
+        "wardrobe": "cream knit sweater",
+        "background": "leafy outdoor background",
+        "framing": "full body shot"
+      },
+      "outputPath": "Q:/AI/training/iris/v1/candidates-r2/iris-r2c20-s600019.png",
+      "sha256": "b94ca5da48159ce4003392c411d8a9f5bc4ffe6f74060df1502438cbb3780bb6",
+      "approval": {
+        "status": "pending",
+        "approvedBy": null,
+        "at": null,
+        "rejectedReason": null
+      }
+    },
+    {
+      "candidateId": "iris-r2c21",
+      "round": 2,
+      "seed": 600020,
+      "workflowHash": "1ecfae7cb43de2d4d92c20f4ebc198fd5b37554ce61780ec6501e0e0d0fa0f11",
+      "prompt": "professional editorial photograph, head and shoulders portrait, frontal portrait, looking at camera, of one late-20s adult woman, age-29 facial appearance, adult woman in her late twenties, smooth skin with natural texture, soft but defined features, contemporary adult styling, soft oval face, gentle cheekbones, arched brows, light freckling across the nose, long auburn, natural wave, side part hair, green eyes, fair, warm undertone, light freckles, slim, graceful posture, wearing rust-toned wrap dress, neutral studio backdrop, overcast daylight, sharp focus, photorealistic, solo, exactly one person",
+      "negativePromptExtra": "gray or silver hair, blonde hair, deep facial wrinkles, crow's feet, nasolabial folds, sagging skin, middle-aged or elderly appearance, matronly or older-looking styling",
+      "variation": {
+        "angle": "frontal portrait, looking at camera",
+        "light": "overcast daylight",
+        "wardrobe": "rust-toned wrap dress",
+        "background": "neutral studio backdrop",
+        "framing": "head and shoulders portrait"
+      },
+      "outputPath": "Q:/AI/training/iris/v1/candidates-r2/iris-r2c21-s600020.png",
+      "sha256": "6346af6997fdc474650b64da948af3c56be936b8825febba9d4e16762d4a7a5e",
+      "approval": {
+        "status": "pending",
+        "approvedBy": null,
+        "at": null,
+        "rejectedReason": null
+      }
+    },
+    {
+      "candidateId": "iris-r2c22",
+      "round": 2,
+      "seed": 600021,
+      "workflowHash": "9e8cb18bf3003de434d516dbcb5561db8b150dc41a955bc7719d378f8fd19a43",
+      "prompt": "professional editorial photograph, waist-up shot, three-quarter view from her left, of one late-20s adult woman, age-29 facial appearance, adult woman in her late twenties, smooth skin with natural texture, soft but defined features, contemporary adult styling, soft oval face, gentle cheekbones, arched brows, light freckling across the nose, long auburn, natural wave, side part hair, green eyes, fair, warm undertone, light freckles, slim, graceful posture, wearing olive silk blouse, blurred city street, overcast daylight, sharp focus, photorealistic, solo, exactly one person",
+      "negativePromptExtra": "gray or silver hair, blonde hair, deep facial wrinkles, crow's feet, nasolabial folds, sagging skin, middle-aged or elderly appearance, matronly or older-looking styling",
+      "variation": {
+        "angle": "three-quarter view from her left",
+        "light": "overcast daylight",
+        "wardrobe": "olive silk blouse",
+        "background": "blurred city street",
+        "framing": "waist-up shot"
+      },
+      "outputPath": "Q:/AI/training/iris/v1/candidates-r2/iris-r2c22-s600021.png",
+      "sha256": "6ef6ad011eb8c479182711698888b2293a2982b8121545351a01bc11f55b00bb",
+      "approval": {
+        "status": "pending",
+        "approvedBy": null,
+        "at": null,
+        "rejectedReason": null
+      }
+    },
+    {
+      "candidateId": "iris-r2c23",
+      "round": 2,
+      "seed": 600022,
+      "workflowHash": "67ba8e165bc85e3139f85d5e5e105ad4e2e0dc8d2e0a8a3a539ca66ac1884c13",
+      "prompt": "professional editorial photograph, head and shoulders portrait, three-quarter view from her right, of one late-20s adult woman, age-29 facial appearance, adult woman in her late twenties, smooth skin with natural texture, soft but defined features, contemporary adult styling, soft oval face, gentle cheekbones, arched brows, light freckling across the nose, long auburn, natural wave, side part hair, green eyes, fair, warm undertone, light freckles, slim, graceful posture, wearing cream knit sweater, soft interior, warm tones, overcast daylight, sharp focus, photorealistic, solo, exactly one person",
+      "negativePromptExtra": "gray or silver hair, blonde hair, deep facial wrinkles, crow's feet, nasolabial folds, sagging skin, middle-aged or elderly appearance, matronly or older-looking styling",
+      "variation": {
+        "angle": "three-quarter view from her right",
+        "light": "overcast daylight",
+        "wardrobe": "cream knit sweater",
+        "background": "soft interior, warm tones",
+        "framing": "head and shoulders portrait"
+      },
+      "outputPath": "Q:/AI/training/iris/v1/candidates-r2/iris-r2c23-s600022.png",
+      "sha256": "972eef380e899433c5ab30e99f582cd01076d8e4266328dfd421cdb27063685a",
+      "approval": {
+        "status": "pending",
+        "approvedBy": null,
+        "at": null,
+        "rejectedReason": null
+      }
+    },
+    {
+      "candidateId": "iris-r2c24",
+      "round": 2,
+      "seed": 600023,
+      "workflowHash": "278bfeef5e5fe0ac66ceddb9b2a77883f01167978f8d233c16f2c87a02b984db",
+      "prompt": "professional editorial photograph, full body shot, profile view, of one late-20s adult woman, age-29 facial appearance, adult woman in her late twenties, smooth skin with natural texture, soft but defined features, contemporary adult styling, soft oval face, gentle cheekbones, arched brows, light freckling across the nose, long auburn, natural wave, side part hair, green eyes, fair, warm undertone, light freckles, slim, graceful posture, wearing rust-toned wrap dress, leafy outdoor background, overcast daylight, sharp focus, photorealistic, solo, exactly one person",
+      "negativePromptExtra": "gray or silver hair, blonde hair, deep facial wrinkles, crow's feet, nasolabial folds, sagging skin, middle-aged or elderly appearance, matronly or older-looking styling",
+      "variation": {
+        "angle": "profile view",
+        "light": "overcast daylight",
+        "wardrobe": "rust-toned wrap dress",
+        "background": "leafy outdoor background",
+        "framing": "full body shot"
+      },
+      "outputPath": "Q:/AI/training/iris/v1/candidates-r2/iris-r2c24-s600023.png",
+      "sha256": "0c484f8a1511032710880923515c6280f433e4768a6aced15f3191b99467aded",
+      "approval": {
+        "status": "pending",
+        "approvedBy": null,
+        "at": null,
+        "rejectedReason": null
+      }
+    }
+  ]
+}

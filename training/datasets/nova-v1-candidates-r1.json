@@ -1,0 +1,527 @@
+{
+  "characterId": "nova",
+  "characterVersion": 1,
+  "specHash": "851ea3d175a8ba24015caa2f360093f72640397f070189d44d52a14244e15657",
+  "specStatus": "approved-by-Trey",
+  "triggerToken": "novaident",
+  "generatedAt": "2026-08-18T21:13:55.623Z",
+  "note": "CANDIDATES ONLY - nothing here is approved; Trey reviews and marks approved/rejected before any manifest entry becomes training data",
+  "candidates": [
+    {
+      "candidateId": "nova-c01",
+      "seed": 500000,
+      "workflowHash": "84976278bcd8aea4c9855235f5debc745c41d6d1733046b6cb350b1c235afd03",
+      "prompt": "professional photograph, head and shoulders portrait, frontal portrait, looking at camera, of one adult woman, age 27, angular face, high cheekbones, strong jawline, defined brows, jet black, undercut on left side, longer sweep to the right hair, gray eyes, fair, cool undertone, athletic, small circuit-board tattoo on left forearm, wearing black techwear jacket, neutral studio backdrop, soft studio lighting, sharp focus, photorealistic, solo, exactly one person",
+      "variation": {
+        "angle": "frontal portrait, looking at camera",
+        "light": "soft studio lighting",
+        "wardrobe": "black techwear jacket",
+        "background": "neutral studio backdrop",
+        "framing": "head and shoulders portrait"
+      },
+      "outputPath": "Q:/AI/training/nova/v1/candidates/nova-c01-s500000.png",
+      "sha256": "3e74dd144763a91583c105b1fa482770dd75a19ddb9a2fe0192065792f262d00",
+      "approval": {
+        "status": "rejected",
+        "approvedBy": null,
+        "at": "2026-08-18T14:09:13-07:00",
+        "rejectedReason": "age-presentation mismatch: reads substantially older than approved canon age"
+      }
+    },
+    {
+      "candidateId": "nova-c02",
+      "seed": 500001,
+      "workflowHash": "2574c13caf4971c40cf31806827ba6c53a7cc07bf9dfd759130ebe590ffcdcb0",
+      "prompt": "professional photograph, waist-up shot, three-quarter view from her left, of one adult woman, age 27, angular face, high cheekbones, strong jawline, defined brows, jet black, undercut on left side, longer sweep to the right hair, gray eyes, fair, cool undertone, athletic, small circuit-board tattoo on left forearm, wearing charcoal fitted turtleneck, blurred city street, soft studio lighting, sharp focus, photorealistic, solo, exactly one person",
+      "variation": {
+        "angle": "three-quarter view from her left",
+        "light": "soft studio lighting",
+        "wardrobe": "charcoal fitted turtleneck",
+        "background": "blurred city street",
+        "framing": "waist-up shot"
+      },
+      "outputPath": "Q:/AI/training/nova/v1/candidates/nova-c02-s500001.png",
+      "sha256": "03576fa292295062773ec044f388ee3ebd906d39e25f76730608d86246d71eb9",
+      "approval": {
+        "status": "rejected",
+        "approvedBy": null,
+        "at": "2026-08-18T14:09:13-07:00",
+        "rejectedReason": "age-presentation mismatch: reads substantially older than approved canon age"
+      }
+    },
+    {
+      "candidateId": "nova-c03",
+      "seed": 500002,
+      "workflowHash": "62144db025a6f01c4dd6cf54d6417c8327e49d7fb428ea728cf375ae9e6e32b0",
+      "prompt": "professional photograph, head and shoulders portrait, three-quarter view from her right, of one adult woman, age 27, angular face, high cheekbones, strong jawline, defined brows, jet black, undercut on left side, longer sweep to the right hair, gray eyes, fair, cool undertone, athletic, small circuit-board tattoo on left forearm, wearing dark utility vest over black tee, soft interior, warm tones, soft studio lighting, sharp focus, photorealistic, solo, exactly one person",
+      "variation": {
+        "angle": "three-quarter view from her right",
+        "light": "soft studio lighting",
+        "wardrobe": "dark utility vest over black tee",
+        "background": "soft interior, warm tones",
+        "framing": "head and shoulders portrait"
+      },
+      "outputPath": "Q:/AI/training/nova/v1/candidates/nova-c03-s500002.png",
+      "sha256": "be21c7dd95a833f66974f92490b24db48cd9f1410a42dff4e28f5f9a901cc697",
+      "approval": {
+        "status": "rejected",
+        "approvedBy": null,
+        "at": "2026-08-18T14:09:13-07:00",
+        "rejectedReason": "age-presentation mismatch: reads substantially older than approved canon age"
+      }
+    },
+    {
+      "candidateId": "nova-c04",
+      "seed": 500003,
+      "workflowHash": "2570b94e1232174e68b5e99bcf6d5451cf9c5d118e47b2b75792d7015c873a91",
+      "prompt": "professional photograph, full body shot, profile view, of one adult woman, age 27, angular face, high cheekbones, strong jawline, defined brows, jet black, undercut on left side, longer sweep to the right hair, gray eyes, fair, cool undertone, athletic, small circuit-board tattoo on left forearm, wearing black techwear jacket, leafy outdoor background, soft studio lighting, sharp focus, photorealistic, solo, exactly one person",
+      "variation": {
+        "angle": "profile view",
+        "light": "soft studio lighting",
+        "wardrobe": "black techwear jacket",
+        "background": "leafy outdoor background",
+        "framing": "full body shot"
+      },
+      "outputPath": "Q:/AI/training/nova/v1/candidates/nova-c04-s500003.png",
+      "sha256": "9f133038e9f5927aada588a8ae92b32b539b56cdefd55dce818b558f819f391a",
+      "approval": {
+        "status": "rejected",
+        "approvedBy": null,
+        "at": "2026-08-18T14:09:13-07:00",
+        "rejectedReason": "age-presentation mismatch: reads substantially older than approved canon age"
+      }
+    },
+    {
+      "candidateId": "nova-c05",
+      "seed": 500004,
+      "workflowHash": "740545eb75ce2c1dd9cd9398f34c4fea941b0a67fbf0f5886aafb7122e05faac",
+      "prompt": "professional photograph, head and shoulders portrait, frontal portrait, looking at camera, of one adult woman, age 27, angular face, high cheekbones, strong jawline, defined brows, jet black, undercut on left side, longer sweep to the right hair, gray eyes, fair, cool undertone, athletic, small circuit-board tattoo on left forearm, wearing charcoal fitted turtleneck, neutral studio backdrop, golden hour window light, sharp focus, photorealistic, solo, exactly one person",
+      "variation": {
+        "angle": "frontal portrait, looking at camera",
+        "light": "golden hour window light",
+        "wardrobe": "charcoal fitted turtleneck",
+        "background": "neutral studio backdrop",
+        "framing": "head and shoulders portrait"
+      },
+      "outputPath": "Q:/AI/training/nova/v1/candidates/nova-c05-s500004.png",
+      "sha256": "ee201648683d1eb1c15682e6d9c22b5511115539fd4a69d37ccf15750fb0f6c7",
+      "approval": {
+        "status": "rejected",
+        "approvedBy": null,
+        "at": "2026-08-18T14:09:13-07:00",
+        "rejectedReason": "age-presentation mismatch: reads substantially older than approved canon age"
+      }
+    },
+    {
+      "candidateId": "nova-c06",
+      "seed": 500005,
+      "workflowHash": "0a05b6415b8962df8e6bda3b10f0457073b58226487dd7967b2b09888aa8fb5d",
+      "prompt": "professional photograph, waist-up shot, three-quarter view from her left, of one adult woman, age 27, angular face, high cheekbones, strong jawline, defined brows, jet black, undercut on left side, longer sweep to the right hair, gray eyes, fair, cool undertone, athletic, small circuit-board tattoo on left forearm, wearing dark utility vest over black tee, blurred city street, golden hour window light, sharp focus, photorealistic, solo, exactly one person",
+      "variation": {
+        "angle": "three-quarter view from her left",
+        "light": "golden hour window light",
+        "wardrobe": "dark utility vest over black tee",
+        "background": "blurred city street",
+        "framing": "waist-up shot"
+      },
+      "outputPath": "Q:/AI/training/nova/v1/candidates/nova-c06-s500005.png",
+      "sha256": "715d066a7f00fc1d65bfaa61d5f8b7f5f988101a970fd68699624218b560bab2",
+      "approval": {
+        "status": "rejected",
+        "approvedBy": null,
+        "at": "2026-08-18T14:09:13-07:00",
+        "rejectedReason": "age-presentation mismatch: reads substantially older than approved canon age"
+      }
+    },
+    {
+      "candidateId": "nova-c07",
+      "seed": 500006,
+      "workflowHash": "9f0febfc9ea64a1318577d2d680a160bfaf6ff9b31272acda8d1dbb11b1f6b2f",
+      "prompt": "professional photograph, head and shoulders portrait, three-quarter view from her right, of one adult woman, age 27, angular face, high cheekbones, strong jawline, defined brows, jet black, undercut on left side, longer sweep to the right hair, gray eyes, fair, cool undertone, athletic, small circuit-board tattoo on left forearm, wearing black techwear jacket, soft interior, warm tones, golden hour window light, sharp focus, photorealistic, solo, exactly one person",
+      "variation": {
+        "angle": "three-quarter view from her right",
+        "light": "golden hour window light",
+        "wardrobe": "black techwear jacket",
+        "background": "soft interior, warm tones",
+        "framing": "head and shoulders portrait"
+      },
+      "outputPath": "Q:/AI/training/nova/v1/candidates/nova-c07-s500006.png",
+      "sha256": "3ea627d5768d2d7f5566d472b261ba159a7df9aa7380104984adcf107cdd9c4c",
+      "approval": {
+        "status": "rejected",
+        "approvedBy": null,
+        "at": "2026-08-18T14:09:13-07:00",
+        "rejectedReason": "age-presentation mismatch: reads substantially older than approved canon age"
+      }
+    },
+    {
+      "candidateId": "nova-c08",
+      "seed": 500007,
+      "workflowHash": "70765bc378ecd136f19f28b446093e78476664a315e455342b4fb218e139cb6d",
+      "prompt": "professional photograph, full body shot, profile view, of one adult woman, age 27, angular face, high cheekbones, strong jawline, defined brows, jet black, undercut on left side, longer sweep to the right hair, gray eyes, fair, cool undertone, athletic, small circuit-board tattoo on left forearm, wearing charcoal fitted turtleneck, leafy outdoor background, golden hour window light, sharp focus, photorealistic, solo, exactly one person",
+      "variation": {
+        "angle": "profile view",
+        "light": "golden hour window light",
+        "wardrobe": "charcoal fitted turtleneck",
+        "background": "leafy outdoor background",
+        "framing": "full body shot"
+      },
+      "outputPath": "Q:/AI/training/nova/v1/candidates/nova-c08-s500007.png",
+      "sha256": "1c621f832ab32db304237cd7c16376afc73f7c8cf3b6fa4f5d4b4afa5b996f21",
+      "approval": {
+        "status": "rejected",
+        "approvedBy": null,
+        "at": "2026-08-18T14:09:13-07:00",
+        "rejectedReason": "age-presentation mismatch: reads substantially older than approved canon age"
+      }
+    },
+    {
+      "candidateId": "nova-c09",
+      "seed": 500008,
+      "workflowHash": "1c4d67b204eb5f415cf4381485fa46267b53a22d24f310e5a424883d9bff3419",
+      "prompt": "professional photograph, head and shoulders portrait, frontal portrait, looking at camera, of one adult woman, age 27, angular face, high cheekbones, strong jawline, defined brows, jet black, undercut on left side, longer sweep to the right hair, gray eyes, fair, cool undertone, athletic, small circuit-board tattoo on left forearm, wearing dark utility vest over black tee, neutral studio backdrop, overcast daylight, sharp focus, photorealistic, solo, exactly one person",
+      "variation": {
+        "angle": "frontal portrait, looking at camera",
+        "light": "overcast daylight",
+        "wardrobe": "dark utility vest over black tee",
+        "background": "neutral studio backdrop",
+        "framing": "head and shoulders portrait"
+      },
+      "outputPath": "Q:/AI/training/nova/v1/candidates/nova-c09-s500008.png",
+      "sha256": "e5845ba98f69cd741e0b28e592f0152b8c27d0ea0e959918b4de8656139f6787",
+      "approval": {
+        "status": "rejected",
+        "approvedBy": null,
+        "at": "2026-08-18T14:09:13-07:00",
+        "rejectedReason": "age-presentation mismatch: reads substantially older than approved canon age"
+      }
+    },
+    {
+      "candidateId": "nova-c10",
+      "seed": 500009,
+      "workflowHash": "fcaa5d203e05a61100536565a4a7a1b9247eba65240e1c676d39101dd7e80fec",
+      "prompt": "professional photograph, waist-up shot, three-quarter view from her left, of one adult woman, age 27, angular face, high cheekbones, strong jawline, defined brows, jet black, undercut on left side, longer sweep to the right hair, gray eyes, fair, cool undertone, athletic, small circuit-board tattoo on left forearm, wearing black techwear jacket, blurred city street, overcast daylight, sharp focus, photorealistic, solo, exactly one person",
+      "variation": {
+        "angle": "three-quarter view from her left",
+        "light": "overcast daylight",
+        "wardrobe": "black techwear jacket",
+        "background": "blurred city street",
+        "framing": "waist-up shot"
+      },
+      "outputPath": "Q:/AI/training/nova/v1/candidates/nova-c10-s500009.png",
+      "sha256": "04cd6accb4484ba8da4d321b9b98ec7e0c89911edc4d6736fd894bb0953fe662",
+      "approval": {
+        "status": "rejected",
+        "approvedBy": null,
+        "at": "2026-08-18T14:09:13-07:00",
+        "rejectedReason": "age-presentation mismatch: reads substantially older than approved canon age"
+      }
+    },
+    {
+      "candidateId": "nova-c11",
+      "seed": 500010,
+      "workflowHash": "60aebfae6d94acc9e489d1bada13723abd21c5a2859c312723a1571bf8e8ae80",
+      "prompt": "professional photograph, head and shoulders portrait, three-quarter view from her right, of one adult woman, age 27, angular face, high cheekbones, strong jawline, defined brows, jet black, undercut on left side, longer sweep to the right hair, gray eyes, fair, cool undertone, athletic, small circuit-board tattoo on left forearm, wearing charcoal fitted turtleneck, soft interior, warm tones, overcast daylight, sharp focus, photorealistic, solo, exactly one person",
+      "variation": {
+        "angle": "three-quarter view from her right",
+        "light": "overcast daylight",
+        "wardrobe": "charcoal fitted turtleneck",
+        "background": "soft interior, warm tones",
+        "framing": "head and shoulders portrait"
+      },
+      "outputPath": "Q:/AI/training/nova/v1/candidates/nova-c11-s500010.png",
+      "sha256": "8fcd882f5e39fcb0ce2296ca01726bfa4da765cf0c80d263eac5b8026bbd0e12",
+      "approval": {
+        "status": "rejected",
+        "approvedBy": null,
+        "at": "2026-08-18T14:09:13-07:00",
+        "rejectedReason": "age-presentation mismatch: reads substantially older than approved canon age"
+      }
+    },
+    {
+      "candidateId": "nova-c12",
+      "seed": 500011,
+      "workflowHash": "e52fd1fccefa74db888e66dcef594b2179c613a035c11e5503aa116f2dfbc9af",
+      "prompt": "professional photograph, full body shot, profile view, of one adult woman, age 27, angular face, high cheekbones, strong jawline, defined brows, jet black, undercut on left side, longer sweep to the right hair, gray eyes, fair, cool undertone, athletic, small circuit-board tattoo on left forearm, wearing dark utility vest over black tee, leafy outdoor background, overcast daylight, sharp focus, photorealistic, solo, exactly one person",
+      "variation": {
+        "angle": "profile view",
+        "light": "overcast daylight",
+        "wardrobe": "dark utility vest over black tee",
+        "background": "leafy outdoor background",
+        "framing": "full body shot"
+      },
+      "outputPath": "Q:/AI/training/nova/v1/candidates/nova-c12-s500011.png",
+      "sha256": "0a33427c3d056b5230b710c363a9c90b92174b13ebba8fc403144eacca661b5e",
+      "approval": {
+        "status": "rejected",
+        "approvedBy": null,
+        "at": "2026-08-18T14:09:13-07:00",
+        "rejectedReason": "age-presentation mismatch: reads substantially older than approved canon age"
+      }
+    },
+    {
+      "candidateId": "nova-c13",
+      "seed": 500012,
+      "workflowHash": "012734fe76c630596c0f4df67a4efa7cddc1761074f61f65fa07733dcbe792ba",
+      "prompt": "professional photograph, head and shoulders portrait, frontal portrait, looking at camera, of one adult woman, age 27, angular face, high cheekbones, strong jawline, defined brows, jet black, undercut on left side, longer sweep to the right hair, gray eyes, fair, cool undertone, athletic, small circuit-board tattoo on left forearm, wearing black techwear jacket, neutral studio backdrop, soft studio lighting, sharp focus, photorealistic, solo, exactly one person",
+      "variation": {
+        "angle": "frontal portrait, looking at camera",
+        "light": "soft studio lighting",
+        "wardrobe": "black techwear jacket",
+        "background": "neutral studio backdrop",
+        "framing": "head and shoulders portrait"
+      },
+      "outputPath": "Q:/AI/training/nova/v1/candidates/nova-c13-s500012.png",
+      "sha256": "b3cea758f63a5d8a3b5cfea5f274fc29d30c119f9a10b022828e26154e33fa78",
+      "approval": {
+        "status": "rejected",
+        "approvedBy": null,
+        "at": "2026-08-18T14:09:13-07:00",
+        "rejectedReason": "age-presentation mismatch: reads substantially older than approved canon age"
+      }
+    },
+    {
+      "candidateId": "nova-c14",
+      "seed": 500013,
+      "workflowHash": "07f2d4ae8d7d26df21d2961202a5c3a708bc01c192fdfa2f0264f346be4bfaf0",
+      "prompt": "professional photograph, waist-up shot, three-quarter view from her left, of one adult woman, age 27, angular face, high cheekbones, strong jawline, defined brows, jet black, undercut on left side, longer sweep to the right hair, gray eyes, fair, cool undertone, athletic, small circuit-board tattoo on left forearm, wearing charcoal fitted turtleneck, blurred city street, soft studio lighting, sharp focus, photorealistic, solo, exactly one person",
+      "variation": {
+        "angle": "three-quarter view from her left",
+        "light": "soft studio lighting",
+        "wardrobe": "charcoal fitted turtleneck",
+        "background": "blurred city street",
+        "framing": "waist-up shot"
+      },
+      "outputPath": "Q:/AI/training/nova/v1/candidates/nova-c14-s500013.png",
+      "sha256": "d400fadece3f30876be1118af8eac6b8142d13c52daf98ff02d2c123ad24960d",
+      "approval": {
+        "status": "rejected",
+        "approvedBy": null,
+        "at": "2026-08-18T14:09:13-07:00",
+        "rejectedReason": "age-presentation mismatch: reads substantially older than approved canon age"
+      }
+    },
+    {
+      "candidateId": "nova-c15",
+      "seed": 500014,
+      "workflowHash": "cb6e7bdcbdf898db4d318b54980b4ce6ab45cb6a032aa28067db6b6f7a6ee8dd",
+      "prompt": "professional photograph, head and shoulders portrait, three-quarter view from her right, of one adult woman, age 27, angular face, high cheekbones, strong jawline, defined brows, jet black, undercut on left side, longer sweep to the right hair, gray eyes, fair, cool undertone, athletic, small circuit-board tattoo on left forearm, wearing dark utility vest over black tee, soft interior, warm tones, soft studio lighting, sharp focus, photorealistic, solo, exactly one person",
+      "variation": {
+        "angle": "three-quarter view from her right",
+        "light": "soft studio lighting",
+        "wardrobe": "dark utility vest over black tee",
+        "background": "soft interior, warm tones",
+        "framing": "head and shoulders portrait"
+      },
+      "outputPath": "Q:/AI/training/nova/v1/candidates/nova-c15-s500014.png",
+      "sha256": "ee3bbbb576e6a61c4b8bae8b6397c7b9a3cdc7b791988f3b2bdf70cffe73834b",
+      "approval": {
+        "status": "rejected",
+        "approvedBy": null,
+        "at": "2026-08-18T14:09:13-07:00",
+        "rejectedReason": "age-presentation mismatch: reads substantially older than approved canon age"
+      }
+    },
+    {
+      "candidateId": "nova-c16",
+      "seed": 500015,
+      "workflowHash": "4bf0c6b35c97ebe35a68ddd3015ef2727a95fb6d7d45ebe649ff5a6614c9da08",
+      "prompt": "professional photograph, full body shot, profile view, of one adult woman, age 27, angular face, high cheekbones, strong jawline, defined brows, jet black, undercut on left side, longer sweep to the right hair, gray eyes, fair, cool undertone, athletic, small circuit-board tattoo on left forearm, wearing black techwear jacket, leafy outdoor background, soft studio lighting, sharp focus, photorealistic, solo, exactly one person",
+      "variation": {
+        "angle": "profile view",
+        "light": "soft studio lighting",
+        "wardrobe": "black techwear jacket",
+        "background": "leafy outdoor background",
+        "framing": "full body shot"
+      },
+      "outputPath": "Q:/AI/training/nova/v1/candidates/nova-c16-s500015.png",
+      "sha256": "cf5ce8e0194d3b025ecf3672f8b0941866d97df8e7f3419bfe0a5df5d5880624",
+      "approval": {
+        "status": "rejected",
+        "approvedBy": null,
+        "at": "2026-08-18T14:09:13-07:00",
+        "rejectedReason": "age-presentation mismatch: reads substantially older than approved canon age"
+      }
+    },
+    {
+      "candidateId": "nova-c17",
+      "seed": 500016,
+      "workflowHash": "fff04eaf493b5eedef411eb77c489739fa188f283205dfc0c4704f60d54f8af3",
+      "prompt": "professional photograph, head and shoulders portrait, frontal portrait, looking at camera, of one adult woman, age 27, angular face, high cheekbones, strong jawline, defined brows, jet black, undercut on left side, longer sweep to the right hair, gray eyes, fair, cool undertone, athletic, small circuit-board tattoo on left forearm, wearing charcoal fitted turtleneck, neutral studio backdrop, golden hour window light, sharp focus, photorealistic, solo, exactly one person",
+      "variation": {
+        "angle": "frontal portrait, looking at camera",
+        "light": "golden hour window light",
+        "wardrobe": "charcoal fitted turtleneck",
+        "background": "neutral studio backdrop",
+        "framing": "head and shoulders portrait"
+      },
+      "outputPath": "Q:/AI/training/nova/v1/candidates/nova-c17-s500016.png",
+      "sha256": "bc1193fe6f1b935f7a38dd11425659adc6f79feccbeaa01d49fc18a66c07f500",
+      "approval": {
+        "status": "rejected",
+        "approvedBy": null,
+        "at": "2026-08-18T14:09:13-07:00",
+        "rejectedReason": "age-presentation mismatch: reads substantially older than approved canon age"
+      }
+    },
+    {
+      "candidateId": "nova-c18",
+      "seed": 500017,
+      "workflowHash": "9b66b2ca98dd1159430c476b53eccb312937ac3e2dd0f8c3f4dc1b7bab548052",
+      "prompt": "professional photograph, waist-up shot, three-quarter view from her left, of one adult woman, age 27, angular face, high cheekbones, strong jawline, defined brows, jet black, undercut on left side, longer sweep to the right hair, gray eyes, fair, cool undertone, athletic, small circuit-board tattoo on left forearm, wearing dark utility vest over black tee, blurred city street, golden hour window light, sharp focus, photorealistic, solo, exactly one person",
+      "variation": {
+        "angle": "three-quarter view from her left",
+        "light": "golden hour window light",
+        "wardrobe": "dark utility vest over black tee",
+        "background": "blurred city street",
+        "framing": "waist-up shot"
+      },
+      "outputPath": "Q:/AI/training/nova/v1/candidates/nova-c18-s500017.png",
+      "sha256": "ebaa596f30af0619a5fd02ab1892bd2a543f092cf7ed36f7b4ef030f1ff7caf0",
+      "approval": {
+        "status": "rejected",
+        "approvedBy": null,
+        "at": "2026-08-18T14:09:13-07:00",
+        "rejectedReason": "age-presentation mismatch: reads substantially older than approved canon age"
+      }
+    },
+    {
+      "candidateId": "nova-c19",
+      "seed": 500018,
+      "workflowHash": "d82fd6aee5c63b6ea931ad0ca98a12f6d70fcf3d211a3b7c456c0fbfcf8fe29d",
+      "prompt": "professional photograph, head and shoulders portrait, three-quarter view from her right, of one adult woman, age 27, angular face, high cheekbones, strong jawline, defined brows, jet black, undercut on left side, longer sweep to the right hair, gray eyes, fair, cool undertone, athletic, small circuit-board tattoo on left forearm, wearing black techwear jacket, soft interior, warm tones, golden hour window light, sharp focus, photorealistic, solo, exactly one person",
+      "variation": {
+        "angle": "three-quarter view from her right",
+        "light": "golden hour window light",
+        "wardrobe": "black techwear jacket",
+        "background": "soft interior, warm tones",
+        "framing": "head and shoulders portrait"
+      },
+      "outputPath": "Q:/AI/training/nova/v1/candidates/nova-c19-s500018.png",
+      "sha256": "0dee0554a8676b4257c41269cc5bd55012718c444ce878bc1fef7dc9d4a0198f",
+      "approval": {
+        "status": "rejected",
+        "approvedBy": null,
+        "at": "2026-08-18T14:09:13-07:00",
+        "rejectedReason": "age-presentation mismatch: reads substantially older than approved canon age"
+      }
+    },
+    {
+      "candidateId": "nova-c20",
+      "seed": 500019,
+      "workflowHash": "8f20882b7536b4fa508aca5c2a948d1962076987446bf0f2254407d07f9ddf44",
+      "prompt": "professional photograph, full body shot, profile view, of one adult woman, age 27, angular face, high cheekbones, strong jawline, defined brows, jet black, undercut on left side, longer sweep to the right hair, gray eyes, fair, cool undertone, athletic, small circuit-board tattoo on left forearm, wearing charcoal fitted turtleneck, leafy outdoor background, golden hour window light, sharp focus, photorealistic, solo, exactly one person",
+      "variation": {
+        "angle": "profile view",
+        "light": "golden hour window light",
+        "wardrobe": "charcoal fitted turtleneck",
+        "background": "leafy outdoor background",
+        "framing": "full body shot"
+      },
+      "outputPath": "Q:/AI/training/nova/v1/candidates/nova-c20-s500019.png",
+      "sha256": "d0b8008df84d72b2b616bfe67aff0c3665a0445dff3c4ccf2a1886f363c969cc",
+      "approval": {
+        "status": "rejected",
+        "approvedBy": null,
+        "at": "2026-08-18T14:09:13-07:00",
+        "rejectedReason": "age-presentation mismatch: reads substantially older than approved canon age"
+      }
+    },
+    {
+      "candidateId": "nova-c21",
+      "seed": 500020,
+      "workflowHash": "28d4df12c522a7e0cffc3f39a30f1cd5f028a59257a014db302700dd206ea747",
+      "prompt": "professional photograph, head and shoulders portrait, frontal portrait, looking at camera, of one adult woman, age 27, angular face, high cheekbones, strong jawline, defined brows, jet black, undercut on left side, longer sweep to the right hair, gray eyes, fair, cool undertone, athletic, small circuit-board tattoo on left forearm, wearing dark utility vest over black tee, neutral studio backdrop, overcast daylight, sharp focus, photorealistic, solo, exactly one person",
+      "variation": {
+        "angle": "frontal portrait, looking at camera",
+        "light": "overcast daylight",
+        "wardrobe": "dark utility vest over black tee",
+        "background": "neutral studio backdrop",
+        "framing": "head and shoulders portrait"
+      },
+      "outputPath": "Q:/AI/training/nova/v1/candidates/nova-c21-s500020.png",
+      "sha256": "235a59e50884b79943df31d3fdae069a39eab0177c7979ad4d6b0ee8dfa045b7",
+      "approval": {
+        "status": "rejected",
+        "approvedBy": null,
+        "at": "2026-08-18T14:09:13-07:00",
+        "rejectedReason": "age-presentation mismatch: reads substantially older than approved canon age"
+      }
+    },
+    {
+      "candidateId": "nova-c22",
+      "seed": 500021,
+      "workflowHash": "12508608dc48dcbaabad125210d44f6cd8cc0adca463939273b2ed50c7ca4202",
+      "prompt": "professional photograph, waist-up shot, three-quarter view from her left, of one adult woman, age 27, angular face, high cheekbones, strong jawline, defined brows, jet black, undercut on left side, longer sweep to the right hair, gray eyes, fair, cool undertone, athletic, small circuit-board tattoo on left forearm, wearing black techwear jacket, blurred city street, overcast daylight, sharp focus, photorealistic, solo, exactly one person",
+      "variation": {
+        "angle": "three-quarter view from her left",
+        "light": "overcast daylight",
+        "wardrobe": "black techwear jacket",
+        "background": "blurred city street",
+        "framing": "waist-up shot"
+      },
+      "outputPath": "Q:/AI/training/nova/v1/candidates/nova-c22-s500021.png",
+      "sha256": "23daeac70a9c267576d92fc71e82341ab81cd7b30e1ab9ff237bdb301b7589ec",
+      "approval": {
+        "status": "rejected",
+        "approvedBy": null,
+        "at": "2026-08-18T14:09:13-07:00",
+        "rejectedReason": "age-presentation mismatch: reads substantially older than approved canon age"
+      }
+    },
+    {
+      "candidateId": "nova-c23",
+      "seed": 500022,
+      "workflowHash": "5aa005e07331a5490cb87a622d1af68b8365aa7ba8b8ef36de70235c7171f3b2",
+      "prompt": "professional photograph, head and shoulders portrait, three-quarter view from her right, of one adult woman, age 27, angular face, high cheekbones, strong jawline, defined brows, jet black, undercut on left side, longer sweep to the right hair, gray eyes, fair, cool undertone, athletic, small circuit-board tattoo on left forearm, wearing charcoal fitted turtleneck, soft interior, warm tones, overcast daylight, sharp focus, photorealistic, solo, exactly one person",
+      "variation": {
+        "angle": "three-quarter view from her right",
+        "light": "overcast daylight",
+        "wardrobe": "charcoal fitted turtleneck",
+        "background": "soft interior, warm tones",
+        "framing": "head and shoulders portrait"
+      },
+      "outputPath": "Q:/AI/training/nova/v1/candidates/nova-c23-s500022.png",
+      "sha256": "4bd488e42f27bfd0bd23f5b2977d387555df014c60c366e175ec7c2a093d67ec",
+      "approval": {
+        "status": "rejected",
+        "approvedBy": null,
+        "at": "2026-08-18T14:09:13-07:00",
+        "rejectedReason": "age-presentation mismatch: reads substantially older than approved canon age"
+      }
+    },
+    {
+      "candidateId": "nova-c24",
+      "seed": 500023,
+      "workflowHash": "3b2786abfb8a372ed278e6acd78fda60a34dbf5021624f15d36a9af729af0ffc",
+      "prompt": "professional photograph, full body shot, profile view, of one adult woman, age 27, angular face, high cheekbones, strong jawline, defined brows, jet black, undercut on left side, longer sweep to the right hair, gray eyes, fair, cool undertone, athletic, small circuit-board tattoo on left forearm, wearing dark utility vest over black tee, leafy outdoor background, overcast daylight, sharp focus, photorealistic, solo, exactly one person",
+      "variation": {
+        "angle": "profile view",
+        "light": "overcast daylight",
+        "wardrobe": "dark utility vest over black tee",
+        "background": "leafy outdoor background",
+        "framing": "full body shot"
+      },
+      "outputPath": "Q:/AI/training/nova/v1/candidates/nova-c24-s500023.png",
+      "sha256": "0fe67e03a13efaeff3254ab976b505147699247550570dc6c50240e03c6708cd",
+      "approval": {
+        "status": "rejected",
+        "approvedBy": null,
+        "at": "2026-08-18T14:09:13-07:00",
+        "rejectedReason": "age-presentation mismatch: reads substantially older than approved canon age"
+      }
+    }
+  ],
+  "round": 1,
+  "batchStatus": "rejected-for-training",
+  "batchRejection": {
+    "rejectedBy": "Trey",
+    "at": "2026-08-18T14:09:13-07:00",
+    "reasons": [
+      "age-presentation mismatch",
+      "mature facial-aging drift",
+      "insufficient match to approved canon"
+    ],
+    "note": "No candidate from this batch may enter any training or evaluation split."
+  }
+}

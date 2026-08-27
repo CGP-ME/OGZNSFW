@@ -1,0 +1,55 @@
+{
+  "$schema": "../schemas/character-model-spec.schema.json",
+  "characterId": "nova",
+  "characterVersion": 1,
+  "triggerToken": "novaident",
+  "specStatus": "approved-by-Trey",
+  "approval": { "approvedBy": "Trey", "at": "2026-08-18T14:09:13-07:00", "note": "approved as written" },
+  "identityDescription": "Nova: fictional adult woman, 27. Sharp, confident presence; striking angular features.",
+  "consent": { "fictionalAdult": true, "age": 27, "basedOnRealPerson": false },
+  "agePresentation": {
+    "target": "late-20s adult woman, age-27 facial appearance",
+    "amendedBy": "Trey",
+    "at": "2026-08-18",
+    "reason": "Round-1 candidates read substantially older than canon age 27; numeric age is metadata, visual age presentation is a separate validation gate that must also pass",
+    "positiveCues": ["adult woman in her late twenties", "smooth skin with natural texture", "firm jawline", "contemporary adult styling"],
+    "forbiddenAgingCues": ["gray or silver hair", "deep facial wrinkles", "crow's feet", "nasolabial folds", "sagging skin", "middle-aged or elderly appearance", "matronly or older-looking styling"],
+    "note": "This constrains presentation DOWNWARD ONLY to the canonical adult age of 27 - never below adult. The pipeline's mandatory child/teenager negatives remain in force and cannot be overridden by any caller."
+  },
+  "invariantIdentity": {
+    "face": "angular face, high cheekbones, strong jawline, defined brows",
+    "hair": "jet black, undercut on left side, longer sweep to the right",
+    "eyes": "gray",
+    "complexion": "fair, cool undertone",
+    "build": "athletic",
+    "identifyingMarks": ["small circuit-board tattoo on left forearm"],
+    "notes": "These traits define WHO Nova is. The LoRA learns these and only these."
+  },
+  "allowedVariation": {
+    "expression": "any (teasing, serious, soft, laughing)",
+    "makeup": "light to bold within her dark aesthetic",
+    "hairStyling": "undercut may be styled tighter or looser; length of sweep may vary slightly",
+    "notes": "Variation the LoRA must tolerate without identity drift."
+  },
+  "sceneDependent": {
+    "wardrobe": "dark techwear is her DEFAULT STYLE, not identity - scene requests choose actual clothing; the LoRA must not bake any single garment in",
+    "background": "never part of identity - training images must vary backgrounds",
+    "lighting": "never part of identity - training images must vary lighting",
+    "pose": "never part of identity",
+    "camera": "never part of identity"
+  },
+  "forbiddenIdentityDrift": [
+    "hair color change (no brown/blonde/colored)",
+    "loss of undercut silhouette",
+    "eye color change",
+    "loss or relocation of forearm tattoo",
+    "age drift younger than adult presentation",
+    "face structure softening into generic features"
+  ],
+  "referencePackRequirements": {
+    "minimumApprovedImages": 16,
+    "targetImages": 24,
+    "required": ["frontal neutral portrait", "three-quarter left", "three-quarter right", "profile", "smiling expression", "serious expression", "at least 3 distinct backgrounds", "at least 3 distinct lighting setups", "at least 3 distinct wardrobe items", "at least 2 wider framings (waist-up, full body)"],
+    "forbidden": ["other people in frame", "duplicates or near-duplicates", "one background dominating >30% of the set", "one garment dominating >30% of the set", "non-SFW content in the training lane", "images of or derived from real people"]
+  }
+}
