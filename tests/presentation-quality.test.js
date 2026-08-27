@@ -7,7 +7,7 @@ import { presentationReportTemplate, evaluatePresentationReport, computeFinalVer
 
 // Boot the full app with fixtures for provider, identity validator, and
 // presentation assessor. No real network, no real models.
-async function bootWorld({ assessor = null, galleryPolicy = {} } = {}) {
+async function bootWorld({ assessor = null, galleryPolicy = { requireHumanApproval: false, aestheticThreshold: 0.6 } } = {}) {
   const validator = new ScriptedImageValidator({ detections: [] });
   const app = await bootApp({
     chat: configuredChat(new FixtureChatA()),
@@ -103,7 +103,7 @@ test('identity + presentation approval publishes; human-approval gate blocks unt
   } finally { await w1.app.close(); }
 
   // With requireHumanApproval: blocked at needs_human_review until approved
-  const w2 = await bootWorld({ assessor: new ScriptedPresentationAssessor(good), galleryPolicy: { requireHumanApproval: true } });
+  const w2 = await bootWorld({ assessor: new ScriptedPresentationAssessor(good), galleryPolicy: { requireHumanApproval: true, aestheticThreshold: 0.6 } });
   try {
     await w2.app.call('POST', `/api/scenes/${w2.sceneId}/presentation`, { tenant: w2.tenantId });
     const blocked = await w2.app.call('POST', `/api/scenes/${w2.sceneId}/publish`, { tenant: w2.tenantId });

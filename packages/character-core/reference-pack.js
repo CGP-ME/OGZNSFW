@@ -9,18 +9,32 @@ export class ReferencePackService {
     this.store = store;
   }
 
+  // DOCTRINE rule 2: no throws. Returns whether the scope is intact; callers
+  // refuse loudly rather than proceeding across scope. The producer (scene
+  // validation) already guarantees these fields - this is a tripwire.
   scope(tenantId, characterId, characterVersion) {
-    if (!tenantId || !characterId || !Number.isInteger(characterVersion)) {
-      throw new Error('tenantId, characterId, and integer characterVersion are all required for reference-pack access');
+    const missing = [];
+    if (!tenantId) missing.push('tenantId');
+    if (!characterId) missing.push('characterId');
+    if (!Number.isInteger(characterVersion)) missing.push('integer characterVersion');
+    if (missing.length) {
+      console.error(`[${new Date().toISOString()}] TRIPWIRE ReferencePackService scope incomplete (${missing.join(', ')}) - refusing; reference access never proceeds on partial scope`);
+      return false;
     }
+    return true;
   }
 
   // assets: [{ ref: 'asset://nova-face-v3', kind: 'face'|'body'|'style', notes }]
   async register(tenantId, characterId, characterVersion, assets) {
-    this.scope(tenantId, characterId, characterVersion);
-    if (!Array.isArray(assets) || assets.length === 0) throw new Error('at least one reference asset required');
-    for (const a of assets) {
-      if (!a.ref || typeof a.ref !== 'string') throw new Error('every reference asset needs a string ref');
+    if (!this.scope(tenantId, characterId, characterVersion)) {
+      return { ok: false, errors: ['reference-pack scope incomplete - refused, nothing written'] };
+    }
+    const bad = [];
+    if (!Array.isArray(assets) || assets.length === 0) bad.push('at least one reference asset required');
+    else for (const a of assets) { if (!a.ref || typeof a.ref !== 'string') bad.push('every reference asset needs a string ref'); }
+    if (bad.length) {
+      console.error(`[${new Date().toISOString()}] REFUSED ReferencePackService.register for ${characterId} v${characterVersion}: ${bad.join('; ')}`);
+      return { ok: false, errors: bad };
     }
     const existing = await this.get(tenantId, characterId, characterVersion);
     if (existing) {
@@ -30,7 +44,7 @@ export class ReferencePackService {
   }
 
   async get(tenantId, characterId, characterVersion) {
-    this.scope(tenantId, characterId, characterVersion);
+    if (!this.scope(tenantId, characterId, characterVersion)) return null;
     return this.store.findOne('reference_packs', (p) =>
       p.tenantId === tenantId && p.characterId === characterId && p.characterVersion === characterVersion);
   }

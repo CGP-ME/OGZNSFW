@@ -107,6 +107,12 @@ test('successful deterministic validation publishes to the private gallery', asy
     assert.equal(passed.status, 200);
     assert.equal(passed.body.validationStatus, 'passed');
 
+    // DOCTRINE: presentation unassessed -> quarantine, not publication.
+    const quarantined = await app.call('POST', `/api/scenes/${sceneId}/publish`, { tenant: tenantId });
+    assert.equal(quarantined.status, 409);
+    assert.equal(quarantined.body.verdict, 'needs_human_review');
+    await app.call('POST', `/api/scenes/${sceneId}/approve`, { tenant: tenantId, body: { approvedBy: 'Trey' } });
+
     const published = await app.call('POST', `/api/scenes/${sceneId}/publish`, { tenant: tenantId });
     assert.equal(published.status, 201);
     assert.deepEqual(published.body.asset.provenance.expectedCharacterIds.sort(), [a.id, b.id].sort());

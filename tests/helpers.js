@@ -7,9 +7,11 @@ import path from 'node:path';
 import { JsonStore } from '../db/store.js';
 import { createApp } from '../apps/api/server.js';
 
-export async function bootApp({ chat, image, imageValidator, presentationAssessor, galleryPolicy } = {}) {
+export async function bootApp({ chat = null, image = null, imageValidator = null, presentationAssessor = null, galleryPolicy = { requireHumanApproval: false, aestheticThreshold: 0.6 } } = {}) {
   const dataDir = await mkdtemp(path.join(tmpdir(), 'ogznsfw-test-'));
   const store = new JsonStore(dataDir);
+  // Test harness states every dependency explicitly, per doctrine. Tests that
+  // want the human-approval gate pass their own galleryPolicy.
   const app = createApp({ store, chat, image, imageValidator, presentationAssessor, galleryPolicy });
   const server = await new Promise((resolve) => {
     const s = app.listen(0, '127.0.0.1', () => resolve(s));

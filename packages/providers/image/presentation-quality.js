@@ -12,6 +12,7 @@
 //   2. technical validity  (generation completed, output retrieved)
 //   3. visual appeal       (this layer)
 //   4. human approval      (explicit, recorded)
+import { CONFIG } from '../../config/index.js';
 
 // Assessor interface. No runtime implementation exists yet; deterministic
 // test doubles live under tests/fixtures/.
@@ -43,16 +44,11 @@ export function presentationReportTemplate() {
   };
 }
 
-// Future-tuning configuration: the knobs the benchmark lane will sweep.
-export const presentationTuningConfig = {
-  maskFeather: 40,
-  maskOverlap: 32,
-  adapterWeight: 0.8,
-  backgroundConditioning: 1.0,
-  poseGuidance: null,          // not implemented (no pose-control component installed)
-  compositionGuidance: null,   // not implemented (layout pass is a future milestone)
-  aestheticThreshold: 0.6,
-};
+// Tuning knobs for the presentation/benchmark lane. Doctrine: no local
+// defaults - these come from the single config spot. poseGuidance and
+// compositionGuidance are null there because no such component is installed:
+// null means "does not exist", never "use a default".
+export const presentationTuningConfig = CONFIG.presentation;
 
 // Evaluate a presentation report into a presentation verdict:
 // 'presentation_ready' | 'visually_weak' | 'needs_human_review'
@@ -90,11 +86,12 @@ export function computeFinalVerdict({ identityStatus, technicalOk, presentation,
 
   const approved = humanApproval?.approved === true;
 
-  // No presentation report at all: presentation is "not assessed", which is
-  // not a rejection. Human approval gates it only where configured.
+  // DOCTRINE: unassessed is NOT passed. A scene with no presentation
+  // assessment quarantines for human review; it never falls through to
+  // approval. Only an explicit human approval can release an unassessed
+  // artifact, and that approval is recorded.
   if (!presentation) {
-    if (requireHumanApproval && !approved) return 'needs_human_review';
-    return 'approved_for_gallery';
+    return approved ? 'approved_for_gallery' : 'needs_human_review';
   }
 
   const p = presentation.verdict;

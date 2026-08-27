@@ -71,14 +71,29 @@ export function validateSceneShape(input) {
 }
 
 export class SceneService {
-  constructor(store, characterService, referencePacks, galleryPolicy = {}) {
+  // DOCTRINE rule 2: no throws. Rule 1: quarantine before corruption, never
+  // death. Rule 6: don't cage the machine - be selective about what routes
+  // through it.
+  //
+  // An unstated publication policy cannot be invented (that would silently
+  // publish work nobody approved) and must not kill construction. So the
+  // service builds, screams, and QUARANTINES the publication capability
+  // only: scenes still create, compile, generate, and validate; publishing
+  // refuses loudly by name until the policy is stated.
+  constructor(store, characterService, referencePacks, galleryPolicy) {
     this.store = store;
     this.characters = characterService;
     this.refs = referencePacks;
-    // Gallery policy: human approval is "where configured" per policy; the
-    // presentation layer itself defaults to honest needs_human_review states
-    // whenever a report exists that demands it.
-    this.galleryPolicy = { requireHumanApproval: false, aestheticThreshold: 0.6, ...galleryPolicy };
+    const missing = [];
+    if (!galleryPolicy || typeof galleryPolicy.requireHumanApproval !== 'boolean') missing.push('requireHumanApproval');
+    if (!galleryPolicy || typeof galleryPolicy.aestheticThreshold !== 'number') missing.push('aestheticThreshold');
+    this.publicationQuarantine = missing.length ? `publication policy not stated: ${missing.join(', ')}` : null;
+    if (this.publicationQuarantine) {
+      // LOUD REFUSAL AT THE BEGINNING - announced at construction, not when
+      // someone tries to publish.
+      console.error(`[${new Date().toISOString()}] REFUSED AT STARTUP - SceneService publication: ${this.publicationQuarantine}. Scenes still create, compile, generate and validate; publishing refuses by name until the policy is stated in packages/config.`);
+    }
+    this.galleryPolicy = galleryPolicy;
   }
 
   async create(tenantId, input) {
@@ -128,12 +143,18 @@ export class SceneService {
   }
 
   async get(tenantId, sceneId) {
-    if (!tenantId) throw new Error('tenantId required');
+    if (!tenantId) {
+      console.error(`[${new Date().toISOString()}] TRIPWIRE SceneService.get called with no tenantId - refusing; returning nothing rather than crossing tenant scope`);
+      return null;
+    }
     return this.store.findOne('scenes', (s) => s.id === sceneId && s.tenantId === tenantId);
   }
 
   async list(tenantId) {
-    if (!tenantId) throw new Error('tenantId required');
+    if (!tenantId) {
+      console.error(`[${new Date().toISOString()}] TRIPWIRE SceneService.list called with no tenantId - refusing; returning nothing rather than crossing tenant scope`);
+      return [];
+    }
     return this.store.find('scenes', (s) => s.tenantId === tenantId);
   }
 
@@ -166,11 +187,32 @@ export class SceneService {
   // evidence, scene marked failed, nothing enters the gallery, nothing is
   // presented as a completed asset.
   async recordFailedRun(tenantId, sceneId, provenance, reason) {
+    // DOCTRINE rule 2 - no throws in a runtime path, and never in a FAILURE
+    // path: a throw here would destroy the very evidence this method exists
+    // to retain. Rule 4 - the producer (the pipeline) always supplies both
+    // fields on its failure return, so this is a TRIPWIRE, not a fail-close.
+    // If it ever trips, it screams and records anyway, naming the absence
+    // explicitly (rule 11: unavailable evidence is NAMED, never a
+    // behavioral zero).
+    const tripwire = [];
+    if (!reason || typeof reason !== 'string') tripwire.push('failureReason');
+    if (!provenance) tripwire.push('pipelineProvenance');
+    if (tripwire.length) {
+      console.error(`[${new Date().toISOString()}] TRIPWIRE recordFailedRun scene=${sceneId} tenant=${tenantId}: producer omitted ${tripwire.join(', ')} - recording with explicit absence; the caller is defective and must be fixed upstream`);
+    }
     const scene = await this.get(tenantId, sceneId);
     if (!scene) return { ok: false, errors: ['scene not found for this tenant'] };
     await this.store.update('scenes', scene.id, {
       validationStatus: 'failed',
-      generation: { ...scene.generation, status: 'failed', lastOutput: null, pipeline: provenance ?? null, failureReason: reason ?? 'unknown' },
+      generation: {
+        ...scene.generation,
+        status: 'failed',
+        lastOutput: null,
+        // Explicit absence, never a plausible-looking substitute.
+        pipeline: provenance ? provenance : { absent: true, note: 'producer supplied no pipeline provenance - tripwire fired' },
+        failureReason: (reason && typeof reason === 'string') ? reason : { absent: true, note: 'producer supplied no failure reason - tripwire fired' },
+        tripwire: tripwire.length ? tripwire : undefined,
+      },
     });
     return { ok: true };
   }
@@ -212,6 +254,9 @@ export class SceneService {
   // else is refused with the verdict named; failed outputs never enter the
   // gallery and are never charged.
   async publishAsset(tenantId, sceneId, { uri, provider, model, provenance }) {
+    if (this.publicationQuarantine) {
+      return { ok: false, verdict: 'quarantined', errors: [`refusing to publish: ${this.publicationQuarantine}`] };
+    }
     const scene = await this.get(tenantId, sceneId);
     if (!scene) return { ok: false, errors: ['scene not found for this tenant'] };
     const verdict = this.finalVerdict(scene);

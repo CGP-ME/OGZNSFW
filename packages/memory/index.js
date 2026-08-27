@@ -1,19 +1,27 @@
 // Structured memory: storage, retrieval, and the extraction interface.
-// Every operation is scoped by tenantId + characterId; the store methods
-// throw rather than default when scope is missing.
+// Every operation is scoped by tenantId + characterId.
 
 export class MemoryStore {
   constructor(store) {
     this.store = store;
   }
 
+  // DOCTRINE rule 2: no throws. Memory scope is a tenant security boundary -
+  // it never proceeds partial, and it never kills the request.
   scope(tenantId, characterId) {
-    if (!tenantId || !characterId) throw new Error('tenantId and characterId are both required for memory access');
+    if (!tenantId || !characterId) {
+      console.error(`[${new Date().toISOString()}] TRIPWIRE MemoryStore scope incomplete (tenantId=${!!tenantId}, characterId=${!!characterId}) - refusing; memory never crosses scope`);
+      return false;
+    }
+    return true;
   }
 
   async save(tenantId, characterId, { kind = 'fact', content, importance = 3 }) {
-    this.scope(tenantId, characterId);
-    if (!content || typeof content !== 'string') throw new Error('memory content required');
+    if (!this.scope(tenantId, characterId)) return { ok: false, errors: ['memory scope incomplete - refused, nothing written'] };
+    if (!content || typeof content !== 'string') {
+      console.error(`[${new Date().toISOString()}] REFUSED MemoryStore.save for ${characterId}: no content supplied`);
+      return { ok: false, errors: ['memory content required - refused, nothing written'] };
+    }
     importance = Math.min(5, Math.max(1, Number(importance) || 3));
     return this.store.insert('memories', { tenantId, characterId, kind, content, importance, lastAccessed: null });
   }
@@ -22,7 +30,7 @@ export class MemoryStore {
   // MVP ranking is deliberately simple; embedding/RAG retrieval is a later
   // milestone and slots in behind this same method signature.
   async retrieve(tenantId, characterId, { query = null, limit = 8 } = {}) {
-    this.scope(tenantId, characterId);
+    if (!this.scope(tenantId, characterId)) return [];
     let docs = await this.store.find('memories', (m) => m.tenantId === tenantId && m.characterId === characterId);
     if (query) {
       const terms = query.toLowerCase().split(/\W+/).filter((t) => t.length > 2);
@@ -43,7 +51,7 @@ export class MemoryStore {
   }
 
   async list(tenantId, characterId) {
-    this.scope(tenantId, characterId);
+    if (!this.scope(tenantId, characterId)) return [];
     return this.store.find('memories', (m) => m.tenantId === tenantId && m.characterId === characterId);
   }
 }

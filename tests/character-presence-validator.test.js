@@ -110,6 +110,16 @@ test('failed validation blocks gallery publication; passed validation allows it'
   const passReport = await passing.validate({ request, asset: { uri: 'about:test-output' } });
   const applied2 = await world.scenes.applyValidationReport(tenant, scene.id, passReport);
   assert.equal(applied2.validationStatus, 'passed');
+
+  // DOCTRINE: identity passing is not sufficient. Presentation was never
+  // assessed, so the scene quarantines for human review rather than falling
+  // through to publication.
+  const unassessed = await world.scenes.publishAsset(tenant, scene.id, { uri: 'about:test-output', provider: 'none', model: 'none' });
+  assert.equal(unassessed.ok, false);
+  assert.equal(unassessed.verdict, 'needs_human_review');
+
+  // Explicit, recorded human approval releases it.
+  await world.scenes.approveForGallery(tenant, scene.id, 'Trey');
   const published = await world.scenes.publishAsset(tenant, scene.id, { uri: 'about:test-output', provider: 'none', model: 'none' });
   assert.equal(published.ok, true);
   assert.deepEqual(published.asset.provenance.expectedCharacterIds.sort(), [nova.characterId, iris.characterId].sort());

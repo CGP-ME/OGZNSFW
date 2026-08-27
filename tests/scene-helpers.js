@@ -14,7 +14,10 @@ export async function bootSceneWorld() {
   const store = new JsonStore(dataDir);
   const characters = new CharacterService(store);
   const refs = new ReferencePackService(store);
-  const scenes = new SceneService(store, characters, refs);
+  // Explicit policy per doctrine: these unit tests exercise the identity and
+  // presentation gates directly, so human approval is not additionally
+  // required; tests that want that gate construct their own policy.
+  const scenes = new SceneService(store, characters, refs, { requireHumanApproval: false, aestheticThreshold: 0.6 });
   return { store, characters, refs, scenes };
 }
 

@@ -9,49 +9,12 @@
 // execution completed -> output retrieved as non-empty bytes.
 import { createHash } from 'node:crypto';
 import { ImageProvider } from './index.js';
+import { CONFIG } from '../../config/index.js';
 
-// Conservative defaults taken from the successful Phase 1 two-character run,
-// plus the first seam/background remedies (feather + overlap) at low values.
-export const comfyuiTuningDefaults = {
-  checkpoint: 'sd_xl_base_1.0.safetensors',
-  steps: 30,
-  cfg: 6.5,
-  width: 1024,
-  height: 1024,
-  seed: null,                    // null -> deterministic seed derived from sceneId
-  // Feather/overlap default to the PROVEN Phase 1 values (0/0). A smoke run
-  // with feather 40 / overlap 32 produced a character MERGE (one figure
-  // blending both identities) - blended attention regions trade identity
-  // separation for seam smoothing. These stay exposed as tuning knobs for the
-  // benchmark lane; do not raise the defaults without benchmark evidence.
-  // Benchmark 2026-08-18 (park scene, 2 seeds x 4 variants + editorial
-  // confirm): feather 48 keeps both identities intact with a visibly softer
-  // boundary than feather 0; feather 96/overlap 32 re-merges; weight 0.65
-  // degrades identity. Winner: feather 48, overlap 0, weight 0.8.
-  maskFeather: 48,
-  maskOverlap: 0,
-  adapterWeight: 0.8,
-  adapterWeightType: 'linear',
-  backgroundConditioningStrength: 1.0, // strength of scene-level text conditioning
-  // Benchmark evidence (2026-08-18, 12 runs): region-masked per-character
-  // TEXT conditioning drives single-figure merges in single-pass SDXL - every
-  // merged run had it on, both two-figure successes had it off, and wardrobe
-  // still transferred via the reference images. Default 0 (no such nodes);
-  // wardrobe/pose remain in the structured request for the future multi-pass
-  // refinement stage. Raise only with benchmark evidence.
-  characterTextStrength: 0,
-  ipadapterPreset: 'PLUS (high strength)',
-  // Pipeline mode: 'single-pass' is the benchmarked baseline (regression-
-  // pinned). 'two-pass' composes the scene from text first (no identity
-  // conditioning -> background belongs to the setting), then refines each
-  // character's region independently with only that character's reference -
-  // the background-leakage/composition lane.
-  pipelineMode: 'single-pass',
-  refineDenoise: 0.6,
-  refineSteps: 22,
-  pollIntervalMs: 2000,
-  timeoutMs: 240000,
-};
+// Doctrine: this module defines no defaults of its own. Every knob comes from
+// the single config spot, where the benchmark evidence behind each value is
+// documented; the values are pinned by tests/fixtures/benchmark-regression.json.
+export const comfyuiTuningDefaults = CONFIG.comfyui;
 
 // Default HTTP client (real network). Tests inject a fake with the same shape.
 export class ComfyHttpClient {
@@ -103,7 +66,16 @@ export class ComfyUIImageProvider extends ImageProvider {
     this.baseUrl = baseUrl;
     this.client = opts.client ?? new ComfyHttpClient(baseUrl);
     this.tuning = { ...comfyuiTuningDefaults, ...(opts.tuning ?? {}) };
-    this.resolveReference = opts.referenceResolver ?? defaultReferenceResolver;
+    // DOCTRINE: the resolver strategy is never silently chosen. Whichever is
+    // in force is named and travels into provenance, so every generation
+    // records how its reference assets were resolved.
+    if (opts.referenceResolver) {
+      this.resolveReference = opts.referenceResolver;
+      this.referenceResolverName = opts.referenceResolverName || 'caller-supplied-unnamed';
+    } else {
+      this.resolveReference = defaultReferenceResolver;
+      this.referenceResolverName = 'asset-uri-to-input-filename';
+    }
   }
 
   get name() { return 'comfyui'; }
@@ -119,15 +91,18 @@ export class ComfyUIImageProvider extends ImageProvider {
   }
 
   // Single-subject generation (legacy interface path), same engine.
-  async generate({ prompt, characterRecord }) {
+  // extraNegative is APPENDED to the mandatory safety negatives - the
+  // child/teen exclusions can never be replaced or removed by a caller.
+  async generate({ prompt, characterRecord, extraNegative = null }) {
     const a = characterRecord?.appearance ?? {};
     const desc = [a.hair && `${a.hair} hair`, a.eyes && `${a.eyes} eyes`, a.build, a.style].filter(Boolean).join(', ');
     const t = this.tuning;
+    const negative = ['blurry, deformed, extra limbs, low quality, cartoon, child, teenager', extraNegative].filter(Boolean).join(', ');
     const workflow = {
       4: { class_type: 'CheckpointLoaderSimple', inputs: { ckpt_name: t.checkpoint } },
       5: { class_type: 'EmptyLatentImage', inputs: { width: t.width, height: t.height, batch_size: 1 } },
       6: { class_type: 'CLIPTextEncode', inputs: { clip: ['4', 1], text: `${prompt}${desc ? '. ' + desc : ''}` } },
-      7: { class_type: 'CLIPTextEncode', inputs: { clip: ['4', 1], text: 'blurry, deformed, extra limbs, low quality, cartoon, child, teenager' } },
+      7: { class_type: 'CLIPTextEncode', inputs: { clip: ['4', 1], text: negative } },
       3: { class_type: 'KSampler', inputs: { model: ['4', 0], positive: ['6', 0], negative: ['7', 0], latent_image: ['5', 0], seed: t.seed ?? seedFromSceneId(prompt), steps: t.steps, cfg: t.cfg, sampler_name: 'euler', scheduler: 'normal', denoise: 1.0 } },
       8: { class_type: 'VAEDecode', inputs: { samples: ['3', 0], vae: ['4', 2] } },
       9: { class_type: 'SaveImage', inputs: { images: ['8', 0], filename_prefix: 'ogznsfw_single' } },
@@ -372,6 +347,8 @@ export class ComfyUIImageProvider extends ImageProvider {
         workflowHash,
         seed: meta.seed,
         checkpoint: t.checkpoint,
+        pipelineMode: t.pipelineMode,
+        referenceResolver: this.referenceResolverName,
         characterVersions: meta.characterVersions,
         referenceAssets: meta.referenceAssets,
         outputFilename: img.filename,

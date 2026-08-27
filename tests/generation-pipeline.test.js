@@ -135,7 +135,11 @@ test('API route: retry then publish only the passing result; failed runs leave g
     assert.equal(run.body.attemptsUsed, 2);
     assert.equal(run.body.selectedAttempt, 2);
     assert.equal(run.body.attempts[0].verdict, 'failed');
-    assert.equal(run.body.finalVerdict, 'approved_for_gallery');
+    // DOCTRINE: identity passed but presentation unassessed -> quarantine.
+    assert.equal(run.body.finalVerdict, 'needs_human_review');
+    const quarantined = await app.call('POST', `/api/scenes/${sceneId}/publish`, { tenant: tenantId });
+    assert.equal(quarantined.status, 409);
+    await app.call('POST', `/api/scenes/${sceneId}/approve`, { tenant: tenantId, body: { approvedBy: 'Trey' } });
     const pub = await app.call('POST', `/api/scenes/${sceneId}/publish`, { tenant: tenantId });
     assert.equal(pub.status, 201);
 

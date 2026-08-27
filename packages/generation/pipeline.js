@@ -11,6 +11,7 @@
 // benchmark (2026-08-18) is preserved as a regression fixture in tests.
 import { createHash } from 'node:crypto';
 import { evaluateValidationReport } from '../providers/image/image-validator.js';
+import { CONFIG } from '../config/index.js';
 
 // ---------------------------------------------------------------------------
 // CompositionPlan: where each cast member lives on the canvas. Pure data,
@@ -61,13 +62,11 @@ export function planConditioning(request, tuning = {}) {
 // RetryPolicy: which failures earn another seed, and how seeds are derived.
 // Seeds are deterministic and reproducible: attempt N of a scene always gets
 // the same seed.
-export const defaultRetryPolicy = {
-  maxAttempts: 3,
-  // Only identity/composition validation failures are retryable - a new seed
-  // can change composition. Infrastructure and input failures cannot be
-  // fixed by a seed and must surface immediately.
-  retryableCategories: ['missing_character', 'unexpected_character', 'merge_swap', 'identity_below_threshold'],
-};
+// Only identity/composition validation failures are retryable - a new seed
+// can change composition. Infrastructure and input failures cannot be fixed
+// by a seed and must surface immediately. Values live in the single config
+// spot; this module does not define its own.
+export const defaultRetryPolicy = CONFIG.retry;
 
 export function attemptSeed(sceneId, attempt) {
   // attempt 1 keeps the scene's canonical seed derivation; later attempts

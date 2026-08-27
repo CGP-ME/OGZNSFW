@@ -268,7 +268,9 @@ ACTIONS NOT TAKEN:
         }
     }
     catch {
-        # keep the placeholder excerpt; raw stdout remains on disk as evidence
+        # DOCTRINE: no silent catch. The parse failure is itself reportable
+        # state and goes into the receipt; raw stdout stays on disk as evidence.
+        $ResultExcerpt = "(ADAPTER COULD NOT PARSE CLI OUTPUT: $($_.Exception.Message) - see stdout.json for the raw bytes)"
     }
 
     $Success = ($ClaudeExitCode -eq 0 -and $IsError -ne $true)

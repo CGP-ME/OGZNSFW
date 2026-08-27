@@ -8,6 +8,7 @@
 import { OllamaChatProvider } from './chat/index.js';
 import { HuggingFaceImageProvider } from './image/index.js';
 import { ComfyUIImageProvider } from './image/comfyui.js';
+import { validateCapabilities } from './capabilities.js';
 
 export const ProviderRegistry = {
   chat: {
@@ -58,7 +59,17 @@ function select(kind, selectedKey, env) {
   if (missing.length) {
     return { provider: null, status: { configured: false, selected: selectedKey, reason: `missing env for ${entry.name}: ${missing.join(', ')}` } };
   }
-  return { provider: entry.create(env), status: { configured: true, selected: selectedKey, reason: null } };
+  // CAPABILITY GATE - the authoritative selection boundary. An
+  // implementation that does not satisfy its interface is refused HERE,
+  // loudly and by name, and never enters runtime where an abstract stub
+  // would throw mid-work.
+  const provider = entry.create(env);
+  const capability = validateCapabilities(kind === 'chat' ? 'chatProvider' : 'imageProvider', provider);
+  if (!capability.ok) {
+    console.error(`[${new Date().toISOString()}] REFUSED AT SELECTION - ${capability.detail}. This implementation will not enter runtime.`);
+    return { provider: null, status: { configured: false, selected: selectedKey, reason: capability.detail, missingCapabilities: capability.missing } };
+  }
+  return { provider, status: { configured: true, selected: selectedKey, reason: null } };
 }
 
 export function createChatProvider(env = process.env) {

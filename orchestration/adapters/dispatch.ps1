@@ -117,9 +117,17 @@ try {
 
     # ---- Duplicate-execution guard: one dispatch per mission ID ----
     $MissionRunsDir = Join-Path (Join-Path $OrchRoot 'runs') $MissionId
+    # DOCTRINE: no silenced errors in a guard. If the prior-dispatch scan
+    # cannot run, we do NOT read that as "no prior dispatches" - we refuse,
+    # because a failed scan would silently weaken the duplicate guard.
     $priorDispatches = @()
     if (Test-Path -LiteralPath $MissionRunsDir) {
-        $priorDispatches = @(Get-ChildItem -LiteralPath $MissionRunsDir -Filter 'dispatch-*.json' -File -ErrorAction SilentlyContinue)
+        try {
+            $priorDispatches = @(Get-ChildItem -LiteralPath $MissionRunsDir -Filter 'dispatch-*.json' -File -ErrorAction Stop)
+        }
+        catch {
+            Refuse 11 "Cannot read prior dispatch records in ${MissionRunsDir}: $($_.Exception.Message). Refusing rather than assuming no prior dispatches."
+        }
     }
     if ($priorDispatches.Count -gt 0 -and -not $AllowRerun) {
         Refuse 13 ("Mission $MissionId was already dispatched (" + $priorDispatches.Count + " prior dispatch record(s)). Pass -AllowRerun to explicitly re-run.")

@@ -36,7 +36,15 @@ export class CharacterService {
 
   // Characters are stored as { id, tenantId, activeVersion, versions: [{version, record, createdAt}] }
   async create(tenantId, record) {
-    if (!tenantId) throw new Error('tenantId required');
+    // DOCTRINE rule 2: no throws. Tenant scope is a security boundary, so a
+    // missing tenant must NEVER proceed (rule 1: quarantine before
+    // corruption) - but it refuses loudly and returns, it does not kill.
+    // The producer (the API layer's requireTenant) already guarantees this;
+    // these are tripwires on an unreachable state.
+    if (!tenantId) {
+      console.error(`[${new Date().toISOString()}] TRIPWIRE CharacterService.create called with no tenantId - refusing; the caller is defective and must be fixed upstream`);
+      return { ok: false, errors: ['tenantId required - refused, nothing written'] };
+    }
     const { valid, errors } = validateRecord(record);
     if (!valid) return { ok: false, errors };
     const doc = await this.store.insert('characters', {
@@ -60,12 +68,18 @@ export class CharacterService {
 
   // Tenant scoping is enforced here: lookups without the owning tenantId miss.
   async get(tenantId, characterId) {
-    if (!tenantId) throw new Error('tenantId required');
+    if (!tenantId) {
+      console.error(`[${new Date().toISOString()}] TRIPWIRE CharacterService.get called with no tenantId - refusing; returning nothing rather than crossing tenant scope`);
+      return null;
+    }
     return this.store.findOne('characters', (c) => c.id === characterId && c.tenantId === tenantId);
   }
 
   async list(tenantId) {
-    if (!tenantId) throw new Error('tenantId required');
+    if (!tenantId) {
+      console.error(`[${new Date().toISOString()}] TRIPWIRE CharacterService.list called with no tenantId - refusing; returning nothing rather than crossing tenant scope`);
+      return [];
+    }
     return this.store.find('characters', (c) => c.tenantId === tenantId);
   }
 

@@ -8,7 +8,16 @@ async function api(path, options = {}) {
   const headers = { 'Content-Type': 'application/json', ...(options.headers || {}) };
   if (state.tenantId) headers['X-Tenant-Id'] = state.tenantId;
   const res = await fetch(path, { ...options, headers });
-  const body = await res.json().catch(() => ({}));
+  // DOCTRINE rule 5: a catch that does not scream-and-route is a swallow.
+  // An unparseable response is NAMED, not turned into a plausible empty
+  // object the UI would render as "nothing happened".
+  let body;
+  try {
+    body = await res.json();
+  } catch (err) {
+    console.error(`[${new Date().toISOString()}] API ${path} returned an unparseable body (${res.status}): ${err.message}`);
+    body = { error: `unparseable response from ${path}`, detail: err.message, parseFailed: true };
+  }
   return { ok: res.ok, status: res.status, body };
 }
 
