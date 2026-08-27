@@ -21,6 +21,27 @@ async function api(path, options = {}) {
   return { ok: res.ok, status: res.status, body };
 }
 
+// --- transient toasts: memory-save confirmations live here, NOT in the chat
+// transcript. Auto-fade ~4s, click to dismiss, error toasts for failures.
+const TOAST_TTL_MS = 4000;
+const TOAST_FADE_MS = 400;
+function showToast(text, kind = 'info') {
+  const t = document.createElement('div');
+  t.className = `toast toast-${kind}`;
+  t.textContent = text;
+  t.title = 'Click to dismiss';
+  const dismiss = () => {
+    if (t.dataset.gone) return;
+    t.dataset.gone = '1';
+    t.classList.add('toast-out');
+    setTimeout(() => t.remove(), TOAST_FADE_MS);
+  };
+  t.addEventListener('click', dismiss);
+  $('toasts').appendChild(t);
+  setTimeout(dismiss, TOAST_TTL_MS);
+  return t;
+}
+
 // --- age gate
 function initAgeGate() {
   if (localStorage.getItem('ogznsfw-adult') === 'yes') {
@@ -117,6 +138,14 @@ async function sendChat(ev) {
   $('chat-send').disabled = !state.chatConfigured;
   if (ok) {
     addMsg('assistant', body.reply, `${body.provider}/${body.model}` + (body.usedMemories.length ? ` | memories used: ${body.usedMemories.length}` : ''));
+    // Transient confirmation only - the durable record lives in the
+    // Memories panel; nothing permanent is added to the transcript.
+    for (const m of body.newMemories) {
+      showToast(`Memory saved - "${m.content}" (retention ${m.importance}/5)`, 'memory');
+    }
+    for (const r of body.refusedMemories ?? []) {
+      showToast(`Memory NOT saved - "${r.candidate}": ${r.errors.join('; ')}`, 'error');
+    }
     if (body.newMemories.length) loadMemories();
   } else if (status === 422 && body.blocked) {
     addMsg('blocked', `Blocked (${body.category}): ${body.error}`);
@@ -131,7 +160,7 @@ async function loadMemories() {
   const el = $('memories');
   if (!ok) { el.textContent = 'failed to load memories'; return; }
   if (!body.length) { el.textContent = 'none yet'; return; }
-  el.innerHTML = body.map((m) => `<div class="memory"><span class="kind">${esc(m.kind)} / importance ${m.importance}</span><br>${esc(m.content)}</div>`).join('');
+  el.innerHTML = body.map((m) => `<div class="memory" title="${esc(m.importanceReason ?? '')}${m.confidence != null ? ' | extractor confidence ' + m.confidence : ''}${m.sourceType ? ' | source: ' + m.sourceType : ''}"><span class="kind">${esc(m.kind)} / retention ${m.importance}/5</span><br>${esc(m.content)}${m.importanceReason ? `<span class="memory-reason">${esc(m.importanceReason)}</span>` : ''}</div>`).join('');
 }
 
 // --- gallery

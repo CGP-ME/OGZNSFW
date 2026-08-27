@@ -114,6 +114,20 @@ button:disabled { background: #3a3a44; color: #666; cursor: not-allowed; }
 .scene-card .scene-msg { flex-basis: 100%; color: var(--dim); font-size: 11px; white-space: pre-wrap; }
 .scene-request { background: #0a0a0c; border: 1px solid var(--border); border-radius: 4px; padding: 10px; font-size: 10px; max-height: 240px; overflow: auto; margin-top: 10px; color: var(--text); }
 
+/* Toasts - transient, never part of the transcript */
+.toasts { position: fixed; right: 16px; bottom: 16px; display: flex; flex-direction: column; gap: 8px; z-index: 200; max-width: 380px; }
+.toast {
+  background: var(--metal); border: 1px solid var(--border); border-left: 3px solid var(--accent);
+  border-radius: 6px; padding: 10px 14px; font-size: 12px; color: var(--text);
+  cursor: pointer; opacity: 1; transition: opacity 0.4s ease, transform 0.4s ease;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+}
+.toast-error { border-left-color: var(--danger); color: var(--danger); }
+.toast-out { opacity: 0; transform: translateY(6px); }
+
+.memories-note { color: var(--dim); font-size: 10px; margin-bottom: 8px; font-style: italic; }
+.memory-reason { display: block; color: var(--dim); font-size: 10px; margin-top: 2px; }
+
 /* Profile */
 #profile { font-size: 12px; line-height: 1.7; }
 #profile .name { font-size: 16px; color: var(--accent); }

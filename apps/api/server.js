@@ -296,7 +296,9 @@ export function createApp(deps) {
     res.json({
       reply: result.reply, provider: result.provider, model: result.model,
       usedMemories: relevant.map((m) => m.content),
-      newMemories: saved.map((m) => m.content),
+      // Full truthful records so the UI can show importance + reason in the
+      // transient confirmation without a second fetch.
+      newMemories: saved.map((m) => ({ content: m.content, importance: m.importance, importanceReason: m.importanceReason, kind: m.kind })),
       ...(refusedMemories.length ? { refusedMemories } : {}),
     });
   });
@@ -321,7 +323,12 @@ export function createApp(deps) {
     const tenantId = requireTenant(req, res); if (!tenantId) return;
     const { characterId, kind, content, importance } = req.body ?? {};
     if (!characterId || !content) return res.status(400).json({ error: 'characterId and content required' });
-    const saved = await memories.save(tenantId, characterId, { kind, content, importance });
+    // Manual entries: a user-specified importance carries a named reason; an
+    // unspecified one gets the classifier's named baseline. Never a bare 3.
+    const saved = await memories.save(tenantId, characterId, {
+      kind, content, sourceType: 'manual',
+      ...(importance !== undefined ? { importance, importanceReason: 'user-specified retention priority' } : {}),
+    });
     if (saved?.ok === false) return res.status(400).json({ error: 'memory refused', details: saved.errors });
     res.status(201).json(saved);
   });

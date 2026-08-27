@@ -15,7 +15,7 @@ test('memory save, retrieval, and use in the chat loop', async () => {
     // Extraction from a chat message ("my name is ...")
     const chat1 = await app.call('POST', '/api/chat', { tenant: tenantId, body: { characterId, message: 'Hey, my name is Trey.' } });
     assert.equal(chat1.status, 200);
-    assert.ok(chat1.body.newMemories.some((m) => m.includes('Trey')));
+    assert.ok(chat1.body.newMemories.some((m) => m.content.includes('Trey')));
 
     // Retrieval: a later message about work should surface the night-shift fact
     const chat2 = await app.call('POST', '/api/chat', { tenant: tenantId, body: { characterId, message: 'work has been rough lately' } });
